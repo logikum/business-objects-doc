@@ -1,8 +1,17 @@
 {
   "name": "business-objects-doc",
   "version": "0.0.1",
+  "description": "documentation for business-objects library",
   "dependencies": {
     "express": "^4.12",
+    "markdown": "^0.5",
     "serve-static": "^1.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/logikum/business-objects-doc.git"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   }
 }
