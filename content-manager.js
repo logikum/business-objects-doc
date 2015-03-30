@@ -6,6 +6,8 @@ var ContentManager = function () {
   var map = {};
   var index404;
 
+  this.menu = [];
+
   this.add = function (content, paths) {
     if (arguments.length > 0) {
       // Store content.
