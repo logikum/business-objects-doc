@@ -9,26 +9,12 @@ var cm = new ContentManager();
 
 //region Menu building
 
-function buildMenuItem (menu, contentPath, text) {
-  var firstLine = text.substr(0, text.indexOf('\n'));
-  if (firstLine.length > 9 && firstLine.substr(0, 9) === '[//]: # (') {
-    var definition = firstLine.substr(9, firstLine.indexOf(')') - 9);
-    createMenuItem(menu, definition, contentPath, false);
-  }
-}
-
-function buildSubMenu (menu, itemPath, contentPath) {
-  var stats = fs.statSync(itemPath);
-  if (stats && stats.isFile()) {
-    var definition = fs.readFileSync(itemPath, { encoding: 'utf8' });
-    return createMenuItem(menu, definition, contentPath, true);
-  }
-}
-
 function createMenuItem (menu, definition, contentPath, isDirectory) {
+  // Default values for item properties,
   var order = '1';
   var title = '-?-';
 
+  // Get item properties,
   if (definition.indexOf(',') > 0) {
     var both = definition.split(',');
     order = both[0].trim();
@@ -36,25 +22,41 @@ function createMenuItem (menu, definition, contentPath, isDirectory) {
   } else
     title = definition.trim();
 
-  console.log(contentPath + ': [' + order + '] ' + title);
+  //console.log(contentPath + ': [' + order + '] ' + title);
 
-  var menuItem = {
-    title: title,
-    //path: contentPath,
-    order: order,
-    children: []
-  };
   if (isDirectory)
-    menuItem.children = [];
+    // Add sub-menu item.
+    return menu.branch(title, order);
   else
-    menuItem.path = contentPath;
+    // Add menu item.
+    menu.add(title, order, contentPath);
+}
 
-  menu.push(menuItem);
+function buildMenuItem (menu, contentPath, text) {
+  // Find sub-menu info.
+  var firstLine = text.substr(0, text.indexOf('\n'));
+  if (firstLine.length > 9 && firstLine.substr(0, 9) === '[//]: # (') {
+    // Get sub-menu info.
+    var definition = firstLine.substr(9, firstLine.indexOf(')') - 9);
+    // Create menu item.
+    createMenuItem(menu, definition, contentPath, false);
+  }
+}
 
-  return menuItem;
+function buildSubMenu (menu, itemPath, contentPath) {
+  // Get sub-menu info.
+  var stats = fs.statSync(itemPath);
+  if (stats && stats.isFile()) {
+    // Read sub-menu info.
+    var definition = fs.readFileSync(itemPath, { encoding: 'utf8' });
+    // Create sub-menu item.
+    return createMenuItem(menu, definition, contentPath, true);
+  }
 }
 
 //endregion
+
+//region Content reading
 
 function addContents (contentDir, contentRoot, menuNode) {
 
@@ -88,14 +90,14 @@ function addContents (contentDir, contentRoot, menuNode) {
       // Store content.
       var html = markdown.toHTML(text);
       // Store content.
-      if (basename === 'index')
-        cm.add(html, contentRoot, contentRoot + '/', contentPath);
-      else
-        cm.add(html, contentPath);
+      cm.add(html, contentPath);
+
       //console.log('Content added: ' + contentPath);
     }
   });
 }
+
+//endregion
 
 function contentReader (contentDir, contentRoot) {
 
