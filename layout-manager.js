@@ -51,8 +51,11 @@ var LayoutManager = function (layoutFile, menuItems) {
       // Option: <li class="divider"></li>
 
       if (item.paths) {
-        menu += '<li' + (item.isActive(baseUrl) ? ' class="active"' : '') +
-                '><a href="' + item.paths[0] + '">' + item.title + '</a></li>\n';
+        if (item.title === '---')
+          menu += '<li class="divider"></li>';
+        else
+          menu += '<li' + (item.isActive(baseUrl) ? ' class="active"' : '') +
+            '><a href="' + item.paths[0] + '">' + item.title + '</a></li>\n';
       } else {
         menu += '<li class="dropdown' + (item.isActive(baseUrl) ? ' active' : '') + '">\n';
         menu += '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' +

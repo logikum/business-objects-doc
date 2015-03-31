@@ -11,14 +11,16 @@ var cm = new ContentManager();
 
 function createMenuItem (menu, definition, contentPath, isDirectory) {
   // Default values for item properties,
-  var order = '1';
+  var order = 1;
   var title = '-?-';
 
   // Get item properties,
   if (definition.indexOf(',') > 0) {
     var both = definition.split(',');
-    order = both[0].trim();
+    order = parseInt(both[0].trim(), 10);
     title = both[1].trim();
+    if (isNaN(order))
+      throw new Error('Invalid order in menu definition (' + contentPath + '): ' + definition);
   } else
     title = definition.trim();
 
@@ -27,9 +29,11 @@ function createMenuItem (menu, definition, contentPath, isDirectory) {
   if (isDirectory)
     // Add sub-menu item.
     return menu.branch(title, order);
-  else
+  else {
     // Add menu item.
     menu.add(title, order, contentPath);
+    return title !== '---';
+  }
 }
 
 function buildMenuItem (menu, contentPath, text) {
@@ -39,8 +43,9 @@ function buildMenuItem (menu, contentPath, text) {
     // Get sub-menu info.
     var definition = firstLine.substr(9, firstLine.indexOf(')') - 9);
     // Create menu item.
-    createMenuItem(menu, definition, contentPath, false);
-  }
+    return createMenuItem(menu, definition, contentPath, false);
+  } else
+    return true;
 }
 
 function buildSubMenu (menu, itemPath, contentPath) {
@@ -86,12 +91,12 @@ function addContents (contentDir, contentRoot, menuNode) {
       // Get content.
       var text = fs.readFileSync(itemPath, { encoding: 'utf8' });
       // Create menu item.
-      buildMenuItem(menuNode, contentPath, text);
-      // Store content.
-      var html = markdown.toHTML(text);
-      // Store content.
-      cm.add(html, contentPath);
-
+      if (buildMenuItem(menuNode, contentPath, text)) {
+        // Convert content.
+        var html = markdown.toHTML(text);
+        // Store content.
+        cm.add(html, contentPath);
+      }
       //console.log('Content added: ' + contentPath);
     }
   });

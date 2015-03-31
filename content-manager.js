@@ -36,7 +36,7 @@ var ContentManager = function () {
   }
 
   this.get = function (path) {
-    if (map[path])
+    if (map[path] !== undefined)
       // The requested content is found.
       return contents[map[path]];
     else if (index404 !== undefined)
