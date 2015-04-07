@@ -31,7 +31,14 @@ function createMenuItem (menu, definition, contentPath, isDirectory) {
     return menu.branch(title, order);
   else {
     // Add menu item.
-    menu.add(title, order, contentPath);
+    var length = contentPath.length;
+    if (length >= 6 && contentPath.substr(-6) === '/index') {
+      // Cut down closing index.
+      var end = length > 6 ? 6 : 5;
+      menu.add(title, order, contentPath.substr(0, length - end));
+    }
+    else
+      menu.add(title, order, contentPath);
     return title !== '---';
   }
 }
@@ -50,12 +57,16 @@ function buildMenuItem (menu, contentPath, text) {
 
 function buildSubMenu (menu, itemPath, contentPath) {
   // Get sub-menu info.
-  var stats = fs.statSync(itemPath);
-  if (stats && stats.isFile()) {
-    // Read sub-menu info.
-    var definition = fs.readFileSync(itemPath, { encoding: 'utf8' });
-    // Create sub-menu item.
-    return createMenuItem(menu, definition, contentPath, true);
+  try {
+    var stats = fs.statSync(itemPath);
+    if (stats && stats.isFile()) {
+      // Read sub-menu info.
+      var definition = fs.readFileSync(itemPath, { encoding: 'utf8' });
+      // Create sub-menu item.
+      return createMenuItem(menu, definition, contentPath, true);
+    }
+  } catch (err) {
+    console.log(err.message);
   }
 }
 
@@ -81,7 +92,10 @@ function addContents (contentDir, contentRoot, menuNode) {
       // Create menu item.
       var directoryNode = buildSubMenu(menuNode, itemPath + '.menu', directoryPath);
       // Read subdirectory.
-      addContents(itemPath, directoryPath, directoryNode.children);
+      if (directoryNode)
+        addContents(itemPath, directoryPath, directoryNode.children);
+      else
+        addContents(itemPath, directoryPath, menuNode);
     }
     else if (stats.isFile() && path.extname(item) === '.md') {
       // Read, convert and store the markdown file.
