@@ -6,7 +6,7 @@ var path = require('path');
 var MENU = '{{menu}}';
 var CONTENT = '{{content}}';
 
-var LayoutManager = function (layoutFile, menuItems) {
+var LayoutStore = function (layoutFile, menus) {
 
   var layoutFront = '';
   var layoutMiddle = '';
@@ -34,7 +34,7 @@ var LayoutManager = function (layoutFile, menuItems) {
   function getMenu (baseUrl) {
     var menu = '';
     menu += '<ul class="nav navbar-nav">\n';
-    menu += getMenuItems(menuItems, baseUrl);
+    menu += getMenuItems(menus, baseUrl);
     menu += '</ul>\n';
     return menu;
   }
@@ -55,11 +55,11 @@ var LayoutManager = function (layoutFile, menuItems) {
           menu += '<li class="divider"></li>';
         else
           menu += '<li' + (item.isActive(baseUrl) ? ' class="active"' : '') +
-            '><a href="' + item.paths[0] + '">' + item.title + '</a></li>\n';
+              '><a href="' + item.paths[0] + '">' + item.title + '</a></li>\n';
       } else {
         menu += '<li class="dropdown' + (item.isActive(baseUrl) ? ' active' : '') + '">\n';
         menu += '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' +
-                 item.title + ' <span class="caret"></span></a>\n';
+            item.title + ' <span class="caret"></span></a>\n';
         menu += '<ul class="dropdown-menu" role="menu">\n';
         menu += getMenuItems(item.children, baseUrl);
         menu += '</ul>\n';
@@ -70,11 +70,10 @@ var LayoutManager = function (layoutFile, menuItems) {
   }
 
   getLayout();
-  getMenu();
 
   this.get = function (content, baseUrl) {
     return layoutFront + getMenu(baseUrl) + layoutMiddle + content + layoutBack;
   }
 };
 
-module.exports = LayoutManager;
+module.exports = LayoutStore;

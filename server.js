@@ -2,26 +2,20 @@
 
 var express = require('express');
 var serveStatic = require('serve-static');
-var contentReader = require('./content-reader.js');
-var LayoutManager = require('./layout-manager.js');
+var ContentManager = require('./engine/content-manager.js');
 
 var app = module.exports = express();
 
-var contents = contentReader('/contents', '');
-var layout = new LayoutManager('/public/layout.html', contents.menu);
+var contents = new ContentManager('/contents', '/public/layout.html');
 
 // Set static folders.
 app.use(serveStatic('public'));
 
-// Serve markdown contents.
-app.use('*', function (req, res, next) {
-  if (req.baseUrl.length > 6 && req.baseUrl.substr(0, 7) === '/public')
-    next();
-  res.status(200).send( layout.get( contents.get(req.baseUrl), req.baseUrl ));
-});
+// Set language and markdown routes.
+contents.setRoutes(app);
 
-var host = '127.0.0.1';
-var port = 3000;
+var host = process.env.HOST || '127.0.0.1';
+var port = process.env.PORT || 3000;
 var server = app.listen(port, host, function () {
   console.log('Business objects documentation listening at http://%s:%s', host, port)
 });

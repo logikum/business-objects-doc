@@ -2,11 +2,11 @@
 
 var util = require("util");
 
-var Menu = function () {};
+var MenuStore = function () {};
 
-util.inherits(Menu, Array);
+util.inherits(MenuStore, Array);
 
-Menu.prototype.add = function (title, order, path) {
+MenuStore.prototype.add = function (title, order, path) {
 
   // Create menu item.
   var menuItem = {
@@ -33,13 +33,13 @@ Menu.prototype.add = function (title, order, path) {
   this.push(menuItem);
 };
 
-Menu.prototype.branch = function (title, order) {
+MenuStore.prototype.branch = function (title, order) {
 
   // Create sub-menu item.
   var menuItem = {
     title: title,
     order: order,
-    children: new Menu()
+    children: new MenuStore()
   };
 
   // Add function to determine if sub-menu item is active.
@@ -56,4 +56,4 @@ Menu.prototype.branch = function (title, order) {
   return menuItem;
 };
 
-module.exports = Menu;
+module.exports = MenuStore;

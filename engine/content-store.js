@@ -1,14 +1,10 @@
 'use strict';
 
-var Menu = require('./menu.js');
-
-var ContentManager = function () {
+var ContentStore = function () {
 
   var contents = [];
   var map = {};
   var index404;
-
-  this.menu = new Menu();
 
   this.add = function (content, path) {
     if (arguments.length > 1) {
@@ -43,9 +39,9 @@ var ContentManager = function () {
       // The requested content is not found - custom error.
       return contents[index404];
     else
-    // The requested content is not found - no content.
+      // The requested content is not found - no content.
       return '';
   }
 };
 
-module.exports = ContentManager;
+module.exports = ContentStore;
