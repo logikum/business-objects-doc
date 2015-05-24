@@ -1,0 +1,4 @@
+[~]: http://logikum.github.io/business-objects
+[EditableRootModel]: ~/EditableRootModel.html
+[PropertyInfo]: ~/bo.shared.PropertyInfo.html
+[AuthorizationContext]: ~/bo.rules.AuthorizationContext.html

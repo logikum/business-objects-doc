@@ -6,7 +6,7 @@ var ContentManager = require('./engine/content-manager.js');
 
 var app = module.exports = express();
 
-var contents = new ContentManager('/contents', '/public/layout.html');
+var contents = new ContentManager('/contents', '/public/layout.html', '/contents/references.txt');
 
 // Set static folders.
 app.use(serveStatic('public'));

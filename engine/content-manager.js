@@ -3,14 +3,16 @@
 var fs = require('fs');
 var path = require('path');
 var marked = require('marked');
+var referenceReader = require('./reference-reader.js');
 var LayoutStore = require('./layout-store.js');
 var ContentStore = require('./content-store.js');
 var MenuStore = require('./menu-store.js');
 
-function ContentManager (contentDir, layoutFile) {
+function ContentManager (contentDir, layoutFile, referenceFile) {
 
   var self = this;
   var contentsPath = path.join(process.cwd(), contentDir);
+  var references = null;
   var layout = null;
   var contents = new ContentStore();
   var menus = new MenuStore();
@@ -115,7 +117,7 @@ function ContentManager (contentDir, layoutFile) {
         // Create menu item.
         if (buildMenuItem(menuNode, contentPath, text)) {
           // Convert content.
-          var html = marked(text);
+          var html = marked(text + references);
           // Store content.
           cm.add(html, contentPath);
         }
@@ -129,6 +131,7 @@ function ContentManager (contentDir, layoutFile) {
   //region Initialization
 
   function initialize() {
+    references = referenceReader(referenceFile);
     addContents(contents, path.join(process.cwd(), contentDir), '', menus);
     layout = new LayoutStore(layoutFile, menus);
   }
