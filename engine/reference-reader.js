@@ -8,6 +8,7 @@ function referenceReader (referenceFile) {
 
   // Read references file.
   var referencePath = path.join(process.cwd(), referenceFile);
+
   var stats = fs.statSync(referencePath);
   if (stats && stats.isFile()) {
     text = fs.readFileSync(referencePath, { encoding: 'utf8' });

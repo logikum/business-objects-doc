@@ -11,7 +11,6 @@ var MenuStore = require('./menu-store.js');
 function ContentManager (contentDir, layoutFile, referenceFile) {
 
   var self = this;
-  var contentsPath = path.join(process.cwd(), contentDir);
   var references = null;
   var layout = null;
   var contents = new ContentStore();

@@ -10,3 +10,7 @@ blockquote ul li {
 blockquote ul li a {
     font-size: 14px;
 }
+blockquote p {
+    font-size: 14px;
+    font-style: italic;
+}
