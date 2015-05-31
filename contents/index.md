@@ -1,5 +1,3 @@
-[//]: # (Home Page)
-
 # Documentation of business-objects
 
 We only officially support node >= 0.10 as the libraries we use for building

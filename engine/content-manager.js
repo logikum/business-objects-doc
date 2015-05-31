@@ -3,10 +3,46 @@
 var fs = require('fs');
 var path = require('path');
 var marked = require('marked');
+var highlight = require('highlight.js');
 var referenceReader = require('./reference-reader.js');
 var LayoutStore = require('./layout-store.js');
 var ContentStore = require('./content-store.js');
 var MenuStore = require('./menu-store.js');
+
+//region Marked customization
+
+// Synchronous highlighting with highlight.js
+marked.setOptions({
+  highlight: function (code) {
+    return highlight.highlightAuto(code, ['javascript']).value;
+  }
+});
+
+var renderer = new marked.Renderer();
+
+renderer.table = function (header, body) {
+  return  '<div class="row">' +
+          '  <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">\n' +
+          '    <table class="table table-condensed">\n' +
+          '      <thead>\n' +
+          header + '\n' +
+          '      </thead>\n' +
+          '      <tbody>\n' +
+          body + '\n' +
+          '      </tbody>\n' +
+          '    </table>\n' +
+          '  </div>\n' +
+          '</div>\n';
+};
+
+renderer.link = function (href, title, text) {
+  if (href.substr(0, 7) === 'http://')
+    return '<a href="' + href + '" title="' + title + '" class="bo-api">' + text + '</a>';
+  else
+    return '<a href="' + href + '" title="' + title + '">' + text + '</a>';
+};
+
+//endregion
 
 function ContentManager (contentDir, layoutFile, referenceFile) {
 
@@ -116,7 +152,7 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
         // Create menu item.
         if (buildMenuItem(menuNode, contentPath, text)) {
           // Convert content.
-          var html = marked(text + references);
+          var html = marked(text + references, { renderer: renderer });
           // Store content.
           cm.add(html, contentPath);
         }

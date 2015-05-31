@@ -1,3 +1,13 @@
+.navbar-header a.navbar-brand {
+    color: darkmagenta;
+}
+a.bo-api {
+    color: darkmagenta;
+}
+hr {
+    height: 3px;
+    background-color: darkmagenta;
+}
 blockquote {
     padding: 0px 20px;
 }

@@ -4,15 +4,16 @@
   "description": "documentation for business-objects library",
   "dependencies": {
     "express": "^4.12",
+    "highlight.js": "^8.6.0",
     "markdown": "^0.5",
     "marked": "^0.3",
     "serve-static": "^1.9"
   },
   "repository": {
-  "type": "git",
-  "url": "https://github.com/logikum/business-objects-doc.git"
+    "type": "git",
+    "url": "https://github.com/logikum/business-objects-doc.git"
   },
   "engines": {
-  "node": ">=0.10.0"
+    "node": ">=0.10.0"
   }
 }
