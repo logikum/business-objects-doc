@@ -27,19 +27,19 @@ See [Data types](data-types) page for details.
 Arguments `flags`, `getter` and `setter` can be used when `type` is a [DataType] member.
 Argument `flags` is a combination of [PropertyFlag] values:
 
-* __none__
+* __none__  
   The default value. The property is a normal read-write property.
-* __readOnly__
+* __readOnly__  
   The property can be read but cannot be written, i.e. it has getter only.
   This flag is ignored for read-only business objects.
-* __key__
+* __key__  
   The property is a key element of the business object.
-* __parentKey__
+* __parentKey__  
   The property holds the key element of the parent business object.
-* __notOnDto__
+* __notOnDto__  
   The property is not cloned onto the data transfer object, i.e. it is not persisted.
   It usually marks a calculated property that is required by the client application.
-* __notOnCto__
+* __notOnCto__  
   The property is not cloned onto the client transfer object, but it is required for
   the business logic.
 
@@ -102,13 +102,13 @@ var fullName = new Property('fullName', DataType.Text, F.notOnDto, null, setFull
 
 The context argument is a [PropertyContext] object that has the following members to use:
 
-* __primaryProperty__
+* __primaryProperty__  
   A read-only property that returns a [PropertyInfo] object that contains the definition
   of the property itself.
-* __properties__
+* __properties__  
   A read-only property that returns an array of [PropertyInfo] objects that contain the 
   definitions of all properties.
-* __getValue(propertyName)__
+* __getValue(propertyName)__  
   The method returns the value of the property determined by the given name. 
-* __setValue(propertyName, value)__
+* __setValue(propertyName, value)__  
   The method sets the value of the property determined by the given name. 
