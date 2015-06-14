@@ -16,11 +16,20 @@ blockquote ul {
 }
 blockquote ul li {
     list-style-type: none;
-}
-blockquote ul li a {
     font-size: 14px;
 }
 blockquote p {
     font-size: 14px;
     font-style: italic;
+}
+.arguments {
+    padding: 0 10px 0 35px;
+}
+td.arg-name {
+    width: 15%;
+    border-top: 0px !important;
+}
+td.arg-desc {
+    width: 85%;
+    border-top: 0px !important;
 }

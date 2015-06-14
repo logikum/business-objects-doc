@@ -21,18 +21,31 @@ marked.setOptions({
 var renderer = new marked.Renderer();
 
 renderer.table = function (header, body) {
-  return  '<div class="row">' +
-          '  <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">\n' +
-          '    <table class="table table-condensed">\n' +
-          '      <thead>\n' +
-          header + '\n' +
-          '      </thead>\n' +
-          '      <tbody>\n' +
-          body + '\n' +
-          '      </tbody>\n' +
-          '    </table>\n' +
-          '  </div>\n' +
-          '</div>\n';
+  if (header == '<tr>\n<th>args</th>\n<th></th>\n</tr>\n') {
+    body = body
+        .replace(/<tr>\n<td>/g, '<tr>\n<td class="arg-name"><code>')
+        .replace(/<\/td>\n<td>/g, '</code></td>\n<td class="arg-desc">');
+    return '<div class="arguments">\n' +
+        '  <table class="table table-condensed">\n' +
+        '    <tbody>\n' +
+        body + '\n' +
+        '    </tbody>\n' +
+        '  </table>\n' +
+        '</div>\n';
+  }
+  else
+    return  '<div class="row">' +
+            '  <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">\n' +
+            '    <table class="table table-condensed">\n' +
+            '      <thead>\n' +
+            header + '\n' +
+            '      </thead>\n' +
+            '      <tbody>\n' +
+            body + '\n' +
+            '      </tbody>\n' +
+            '    </table>\n' +
+            '  </div>\n' +
+            '</div>\n';
 };
 
 renderer.link = function (href, title, text) {
