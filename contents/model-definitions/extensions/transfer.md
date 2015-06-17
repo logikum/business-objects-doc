@@ -38,7 +38,7 @@ The following custom conversion functions can be applied.
 Argument `context` is the transfer context object, and the method returns the data transfer object.
 The method copies the values of the properties of the business object onto the data transfer object.
 
-> this method is invalid for read-only business objects.
+> This method is invalid for read-only business objects.
 
 The default function works like that:
 
@@ -102,7 +102,7 @@ function fromDto(context, dto) {
 Argument `context` is the transfer context object, and the method returns the client transfer object.
 The method copies the values of the properties of the business object onto the client transfer object.
 
-> this method is invalid for command objects.
+> This method is invalid for command objects.
 
 The default function works like that:
 
@@ -136,7 +136,7 @@ function toCto(context) {
 Argument `context` is the transfer context object, argument `cto` is the client transfer object.
 The method copies the values of the properties of client transfer object onto the the business object.
 
-> this method is invalid for command objects and read-only business objects.
+> This method is invalid for command objects and read-only business objects.
 
 The default function works like that:
 

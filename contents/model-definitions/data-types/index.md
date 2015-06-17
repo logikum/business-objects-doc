@@ -1,4 +1,4 @@
-[//]: # (60, Data types)
+[//]: # (80, Data types)
 
 # Data types
 

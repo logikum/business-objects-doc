@@ -1,4 +1,4 @@
-[//]: # (80, Authorization)
+[//]: # (100, Authorization)
 
 # Authorization
 
