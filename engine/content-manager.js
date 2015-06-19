@@ -21,31 +21,48 @@ marked.setOptions({
 var renderer = new marked.Renderer();
 
 renderer.table = function (header, body) {
-  if (header == '<tr>\n<th>args</th>\n<th></th>\n</tr>\n') {
-    body = body
-        .replace(/<tr>\n<td>/g, '<tr>\n<td class="arg-name"><code>')
-        .replace(/<\/td>\n<td>/g, '</code></td>\n<td class="arg-desc">');
-    return '<div class="arguments">\n' +
-        '  <table class="table table-condensed">\n' +
-        '    <tbody>\n' +
+  var match = /%(\w+)%/.exec(header);
+  if (match === null) {
+    header = header.replace(/<\/th>\n<th>/g, '</th>\n<th class="text-center">');
+    body = body.replace(/<\/td>\n<td>/g, '</td>\n<td class="text-center">');
+    return '<table class="table table-condensed">\n' +
+        '  <thead>\n' +
+        header + '\n' +
+        '  </thead>\n' +
+        '  <tbody>\n' +
         body + '\n' +
-        '    </tbody>\n' +
-        '  </table>\n' +
-        '</div>\n';
+        '  </tbody>\n' +
+        '</table>\n';
+  } else
+  switch (match[1]) {
+    case 'args':
+      body = body
+          .replace(/<tr>\n<td>/g, '<tr>\n<td class="arg-name"><code>')
+          .replace(/<\/td>\n<td>/g, '</code></td>\n<td class="arg-desc">');
+      return '<div class="arguments">\n' +
+          '  <table class="table table-condensed">\n' +
+          '    <tbody>\n' +
+          body + '\n' +
+          '    </tbody>\n' +
+          '  </table>\n' +
+          '</div>\n';
+    case 'indent':
+      header = header.replace(match[0], '');
+      return  '<div class="row">' +
+          '  <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">\n' +
+          '    <table class="table table-condensed">\n' +
+          '      <thead>\n' +
+          header + '\n' +
+          '      </thead>\n' +
+          '      <tbody>\n' +
+          body + '\n' +
+          '      </tbody>\n' +
+          '    </table>\n' +
+          '  </div>\n' +
+          '</div>\n';
+    default:
+      return '<p class="bg-danger">' + match[0] + '</p>';
   }
-  else
-    return  '<div class="row">' +
-            '  <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">\n' +
-            '    <table class="table table-condensed">\n' +
-            '      <thead>\n' +
-            header + '\n' +
-            '      </thead>\n' +
-            '      <tbody>\n' +
-            body + '\n' +
-            '      </tbody>\n' +
-            '    </table>\n' +
-            '  </div>\n' +
-            '</div>\n';
 };
 
 renderer.link = function (href, title, text) {

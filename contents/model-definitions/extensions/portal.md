@@ -57,7 +57,7 @@ The last argument of data portal functions of asynchronous business objects is a
 
 ### dataCreate( context, callback )
 
-args||
+%args%||
 -|-
 context | A [DataPortalContext] object.
 callback | A function that expects an optional error: callback(err) { }
@@ -96,7 +96,7 @@ function dataCreate (context) {
 
 ### dataFetch( context, dto, method, callback )
 
-args||
+%args%||
 -|-
 context | A [DataPortalContext] object.
 filter | A filter object that contains parameters to fetch the data of the required business objects. 
@@ -142,7 +142,7 @@ function dataFetch (ctx, filter, method) {
 
 ### dataInsert( context, callback )
 
-args||
+%args%||
 -|-
 context | A [DataPortalContext] object.
 callback | A function that expects an optional error: callback(err) { }
@@ -187,7 +187,7 @@ function dataInsert (context, callback) {
 
 ### dataUpdate( context, callback )
 
-args||
+%args%||
 -|-
 context | A [DataPortalContext] object.
 callback | A function that expects an optional error: callback(err) { }
@@ -235,7 +235,7 @@ function dataUpdate (context) {
 
 ### dataRemove( context, callback )
 
-args||
+%args%||
 -|-
 context | A [DataPortalContext] object.
 callback | A function that expects an optional error: callback(err) { }
@@ -266,7 +266,7 @@ function dataRemove (context) {
 
 ### dataExecute( context, method, callback )
 
-args||
+%args%||
 -|-
 context | A [DataPortalContext] object.
 method | The name of the function on the data access object to call.

@@ -26,16 +26,16 @@ var definition = bo.<ModelType>(properties, rules, extensions);
 
 In the above statement ```<ModelType>``` represents one of the following model types:
 
-| Asynchronous models       | Synchronous models            |
-| ------------------------- | ----------------------------- |
-| [EditableRootModel]       | [EditableRootModelSync]       |
-| [EditableChildModel]      | [EditableChildModelSync]      |
-| [EditableChildCollection] | [EditableChildCollectionSync] |
-| [ReadOnlyRootModel]       | [ReadOnlyRootModelSync]       |
-| [ReadOnlyChildModel]      | [ReadOnlyChildModelSync]      |
-| [ReadOnlyRootCollection]  | [ReadOnlyRootCollectionSync]  |
-| [ReadOnlyChildCollection] | [ReadOnlyChildCollectionSync] |
-| [CommandObject]           | [CommandObjectSync]           |
+%indent%| Asynchronous models | Synchronous models |&nbsp;
+-| ------------------------- | ----------------------------- |-
+ | [EditableRootModel]       | [EditableRootModelSync]       |
+ | [EditableChildModel]      | [EditableChildModelSync]      |
+ | [EditableChildCollection] | [EditableChildCollectionSync] |
+ | [ReadOnlyRootModel]       | [ReadOnlyRootModelSync]       |
+ | [ReadOnlyChildModel]      | [ReadOnlyChildModelSync]      |
+ | [ReadOnlyRootCollection]  | [ReadOnlyRootCollectionSync]  |
+ | [ReadOnlyChildCollection] | [ReadOnlyChildCollectionSync] |
+ | [CommandObject]           | [CommandObjectSync]           |
 
 Argument ```properties``` is an instance of [PropertyManager] class that requires a name
 and some properties:

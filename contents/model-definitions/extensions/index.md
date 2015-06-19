@@ -60,7 +60,7 @@ The extension manager provides a way to change it per model.
 
 * __daoBuilder( dataSource, modelPath, modelName )__
 
-args||
+%args%||
 -|-
 dataSource | The name of the data source. _Required string._
 modelPath | The model definition path of the business object model instance that the data access object belongs to. _Required string._

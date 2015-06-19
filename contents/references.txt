@@ -57,6 +57,7 @@
 [DataPortalEvent]: ~/bo.shared.DataPortalEvent.html
 [DataPortalEventArgs]: ~/bo.shared.DataPortalEventArgs.html
 [DataStore]: ~/bo.shared.DataStore.html
+[EventHandlerList]: ~/bo.shared.EventHandlerList.html
 [ExtensionManager]: ~/bo.shared.ExtensionManager.html
 [ExtensionManagerBase]: ~/bo.shared.ExtensionManagerBase.html
 [ExtensionManagerSync]: ~/bo.shared.ExtensionManagerSync.html
