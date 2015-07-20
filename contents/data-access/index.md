@@ -44,3 +44,5 @@ Basically `fetch*()` and `execute*()` methods can have any name, and can have mo
 with different names. The names of the methods are defined in the factory objects. If these
 static methods do not define a name for the actual method, then the `fetch()` and `execute()`
 method names are used.
+
+See [Factory objects](/model-definitions/factory-objects) page for more information.
