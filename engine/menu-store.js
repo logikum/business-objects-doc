@@ -6,13 +6,14 @@ var MenuStore = function () {};
 
 util.inherits(MenuStore, Array);
 
-MenuStore.prototype.add = function (title, order, path) {
+MenuStore.prototype.add = function (title, order, path, umbel) {
 
   // Create menu item.
   var menuItem = {
     title: title,
     order: order,
-    paths: [ path ]
+    paths: [ path ],
+    umbel: umbel || false
   };
 
   // Add optional alternate paths.
@@ -20,14 +21,21 @@ MenuStore.prototype.add = function (title, order, path) {
   if (length >= 6 && path.substr(-6) === '/index') {
     menuItem.paths.push( path.substr(0, length - 5) );
     menuItem.paths.push( path.substr(0, length - 6) );
+    menuItem.isNode = true;
   }
 
   // Add function to determine if menu item is active.
   menuItem.isActive = function (baseUrl) {
+    var self = this;
     return this.paths.some(function (path) {
-      return path === baseUrl;
+      if (self.umbel === true)
+        return path === baseUrl.substring(0, path.length);
+      else
+        return path === baseUrl;
     });
   };
+
+  //console.log(path + ' is node: ' + menuItem.umbel);
 
   // Store the menu item.
   this.push(menuItem);
