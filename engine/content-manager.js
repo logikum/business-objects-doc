@@ -89,6 +89,7 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
     // Default values for item properties,
     var order = parseInt(definition.order || 1, 10);
     var title = definition.title || '-?-';
+    var umbel = definition.umbel && definition.umbel.toLowerCase() == 'true';
     if (isNaN(order)) {
       order = 0;
       title = '* ' + title;
@@ -99,14 +100,14 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
       return menu.branch(title, order);
     else {
       // Add menu item.
-      var length = contentPath.length;
-      if (length >= 6 && contentPath.substr(-6) === '/index') {
+      var path = contentPath;
+      var length = path.length;
+      if (length >= 6 && path.substr(-6) === '/index') {
         // Cut down closing index.
         var end = length > 6 ? 6 : 5;
-        menu.add(title, order, contentPath.substr(0, length - end));
+        path = path.substr(0, length - end);
       }
-      else
-        menu.add(title, order, contentPath);
+      menu.add(title, order, path, umbel);
       return title !== '---';
     }
   }

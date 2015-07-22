@@ -1,6 +1,7 @@
 +++
 order: 20
 title: Editable objects
+umbel: true
 +++
 
 # Editable data access objects

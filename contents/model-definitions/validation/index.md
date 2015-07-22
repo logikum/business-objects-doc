@@ -1,10 +1,12 @@
 +++
 order: 90
 title: Validation
+umbel: true
 +++
 
-# Validation
+# Validation rules
 
+> * _Validation rules_
 > * [Predefined validation rules](validation/predefined)
 > * [Custom validation rules](validation/custom)
 

@@ -1,6 +1,7 @@
 +++
 order: 40
 title: Extensions
+umbel: true
 +++
 
 # Extensions
