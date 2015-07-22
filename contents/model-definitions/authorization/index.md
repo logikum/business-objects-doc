@@ -1,4 +1,7 @@
-[//]: # (100, Authorization)
++++
+order: 100
+title: Authorization
++++
 
 # Authorization
 

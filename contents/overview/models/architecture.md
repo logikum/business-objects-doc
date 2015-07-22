@@ -1,4 +1,7 @@
-[//]: # (21, Model architecture)
++++
+order: 21
+title: Model architecture
++++
 
 # Model architecture
 

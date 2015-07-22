@@ -1,4 +1,7 @@
-[//]: # (60, Events)
++++
+order: 60
+title: Events
++++
 
 # Business object events
 

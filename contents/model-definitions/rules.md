@@ -1,4 +1,7 @@
-[//]: # (30, Rule definitions)
++++
+order: 30
+title: Rule definitions
++++
 
 # Rule definitions
 

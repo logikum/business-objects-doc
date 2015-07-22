@@ -1,4 +1,7 @@
-[//]: # (50, Factory objects)
++++
+order: 50
+title: Factory objects
++++
 
 # Factory objects
 

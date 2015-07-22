@@ -1,4 +1,7 @@
-[//]: # (30, Read-only objects)
++++
+order: 30
+title: Read-only objects
++++
 
 # Read-only data access objects
 

@@ -1,4 +1,7 @@
-[//]: # (30, Quick start)
++++
+order: 30
+title: Quick start
++++
 
 # Quick start
 

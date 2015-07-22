@@ -1,4 +1,7 @@
-[//]: # (22, Editable models)
++++
+order: 22
+title: Editable models
++++
 
 # Editable models
 

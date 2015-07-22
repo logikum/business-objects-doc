@@ -1,4 +1,7 @@
-[//]: # (40, Command objects)
++++
+order: 40
+title: Command objects
++++
 
 # Command data access objects
 

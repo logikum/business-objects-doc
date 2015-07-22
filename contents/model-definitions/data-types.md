@@ -1,4 +1,7 @@
-[//]: # (80, Data types)
++++
+order: 80
+title: Data types
++++
 
 # Data types
 

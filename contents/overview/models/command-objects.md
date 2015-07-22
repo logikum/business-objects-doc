@@ -1,4 +1,7 @@
-[//]: # (24, Command objects)
++++
+order: 24
+title: Command objects
++++
 
 # Command objects
 

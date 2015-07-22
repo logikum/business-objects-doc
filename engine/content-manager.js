@@ -85,21 +85,14 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
   //region Menu building
 
   function createMenuItem (menu, definition, contentPath, isDirectory) {
+
     // Default values for item properties,
-    var order = 1;
-    var title = '-?-';
-
-    // Get item properties,
-    if (definition.indexOf(',') > 0) {
-      var both = definition.split(',');
-      order = parseInt(both[0].trim(), 10);
-      title = both[1].trim();
-      if (isNaN(order))
-        throw new Error('Invalid order in menu definition (' + contentPath + '): ' + definition);
-    } else
-      title = definition.trim();
-
-    //console.log(contentPath + ': [' + order + '] ' + title);
+    var order = parseInt(definition.order || 1, 10);
+    var title = definition.title || '-?-';
+    if (isNaN(order)) {
+      order = 0;
+      title = '* ' + title;
+    }
 
     if (isDirectory)
     // Add sub-menu item.
@@ -118,15 +111,43 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
     }
   }
 
-  function buildMenuItem (menu, contentPath, text) {
-    // Find sub-menu info.
-    var firstLine = text.substr(0, text.indexOf('\n'));
-    if (firstLine.length > 9 && firstLine.substr(0, 9) === '[//]: # (') {
-      // Get sub-menu info.
-      var definition = firstLine.substr(9, firstLine.indexOf(')') - 9);
-      // Create menu item.
-      return createMenuItem(menu, definition, contentPath, false);
-    } else
+  function buildDefinition (context) {
+    var definition = null;
+
+    var lines = context.text.split('\n');
+
+    // Starts with menu info?
+    if (lines.length && lines[0].substring(0, 3) === '+++') {
+
+      definition = { };
+      var line = lines.shift();
+      var canDo = true;
+
+      // Build menu definition.
+      do {
+        line = lines.shift();
+        if (line.substring(0, 3) === '+++')
+          canDo = false;
+        else {
+          var pair = line.split(':');
+          if (pair.length > 1) {
+            definition[pair[0].trim()] = pair[1].trim();
+          }
+        }
+      } while (canDo);
+
+      context.text = lines.join('\n');
+    }
+    return definition;
+  }
+
+  function buildMenuItem (menu, context) {
+
+    // Starts with menu info?
+    var definition = buildDefinition(context);
+    if (definition)
+      return createMenuItem(menu, definition, context.path, false);
+    else
       return true;
   }
 
@@ -135,10 +156,15 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
     try {
       var stats = fs.statSync(itemPath);
       if (stats && stats.isFile()) {
+        var context = { };
+
         // Read sub-menu info.
-        var definition = fs.readFileSync(itemPath, { encoding: 'utf8' });
+        context.text = fs.readFileSync(itemPath, { encoding: 'utf8' });
+        var definition = buildDefinition(context);
+
         // Create sub-menu item.
-        return createMenuItem(menu, definition, contentPath, true);
+        if (definition)
+          return createMenuItem(menu, definition, contentPath, true);
       }
     } catch (err) {
       console.log(err.message);
@@ -173,18 +199,19 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
           addContents(cm, itemPath, directoryPath, menuNode);
       }
       else if (stats.isFile() && path.extname(item) === '.md') {
+        var context = { };
         // Read, convert and store the markdown file.
         var basename = path.basename(item, '.md');
         // Determine content path.
-        var contentPath = contentRoot + '/' + basename;
+        context.path = contentRoot + '/' + basename;
         // Get content.
-        var text = fs.readFileSync(itemPath, { encoding: 'utf-8' });
+        context.text = fs.readFileSync(itemPath, { encoding: 'utf-8' });
         // Create menu item.
-        if (buildMenuItem(menuNode, contentPath, text)) {
+        if (buildMenuItem(menuNode, context)) {
           // Convert content.
-          var html = marked(text + references, { renderer: renderer });
+          var html = marked(context.text + references, { renderer: renderer });
           // Store content.
-          cm.add(html, contentPath);
+          cm.add(html, context.path);
         }
         //console.log('Content added: ' + contentPath);
       }

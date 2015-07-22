@@ -1,4 +1,7 @@
-[//]: # (20, Editable objects)
++++
+order: 20
+title: Editable objects
++++
 
 # Editable data access objects
 

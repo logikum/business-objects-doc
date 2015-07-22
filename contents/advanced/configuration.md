@@ -1,4 +1,7 @@
-[//]: # (10, Configuration)
++++
+order: 10
+title: Configuration
++++
 
 # Configuration
 

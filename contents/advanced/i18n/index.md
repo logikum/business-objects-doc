@@ -1,4 +1,7 @@
-[//]: # (30, Internationalization)
++++
+order: 30
+title: Internationalization
++++
 
 # Internationalization
 
