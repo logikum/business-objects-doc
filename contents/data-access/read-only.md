@@ -15,7 +15,7 @@ its alternate methods. It has the hereunder arguments:
   An optional object that contains the filter criteria of the data retrieval. 
 * __callback__  
   _For asynchronous objects:_ A function with callback(err, result) signature, where
-   `err` is the eventual error and `result` is an optional return object of the retrieval.
+  `err` is the eventual error and `result` is an optional return object of the retrieval.
 * __returns__  
   _For synchronous objects:_ An optional object that holds the result of the retrieval.
 
