@@ -22,7 +22,7 @@ It has the arguments below:
   _For synchronous objects:_ An object whose properties hold the initial values of the
   properties of the new instance.
 
-The following code snippet shows a sample create() method of an editable data access object:
+The following code snippet shows a sample __create()__ method of an editable data access object:
 
 ```
 var util = require('util');
@@ -35,11 +35,11 @@ util.inherits(SampleEditableDao, bo.dataAccess.DaoBase);
 
 SampleEditableDao.prototype.create = function(connection, callback) {
   // do something using connection...
-  // ...that produces the 'result' object
+  // ...that produces the 'data' object
   if (err)
     callback(err);
   else
-    callback(null, result);
+    callback(null, data);
 };
 ```
 
@@ -56,7 +56,7 @@ util.inherits(SampleEditableDao, bo.dataAccess.DaoBase);
 
 SampleEditableDao.prototype.create = function(connection) {
   // do something using connection...
-  // ...that produces the 'result' object
-  return result;
+  // ...that produces the 'data' object
+  return data;
 };
 ```

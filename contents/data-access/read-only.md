@@ -16,6 +16,7 @@ its alternate methods. It has the hereunder arguments:
 * __callback__  
   _For asynchronous objects:_ A function with callback(err, result) signature, where
   `err` is the eventual error and `result` is an optional return object of the retrieval.
+  The properties of the return object hold the values of the properties of the instance.
 * __returns__  
   _For synchronous objects:_ An optional object that holds the result of the retrieval.
 
@@ -38,6 +39,15 @@ SampleCollectionDao.prototype.fetch = function(connection, filter, callback) {
   else
     callback(null, list);
 };
+
+SampleCollectionDao.prototype.fetchForInterval = function(connection, filter, callback) {
+  // do something using connection and filter...
+  // ...that produces the 'list' array for the given interval
+  if (err)
+    callback(err);
+  else
+    callback(null, list);
+};
 ```
 
 The synchronous version of the above example:
@@ -51,9 +61,15 @@ var SampleCollectionDao = function() {
 };
 util.inherits(SampleCollectionDao, bo.dataAccess.DaoBase);
 
-SampleCollectionDao.prototype.execute = function(connection, data) {
-  // do something using connection and data...
+SampleCollectionDao.prototype.fetch = function(connection, filter) {
+  // do something using connection and filter...
   // ...that produces the 'list' array
+  return list;
+};
+
+SampleCollectionDao.prototype.fetchForInterval = function(connection, filter) {
+  // do something using connection and filter...
+  // ...that produces the 'list' array for the given interval
   return list;
 };
 ```
@@ -93,6 +109,7 @@ SampleRootDao.prototype.fetch = function(connection, filter, callback) {
     if (err)
       callback(err);
     else {
+      // items: the name of the property that holds the child model or collection
       data.items = items;
       callback(null, data);
     }
@@ -120,6 +137,7 @@ util.inherits(SampleRootDao, bo.dataAccess.DaoBase);
 SampleRootDao.prototype.fetch = function(connection, filter, callback) {
   // do something using connection and filter...
   // ...that produces the 'data' object
+  // items: the name of the property that holds the child model or collection
   data.items = fetchItems(connection, data.key);
   return data;
 };

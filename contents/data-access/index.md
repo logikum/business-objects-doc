@@ -20,7 +20,7 @@ data access objects may have:
  |create()|fetch*()|insert()|update()|remove()|execute*()
 -|-|-|-|-|-|-|-
 [EditableRootModel]       |x|x|x|x|x|-
-[EditableChildModel]      |x|x|x|x|x|-
+[EditableChildModel]      |x|-|x|x|x|-
 [EditableChildCollection] |-|-|-|-|-|-
 [ReadOnlyRootModel]       |-|x|-|-|-|-
 [ReadOnlyChildModel]      |-|-|-|-|-|-
@@ -28,15 +28,15 @@ data access objects may have:
 [ReadOnlyChildCollection] |-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|x
 
-Each editable model requires a data access object. The data access models usually have
-`create()`, `fetch*()`, `insert()`, `update()` and `remove()` methods. Editable collections
-have no data access objects.
+Each editable model requires a data access object. The root data access models usually have
+`create()`, `fetch*()`, `insert()`, `update()` and `remove()` methods. The child data access
+models do not have `fetch*()` methods. Editable collections have no data access objects.
 
 Read-only root business objects require data access objects that have `fetch*()` methods.
 Read-only child business objects do not have data access objects.
 
-> If a read-only root business object have child objects, then the root `fetch()` method
-> retrieve the data of the child objects as well, and passes them to the child objects.
+> If a root business object have child objects, then the root `fetch()` method retrieve
+> the data of the child objects as well, and passes them to the child objects.
 > This way requires less data store resources and is faster.
 
 Command objects require data access objects that have `execute*()` methods.
