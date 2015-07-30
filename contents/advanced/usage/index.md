@@ -1,10 +1,12 @@
 +++
 order: 20
 title: Usage of business objects
+umbel: true
 +++
 
 # Usage of business objects
 
+> * _Usage of business objects_
 > * [A typical project structure](usage/structure)
 > * [Usual additions](usage/additions)
 > * [Business objects in action](usage/in-action)
