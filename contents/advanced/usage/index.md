@@ -7,7 +7,7 @@ umbel: true
 # Usage of business objects
 
 > * _Usage of business objects_
-> * [A typical project structure](usage/structure)
+> * [Typical project structures](usage/structure)
 > * [Usual additions](usage/additions)
 > * [Business objects in action](usage/in-action)
 > * [Error handling](usage/errors)
