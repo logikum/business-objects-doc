@@ -48,7 +48,7 @@ The event handler takes one argument: a [DataPortalEventArgs] object
 that contains information about the event context:
 
 * __modelName__  
-  The name of the business object model.
+  The name of the business object model, of either root or child object.
 * __methodName__  
   The name of the data access object method called.
 * __eventName__  

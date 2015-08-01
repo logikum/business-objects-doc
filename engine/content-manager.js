@@ -21,7 +21,7 @@ marked.setOptions({
 var renderer = new marked.Renderer();
 
 renderer.table = function (header, body) {
-  var match = /%(\w+)%/.exec(header);
+  var match = /%(\w+\d?)%/.exec(header);
   if (match === null) {
     header = header.replace(/<\/th>\n<th>/g, '</th>\n<th class="text-center">');
     body = body.replace(/<\/td>\n<td>/g, '</td>\n<td class="text-center">');
@@ -46,10 +46,14 @@ renderer.table = function (header, body) {
           '    </tbody>\n' +
           '  </table>\n' +
           '</div>\n';
-    case 'indent':
+    case 'indent1':
+    case 'indent2':
+    case 'indent3':
+    case 'indent4':
       header = header.replace(match[0], '');
       return  '<div class="row">' +
-          '  <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">\n' +
+          //    '  <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">\n' +
+          '  <div class="' + getDivClass(match[1]) + '">\n' +
           '    <table class="table table-condensed">\n' +
           '      <thead>\n' +
           header + '\n' +
@@ -64,6 +68,13 @@ renderer.table = function (header, body) {
       return '<p class="bg-danger">' + match[0] + '</p>';
   }
 };
+function getDivClass(name) {
+  var offset = new Number(name.substr(6));
+  var width = 12 - 2 * offset;
+  return 'col-sm-' + width + ' col-sm-offset-' + offset +
+    ' col-md-' + width + ' col-md-offset-' + offset +
+    ' col-lg-' + width + ' col-lg-offset-' + offset;
+}
 
 renderer.link = function (href, title, text) {
   if (href.substr(0, 7) === 'http://')

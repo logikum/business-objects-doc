@@ -29,7 +29,7 @@ var definition = bo.<ModelType>(properties, rules, extensions);
 
 In the above statement ```<ModelType>``` represents one of the following model types:
 
-%indent%| Asynchronous models | Synchronous models |&nbsp;
+%indent1%| Asynchronous models | Synchronous models |&nbsp;
 -| ------------------------- | ----------------------------- |-
  | [EditableRootModel]       | [EditableRootModelSync]       |
  | [EditableChildModel]      | [EditableChildModelSync]      |
