@@ -38,7 +38,7 @@ The context object provides the following properties and methods:
   The current user, an object that inherits [UserInfo].
 * __locale__  
   A string that determines the current locale. For more info see
-  [Internationalization](/advanced/i18n) page.
+  [Internationalization](/application/i18n) page.
 * __connection__  
   The connection object for the data source. For more info see [Data access objects](/data-access) page.
 * __isSelfDirty__  

@@ -1,6 +1,6 @@
 # Localization of business-objects module
 
-> * [Internationalization](/advanced/i18n)
+> * [Internationalization](/application/i18n)
 > * [Business object localization](objects)
 > * [Project localization](project)
 > * _Localization of business-objects module_

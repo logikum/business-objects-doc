@@ -57,9 +57,9 @@ extensions.dataRemove = function() { };
 extensions.dataExecute = function() { };
 ```
 
-### Custom DAO builder function
+### <a name="daoBuilder"></a>Custom DAO builder function
 
-The data access object builder function can replaced globally in [configuration](/advanced/configuration).
+The data access object builder function can replaced globally in [configuration](/application/configuration).
 The extension manager provides a way to change it per model.
 
 * __daoBuilder( dataSource, modelPath, modelName )__
@@ -86,3 +86,5 @@ function daoBuilder( dataSource, modelPath, modelName ) {
   return new daoConstructor();
 }
 ```
+
+For more information see [daoBuilder](/aplication/additions#daoBuilder) function.

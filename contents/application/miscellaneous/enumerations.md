@@ -1,6 +1,6 @@
 # Enumerations
 
-> * [Miscellaneous topics](/advanced/miscellaneous)
+> * [Miscellaneous topics](/application/miscellaneous)
 > * [Argument checking](arguments)
 > * _Enumerations_
 

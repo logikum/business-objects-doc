@@ -26,7 +26,7 @@ Name | Description
 [Email] | Represents an e-mail address of format name@domain.tld or null.
 [Integer] | Represents an integer or null.
 [Decimal] | Represents any number or null.
-[Enum] | Represents an enumeration value or null. See [Enumerations](/advanced/miscellaneous/enumerations) page for more information.
+[Enum] | Represents an enumeration value or null. See [Enumerations](/application/miscellaneous/enumerations) page for more information.
 [DateTime] | Represents a date and time value or null.
 
 Custom types can be created inheriting [DataType] class and overriding `parse()` and

@@ -1,10 +1,9 @@
-# Typical project structures
++++
+order: 20
+title: Typical project structures
++++
 
-> * [Usage of business objects](/advanced/usage)
-> * _Typical project structures_
-> * [Usual additions](additions)
-> * [Business objects in action](in-action)
-> * [Error handling](errors)
+# Typical project structures
 
 The first figure displays a typical project structure for a simple project
 with one data source:
@@ -45,5 +44,4 @@ The next figure shows a multi-language project with more data sources:
   by the application modules. In the sample these are the `customers`, `orders` and
   `products` subdirectories. The names of the subdirectories function as namespaces for
   the locale keys. 
-  _For more information see [Project localization](/advanced/i18n/project) page._
-
+  _For more information see [Project localization](i18n/project) page._
