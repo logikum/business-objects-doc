@@ -203,5 +203,104 @@ however, cannot be used in all cases.
 
 ### <a name="getUser"></a>getUser function
 
+The function should return the current user or null. The user object must inherit [UserInfo].
+The following code shows an user implementation (user.js): 
+
+```
+'use strict';
+
+var util = require('util');
+var UserInfo = require('../source/system/user-info.js');
+
+function User (userCode, userName, email, roles) {
+  User.super_.call(this, userCode);
+
+  this.userName = userName;
+  this.email = email;
+  this.roles = roles;
+
+  Object.freeze(this);
+}
+util.inherits(User, UserInfo);
+
+User.prototype.isInRole = function (role) {
+  return this.roles.some(function (userRole) {
+    return userRole === role;
+  });
+};
+
+User.prototype.isInSomeRole = function (roles) {
+  return this.roles.some(function (userRole) {
+    return roles.some(function (role) {
+      return userRole === role;
+    });
+  });
+};
+
+User.prototype.isInEveryRole = function (roles) {
+  return roles.every(function (role) {
+    return User.roles.some(function (userRole) {
+      return userRole === role;
+    });
+  });
+};
+
+module.exports = User;
+```
+
+An example function (get-user.js):
+
+```
+'use strict';
+
+var User = require('./user.js');
+
+var userReader = function () {
+  return new User(
+      'ada-lovelace',
+      'Ada Lovelace',
+      'ada.lovelace@computer.net',
+      ['administrators', 'developers', 'designers']
+    );
+};
+
+module.exports = userReader;
+```
+
 ### <a name="getLocale"></a>getLocale function
 
+The function should return the current locale or an empty string. An example:
+
+```
+var express = require('express');
+var session = require('express-session');
+
+var app = express();
+
+app.use(session({
+  secret: 'barking pumpkin',
+  resave: false,
+  saveUninitialized: true
+}));
+
+// Middleware to set language.
+app.use(function (req, res, next) {
+  if (!req.session) {
+    req.session = { language: 'hu' };
+  } else if (!req.session.language) {
+    req.session.language = 'hu';
+  }
+  next();
+});
+
+// Route to change language.
+app.use('/set-language', function (req, res, next) {
+  req.session.language = req.url.length > 1 ? req.url.substr(1) : 'hu';
+  res.redirect('/');
+});
+...
+
+function getLocale() {
+  return req.session.language;
+}
+```
