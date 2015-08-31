@@ -22,6 +22,8 @@ All rules are based on [RuleBase] type, therefore they have the following proper
 
 The rules fall into two categories: validation rules and authorization rules.
 
+### Validation rules
+
 The validation rules ensures that the value of a property meets the required conditions.
 Validation rule must inherit [ValidationRule] type, that requires at least the following
 additional property:
@@ -40,6 +42,8 @@ validation.addAffectedProperty(property);
 
 See [Validation](/model-definitions/validation) page for more information about validation
 rules. 
+
+### Authorization rules
 
 The authorization rules ensures that only users with appropriate privileges can use the
 business object. Authorization rules must inherit [AuthorizationRule] type, that adds
@@ -61,6 +65,8 @@ var authorization = new RuleName(action, target, role, message, priority, stopsP
 See [Authorization](/model-definitions/authorization) page for more information about
 authorization rules. 
 
+### Common and custom rules
+
 The [commonRules] namespace contains some frequently used rules. The lists of the predefined
 rules are available on [Predefined validation rules](/model-definitions/validation/predefined)
 and [Predefined authorization rules](/model-definitions/authorization/predefined) pages.
@@ -80,7 +86,7 @@ rules2.add( cr.maxLength(fullName, 50) );
 rules2.add( cr.isInRole(Action.fetchObject, null, 'managers', 'You are not authorized to retrieve employee data.') );
 ```
 
-If there is no predefined rule in [commonRules] to apply a condition. then a custom
-rule is required to be written as described on these pages:
+If there is no predefined rule in [commonRules] to apply a condition, then a custom
+rule can be written as described on these pages:
 [Custom validation rules](/model-definitions/validation/custom) and
 [Custom authorization rules](/model-definitions/authorization/custom).
