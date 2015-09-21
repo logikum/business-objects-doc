@@ -5,3 +5,14 @@
 > * [Custom authorization rules](custom)
 
 Predefined authorization rules description
+
+### IsInRoleRule
+
+### IsNotInRoleRule
+
+### IsInAnyRoleRule
+
+### IsNotInAnyRoleRule
+
+### IsInAllRolesRule
+
