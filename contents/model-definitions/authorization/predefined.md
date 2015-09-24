@@ -4,15 +4,22 @@
 > * _Predefined authorization rules_
 > * [Custom authorization rules](custom)
 
-Predefined authorization rules description
+The bo.commonRules namespaces contains some authorization rules that provides
+the frequently applied authorization rules.
 
-### IsInRoleRule
+* [IsInRoleRule](#a)
+* [IsNotInRoleRule](#b)
+* [IsInAnyRoleRule](#c)
+* [IsNotInAnyRoleRule](#d)
+* [IsInAllRolesRule](#e)
 
-### IsNotInRoleRule
+### <a name="a"></a>IsInRoleRule
 
-### IsInAnyRoleRule
+### <a name="b"></a>IsNotInRoleRule
 
-### IsNotInAnyRoleRule
+### <a name="c"></a>IsInAnyRoleRule
 
-### IsInAllRolesRule
+### <a name="d"></a>IsNotInAnyRoleRule
+
+### <a name="e"></a>IsInAllRolesRule
 
