@@ -28,7 +28,7 @@ The validation rules ensures that the value of a property meets the required con
 Validation rule must inherit [ValidationRule] type, that requires at least the following
 additional property:
 
-* __primaryPropery__  
+* __primaryProperty__  
   The definition of the property the rule relates to, it is required.
 
 Validation rules are usually constructed using this pattern:
