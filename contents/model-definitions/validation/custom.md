@@ -43,7 +43,7 @@ Each validation rule has to be initialized in the constructor using the standard
 
 The custom validation rules has to override the __execute()__ method of the base object.
 The logic of the validation is implemented in that method. The method has one argument that
-is an array of the values of the input properties. It contains at least the value of the
+is an array of the values of the 'input' properties. It contains at least the value of the
 primary property. If validation succeeds the method simply returns, otherwise it returns a
 [ValidationResult] object using __result()__ method to indicate the failure of the checking.
 

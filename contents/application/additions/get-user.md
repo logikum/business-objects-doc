@@ -3,6 +3,7 @@
 > * [Usual additions](/application/additions)
 > * [ConnectionManager class](connection-manager)
 > * [daoBuilder function](dao-builder)
+> * [User class](user)
 > * _getUser function_
 > * [getLocale function](get-locale)
 

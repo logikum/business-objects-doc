@@ -11,6 +11,7 @@ components:
 
 * [ConnectionManager class](additions/connection-manager)
 * [daoBuilder function](additions/dao-builder)
+* [User class](additions/user)
 * [getUser function](additions/get-user)
 * [getLocale function](additions/get-locale)
 
