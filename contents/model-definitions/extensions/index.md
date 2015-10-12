@@ -87,4 +87,4 @@ function daoBuilder( dataSource, modelPath, modelName ) {
 }
 ```
 
-For more information see [daoBuilder](/aplication/additions#daoBuilder) function.
+For more information see [daoBuilder](/application/additions/dao-builder) function.

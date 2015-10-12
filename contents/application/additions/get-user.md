@@ -7,66 +7,67 @@
 > * _getUser function_
 > * [getLocale function](get-locale)
 
-The function should return the current user or null. The user object must inherit [UserInfo].
-The following code shows an user implementation (user.js): 
+The function should return the current user or null.
+
+The example application uses the _accessToken_ middleware to handle authentication:
 
 ```
 'use strict';
 
-var util = require('util');
-var UserInfo = require('../source/system/user-info.js');
+var express = require('express');
+var accessToken = require('./access-token.js');
 
-function User (userCode, userName, email, roles) {
-  User.super_.call(this, userCode);
+var app = express();
+...
+app.all('*', accessToken.verify);
+...
+```
 
-  this.userName = userName;
-  this.email = email;
-  this.roles = roles;
+The middleware stores the user information in the account property of the request:
 
-  Object.freeze(this);
+```
+// Extract the token from the header Authorization.
+function extractTokenFromHeader (headers) {
+  ...
 }
-util.inherits(User, UserInfo);
 
-User.prototype.isInRole = function (role) {
-  return this.roles.some(function (userRole) {
-    return userRole === role;
+// Gets the associated data of the token from the session store.
+function getDataByToken (token, callback) {
+  ...
+}
+
+// Middleware to verify the token and store the user data in the request object.
+exports.verify = function(req, res, next) {
+  var headers = req.headers;
+  if (headers == null) next();
+
+  // Get token.
+  try {
+    var token = extractTokenFromHeader(headers);
+  } catch (err) {
+    console.log(err);
+    return next();
+  }
+
+  // Verify it in session store and set data in req.account property.
+  getDataByToken(token, function(err, data) {
+    if (err) return next();
+
+    req.account = data;
+    next();
   });
 };
 
-User.prototype.isInSomeRole = function (roles) {
-  return this.roles.some(function (userRole) {
-    return roles.some(function (role) {
-      return userRole === role;
-    });
-  });
-};
-
-User.prototype.isInEveryRole = function (roles) {
-  return roles.every(function (role) {
-    return User.roles.some(function (userRole) {
-      return userRole === role;
-    });
-  });
-};
-
-module.exports = User;
 ```
 
-An example function (get-user.js):
+So the 'getUser()' function will be:
 
 ```
 'use strict';
 
-var User = require('./user.js');
-
-var userReader = function () {
-  return new User(
-      'ada-lovelace',
-      'Ada Lovelace',
-      'ada.lovelace@computer.net',
-      ['administrators', 'developers', 'designers']
-    );
+var getUser = function (req) {
+  return req.account;
 };
 
-module.exports = userReader;
+module.exports = getUser;
 ```

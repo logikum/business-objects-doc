@@ -33,19 +33,19 @@ The parameters of the rule definition are passed in the constructor of the new r
 
 If the rule needs one or more additional business object properties to check the validation
 of the value of the primary property, then these properties can be added to the collection
-of input properties using the __addInputProperty()__ method. If the rule - depending on the
+of input properties using the `addInputProperty()` method. If the rule - depending on the
 conditions - requires checking or rechecking the validation of one or more additional
 business object properties, then these properties can be added to the collection of affected
-properties using the __addAffectedProperty()__ method. Other parameters are to be stored in
+properties using the `addAffectedProperty()` method. Other parameters are to be stored in
 properties of the validation rule object itself.
 
 Each validation rule has to be initialized in the constructor using the standard parameters.
 
-The custom validation rules has to override the __execute()__ method of the base object.
+The custom validation rules has to override the `execute()` method of the base object.
 The logic of the validation is implemented in that method. The method has one argument that
 is an array of the values of the 'input' properties. It contains at least the value of the
 primary property. If validation succeeds the method simply returns, otherwise it returns a
-[ValidationResult] object using __result()__ method to indicate the failure of the checking.
+[ValidationResult] object using `result()` method to indicate the failure of the checking.
 
 See API reference for the detailed description of [ValidationRule]'s methods.
 

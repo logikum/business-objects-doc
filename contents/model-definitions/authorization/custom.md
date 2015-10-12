@@ -52,11 +52,11 @@ in properties of the authorization rule object.
 
 Each authorization rule has to be initialized in the constructor using the standard parameters.
 
-The custom authorization rules has to override the __execute()__ method of the base object.
+The custom authorization rules has to override the `execute()` method of the base object.
 The logic of the authorization is implemented in that method. The method has one argument:
 the 'userInfo' object represents the current user. It inherits the [UserInfo] class.
 If authorization succeeds the method simply returns, otherwise it returns an [AuthorizationResult]
-object using __result()__ method to indicate the failure of the authorization.
+object using `result()` method to indicate the failure of the authorization.
 
 See API reference for the detailed description of [AuthorizationRule]'s methods.
 

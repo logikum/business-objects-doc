@@ -20,22 +20,22 @@ with the following properties:
 
 * __connectionManager__  
   A required string that returns the relative path of the connection manager.  
-  _For more information see [ConnectionManager](additions#ConnectionManager) class._
+  _For more information see [ConnectionManager](additions/connection-manager) class._
   
 * __daoBuilder__  
   An optional string that returns the relative path of the data access object builder.  
-  _For more information see [daoBuilder](additions#daoBuilder) function._
+  _For more information see [daoBuilder](additions/dao-builder) function._
   
 * __userReader__  
   An optional string that returns the relative path of a method that returns the
   current user. The default method returns null, i.e. anonymous user is assumed.  
-  _For more information see [getUser](additions#getUser) function._
+  _For more information see [getUser](additions/get-user) function._
   
 * __localeReader__  
   An optional string that returns the relative path of a method that returns the
   current locale. The default method returns an empty string, i.e. the business objects
   will use the default messages.  
-  _For more information see [getLocale](additions#getLocale) function._
+  _For more information see [getLocale](additions/get-locale) function._
   
 * __pathOfLocales__  
   An optional string that returns the relative path of the directory containing project
