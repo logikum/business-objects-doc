@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: shared/configuration-reader.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: shared/configuration-reader.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+var fs = require(&#x27;fs&#x27;);
+
+var path = require(&#x27;path&#x27;);
+
+var ConfigurationError = require(&#x27;./configuration-error.js&#x27;);
+
+var ConnectionManagerBase = require(&#x27;../data-access/connection-manager-base.js&#x27;);
+
+var daoBuilder = require(&#x27;../data-access/dao-builder.js&#x27;);
+
+var NoAccessBehavior = require(&#x27;../rules/no-access-behavior.js&#x27;);
+
+var UserInfo = require(&#x27;./../system/user-info.js&#x27;);
+
+var Utility = require(&#x27;./../system/utility.js&#x27;);
+
+
+
+var isInitialized = false;
+
+var fnUserReader = null;
+
+var fnGetLocale = null;
+
+
+
+function getUser () {
+
+  var user = null;
+
+  if (fnUserReader) {
+
+    user = fnUserReader();
+
+    if (user === undefined)
+
+      user = null;
+
+    else if (user !== null &amp;amp;&amp;amp; !(user instanceof UserInfo) &amp;amp;&amp;amp; user.super_ !== UserInfo)
+
+      throw new ConfigurationError(&#x27;userReader&#x27;);
+
+  }
+
+  return user;
+
+}
+
+
+
+function getLocale () {
+
+  var locale = &#x27;&#x27;;
+
+  if (fnGetLocale) {
+
+    locale = fnGetLocale() || &#x27;&#x27;;
+
+    if (typeof locale !== &#x27;string&#x27; &amp;amp;&amp;amp; !(locale instanceof String))
+
+      throw new ConfigurationError(&#x27;localeReader&#x27;);
+
+  }
+
+  return locale;
+
+}
+
+
+
+function initialize (cfgPath) {
+
+  var cfg = null;
+
+
+
+  // Read the configuration file.
+
+  var fullPath = path.join(process.cwd(), cfgPath);
+
+  if (fs.existsSync(fullPath))
+
+    cfg = require(fullPath);
+
+
+
+  // Test if configuration file was found.
+
+  if (cfg) {
+
+
+
+    // Evaluate the connection manager.
+
+    if (cfg.connectionManager) {
+
+      var cmConstructor = Utility.getFunction(cfg.connectionManager, &#x27;connectionManager&#x27;, ConfigurationError);
+
+      this.connectionManager = new cmConstructor();
+
+      if (!(this.connectionManager instanceof ConnectionManagerBase))
+
+        throw new ConfigurationError(&#x27;wrongConMan&#x27;);
+
+    } else
+
+      throw new ConfigurationError(&#x27;noConMan&#x27;);
+
+
+
+    // Evaluate the data access object builder.
+
+    if (cfg.daoBuilder) {
+
+      this.daoBuilder = Utility.getFunction(cfg.daoBuilder, &#x27;daoBuilder&#x27;, ConfigurationError);
+
+    }
+
+
+
+    // Evaluate the user information reader.
+
+    if (cfg.userReader) {
+
+      fnUserReader = Utility.getFunction(cfg.userReader, &#x27;userReader&#x27;, ConfigurationError);
+
+    }
+
+
+
+    // Evaluate the locale reader.
+
+    if (cfg.localeReader) {
+
+      fnGetLocale = Utility.getFunction(cfg.localeReader, &#x27;localeReader&#x27;, ConfigurationError);
+
+    }
+
+
+
+    // Evaluate the path of locale.
+
+    if (cfg.pathOfLocales) {
+
+      Utility.getDirectory(cfg.pathOfLocales, &#x27;pathOfLocales&#x27;, ConfigurationError);
+
+      this.pathOfLocales = cfg.pathOfLocales;
+
+    }
+
+
+
+    // Evaluate the unauthorized behavior.
+
+    if (cfg.noAccessBehavior !== undefined &amp;amp;&amp;amp; cfg.noAccessBehavior !== null) {
+
+      this.noAccessBehavior = Utility.isEnumMember(
+
+          cfg.noAccessBehavior, NoAccessBehavior, &#x27;noAccessBehavior&#x27;, ConfigurationError
+
+      );
+
+    }
+
+  }
+
+}
+
+
+
+/**
+
+ * The configuration object for business objects.
+
+ *
+
+ * @name bo.shared~configuration
+
+ * @property {bo.dataAccess.ConnectionManagerBase} connectionManager -
+
+ *    The connection manager instance. It must be set via {@link bo.initialize} or
+
+ *    {@link bo.configuration.initialize}.
+
+ * @property {external.daoBuilder} daoBuilder -
+
+ *    Factory method to create data access objects. The default method is
+
+ *    {@link bo.dataAccess.daoBuilder}.
+
+ * @property {external.getUser} getUser -
+
+ *    Returns the current user. The default method returns null, i.e. anonymous user is assumed.
+
+ * @property {external.getLocale} getLocale -
+
+ *    Returns the current locale. The default method returns an empty string,
+
+ *    i.e. the business objects will use the default messages.
+
+ * @property {string} [pathOfLocales] -
+
+ *    The relative path of the directory containing project locales. If not supplied,
+
+ *    the business objects cannot interpret the first message argument as the message key,
+
+ *    i.e. the first message argument must be the message text.
+
+ * @property {bo.rules.NoAccessBehavior} noAccessBehavior -
+
+ *    The default behavior for unauthorized operations.
+
+ *    The default value is {@link bo.rules.NoAccessBehavior#throwError}.
+
+ * @property {internal~initializeCfg} initialize -
+
+ *    Reads the configuration of business objects.
+
+ */
+
+var config = {
+
+  connectionManager: null,
+
+  daoBuilder: daoBuilder,
+
+  getUser: getUser,
+
+  getLocale: getLocale,
+
+  pathOfLocales: null,
+
+  noAccessBehavior: NoAccessBehavior.throwError,
+
+
+
+  initialize: function (cfgPath) {
+
+    if (isInitialized)
+
+      throw new ConfigurationError(&#x27;ready&#x27;);
+
+
+
+    initialize.call(this, cfgPath);
+
+    isInitialized = true;
+
+
+
+    Object.freeze(this);
+
+  }
+
+};
+
+
+
+module.exports = config;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

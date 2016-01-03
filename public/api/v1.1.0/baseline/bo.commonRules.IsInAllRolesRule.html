@@ -1,0 +1,473 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: IsInAllRolesRule</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div><small><a href="bo.html">bo</a>.<wbr>commonRules.<wbr></small><span class="symbol-name">IsInAllRolesRule</span></h1>
+            <p class="source-link">Source: <a href="common-rules_is-in-all-roles-rule.js.html#source-line-35">common-rules/<wbr>is-in-all-roles-rule.<wbr>js:35</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>The rule ensures that the user is member of a group of roles.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.commonRules.IsInAllRolesRule.html#noAccessBehavior">noAccessBehavior</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.commonRules.IsInAllRolesRule.html#roles">roles</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.commonRules.IsInAllRolesRule.html#ruleName">ruleName</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.commonRules.IsInAllRolesRule.html#execute">execute(userInfo)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.commonRules.IsInAllRolesRule.html#initialize">initialize(action[, target], message[, priority][, stopsProcessing])</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.commonRules.IsInAllRolesRule.html#result">result([message], severity)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="IsInAllRolesRule">new&nbsp;<span class="symbol-name">IsInAllRolesRule</span><span class="signature"><span class="signature-params">(action[, target], roles, message[, priority][, stopsProcessing])</span></span></h2>
+            <p>Creates a new is-in-all-roles rule object.</p>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>action</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.rules.AuthorizationAction.html">bo.rules.AuthorizationAction</a>
+                      </p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The action to be authorized.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>target</p>
+                    </td>
+                    <td>
+                      <p>(<a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a>, string, or null)</p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>Eventual parameter of the authorization action.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>roles</p>
+                    </td>
+                    <td>
+                      <p>Array of string</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The names of the roles the user is member of.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>message</p>
+                    </td>
+                    <td>
+                      <p>string</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>Human-readable description of the rule failure.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>priority</p>
+                    </td>
+                    <td>
+                      <p>number</p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>The priority of the rule.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>stopsProcessing</p>
+                    </td>
+                    <td>
+                      <p>boolean</p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>Indicates the rule behavior in case of failure.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Extends</dt>
+              <dd><a href="bo.rules.AuthorizationRule.html">bo.rules.AuthorizationRule</a>
+              </dd>
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The action must be a AuthorizationAction item.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The target must be a PropertyInfo object in case of property read or write.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The target must be a non-empty string in case of method execution.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The target must be null in case of model actions.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The roles must be an array of string values.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The message must be a non-empty string.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <h3 id="noAccessBehavior"><span class="symbol-name">noAccessBehavior</span><small class="property-type">
+                &nbsp;<a href="bo.rules.NoAccessBehavior.html">bo.rules.NoAccessBehavior</a></small></h3>
+              <p>The action to do when the rule fails.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.rules.AuthorizationRule.html#noAccessBehavior">bo.rules.AuthorizationRule#noAccessBehavior</a>
+                </dd>
+              </dl>
+              <h3 id="roles"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">roles</span><small class="property-type">
+                &nbsp;Array of string</small></h3>
+              <p>The names of the roles the user is member of.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="ruleName"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">ruleName</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the rule type. The default value usually the name of the constructor, without the Rule suffix.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.rules.RuleBase.html#ruleName">bo.rules.RuleBase#ruleName</a>
+                </dd>
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id="execute"><div class="symbol-detail-labels"><span class="label label-virtual">abstract</span></div><span class="symbol-name">execute</span><span class="signature"><span class="signature-params">(userInfo)</span>&nbsp;&rarr; <span class="signature-returns"> (<a href="bo.rules.AuthorizationResult.html">bo.rules.AuthorizationResult</a> or undefined)</span></span></h3>
+              <p>Checks if the user is member of the defined group of roles.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>userInfo</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.system.UserInfo.html">bo.system.UserInfo</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Information about the current user.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(<a href="bo.rules.AuthorizationResult.html">bo.rules.AuthorizationResult</a> or undefined)</code>&nbsp;Information about the failure.</p>
+                </dd>
+              </dl>
+              <h3 id="initialize"><span class="symbol-name">initialize</span><span class="signature"><span class="signature-params">(action[, target], message[, priority][, stopsProcessing])</span></span></h3>
+              <p>Sets the properties of the rule.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>action</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The action to be authorized.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>target</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Eventual parameter of the authorization action.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the rule failure.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>priority</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The priority of the rule.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>stopsProcessing</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Indicates the rule behavior in case of failure.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.rules.AuthorizationRule.html#initialize">bo.rules.AuthorizationRule#initialize</a>
+                </dd>
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The action must be a AuthorizationAction item.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The target must be a PropertyInfo object in case of property read or write.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The target must be a non-empty string in case of method execution.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The target must be null in case of model actions.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The message must be a non-empty string.</p>
+                </dd>
+              </dl>
+              <h3 id="result"><span class="symbol-name">result</span><span class="signature"><span class="signature-params">([message], severity)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="bo.rules.AuthorizationResult.html">bo.rules.AuthorizationResult</a></span></span></h3>
+              <p>Returns the result of the rule executed. If the rule fails and the noAccessBehavior property is
+                <a href="bo.rules.NoAccessBehavior.html#throwError">bo.rules.NoAccessBehavior#throwError</a>, throws an authorization error.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the rule failure.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>severity</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The severity of the failed rule.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.rules.AuthorizationRule.html#result">bo.rules.AuthorizationRule#result</a>
+                </dd>
+                <dt>Throws</dt>
+                <dd>
+                  <p>Authorization error: The user has no permission to execute the action.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p>The result of the authorization rule.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on December 31, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

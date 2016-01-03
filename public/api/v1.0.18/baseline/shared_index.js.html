@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: shared/index.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: shared/index.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+
+
+//var ExtensionManagerBase = require(&#x27;./extension-manager-base.js&#x27;);
+
+var ExtensionManager = require(&#x27;./extension-manager.js&#x27;);
+
+var ExtensionManagerSync = require(&#x27;./extension-manager-sync.js&#x27;);
+
+var EventHandlerList = require(&#x27;./event-handler-list.js&#x27;);
+
+var DataStore = require(&#x27;./data-store.js&#x27;);
+
+var ModelState = require(&#x27;./model-state.js&#x27;);
+
+var ModelError = require(&#x27;./model-error.js&#x27;);
+
+var ConfigurationError = require(&#x27;./configuration-error.js&#x27;);
+
+//var configuration = require(&#x27;./configuration-reader.js&#x27;);
+
+
+
+var PropertyInfo = require(&#x27;./property-info.js&#x27;);
+
+var PropertyFlag = require(&#x27;./property-flag.js&#x27;);
+
+var PropertyManager = require(&#x27;./property-manager.js&#x27;);
+
+var PropertyContext = require(&#x27;./property-context.js&#x27;);
+
+var TransferContext = require(&#x27;./transfer-context.js&#x27;);
+
+
+
+var DataPortalAction = require(&#x27;./data-portal-action.js&#x27;);
+
+var DataPortalContext = require(&#x27;./data-portal-context.js&#x27;);
+
+var DataPortalEvent = require(&#x27;./data-portal-event.js&#x27;);
+
+var DataPortalEventArgs = require(&#x27;./data-portal-event-args.js&#x27;);
+
+var DataPortalError = require(&#x27;./data-portal-error.js&#x27;);
+
+
+
+/**
+
+ * Contains components used by models, collections and other components.
+
+ *
+
+ * @namespace bo.shared
+
+ *
+
+ * @property {function} ExtensionManager - {@link bo.shared.ExtensionManager Extension manager}
+
+ *      constructor to create new a new extension manager object for an asynchronous model.
+
+ * @property {function} ExtensionManagerSync - {@link bo.shared.ExtensionManagerSync Extension manager}
+
+ *      constructor to create new a new extension manager object for a synchronous model.
+
+ * @property {function} EventHandlerList - {@link bo.shared.EventHandlerList Event handler list}
+
+ *      constructor to create a new event handler collection.
+
+ * @property {function} DataStore - {@link bo.shared.DataStore DataStore}
+
+ *      constructor to create new data store.
+
+ * @property {object} ModelState - {@link bo.rules.ModelState Model state}
+
+ *      object specifies the possible states of the editable models.
+
+ * @property {function} ModelError - {@link bo.shared.ModelError Model error}
+
+ *      constructor to create a new error related to a model.
+
+ * @property {function} ConfigurationError - {@link bo.shared.ConfigurationError Configuration error}
+
+ *      constructor to create a new error related to configuration.
+
+ *
+
+ * @property {function} PropertyInfo - {@link bo.shared.PropertyInfo Property definition}
+
+ *      constructor to create new property definition.
+
+ * @property {function} PropertyFlag - {@link bo.shared.PropertyFlag Property flag}
+
+ *      constructor to create new flag set for a property definition.
+
+ * @property {function} PropertyManager - {@link bo.shared.PropertyManager Property manager}
+
+ *      constructor to create a new property manager.
+
+ * @property {function} PropertyContext - {@link bo.shared.PropertyContext Property context}
+
+ *      constructor to create new context object for custom property functions.
+
+ * @property {function} TransferContext - {@link bo.shared.TransferContext Transfer context}
+
+ *      constructor to create new context object for custom client and data transfer functions.
+
+ *
+
+ * @property {function} DataPortalAction - {@link bo.shared.DataPortalAction Data portal action}
+
+ *      enumeration specifies the model operations to execute on data access objects.
+
+ * @property {function} DataPortalContext - {@link bo.shared.DataPortalContext Data portal context}
+
+ *      constructor to create new context object for custom data portal functions.
+
+ * @property {function} DataPortalEvent - {@link bo.shared.DataPortalEvent Data portal event}
+
+ *      enumeration specifies the events of data portal operations.
+
+ * @property {function} DataPortalEventArgs - {@link bo.shared.DataPortalEventArgs Data portal event arguments}
+
+ *      constructor to create new context object for data portal events.
+
+ * @property {function} DataPortalError - {@link bo.shared.DataPortalError Data portal error}
+
+ *      constructor to create a new error related to data portal actions.
+
+ *
+
+ *
+
+ */
+
+var index = {
+
+  //ExtensionManagerBase: ExtensionManagerBase,
+
+  ExtensionManager: ExtensionManager,
+
+  ExtensionManagerSync: ExtensionManagerSync,
+
+  EventHandlerList: EventHandlerList,
+
+  DataStore: DataStore,
+
+  ModelState: ModelState,
+
+  ModelError: ModelError,
+
+  ConfigurationError: ConfigurationError,
+
+  //configuration: configuration,
+
+
+
+  PropertyInfo: PropertyInfo,
+
+  PropertyFlag: PropertyFlag,
+
+  PropertyManager: PropertyManager,
+
+  PropertyContext: PropertyContext,
+
+  TransferContext: TransferContext,
+
+
+
+  DataPortalAction: DataPortalAction,
+
+  DataPortalContext: DataPortalContext,
+
+  DataPortalEvent: DataPortalEvent,
+
+  DataPortalEventArgs: DataPortalEventArgs,
+
+  DataPortalError: DataPortalError
+
+};
+
+
+
+// Immutable object.
+
+Object.freeze(index);
+
+
+
+module.exports = index;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

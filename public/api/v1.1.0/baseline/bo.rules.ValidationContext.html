@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: ValidationContext</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div><small><a href="bo.html">bo</a>.<wbr>rules.<wbr></small><span class="symbol-name">ValidationContext</span></h1>
+            <p class="source-link">Source: <a href="rules_validation-context.js.html#source-line-27">rules/<wbr>validation-context.<wbr>js:27</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Provides the context for custom validation rules.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Property</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.rules.ValidationContext.html#brokenRules">brokenRules</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Method</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.rules.ValidationContext.html#getValue">getValue()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="ValidationContext">new&nbsp;<span class="symbol-name">ValidationContext</span><span class="signature"><span class="signature-params">(dataStore, brokenRules)</span></span></h2>
+            <p>Creates a new validation context object.
+              </br>
+              </br>
+              <i><b>Warning:</b> Validation context objects are created in models internally.
+   They are intended only to make publicly available the context
+   for custom validation rules.</i>
+            </p>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>dataStore</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.shared.DataStore.html">bo.shared.DataStore</a>
+                      </p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The storage of the property values.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>brokenRules</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.rules.BrokenRuleList.html">bo.rules.BrokenRuleList</a>
+                      </p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The list of the broken rules.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The data store must be a DataStore object.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The broken rules must be a BrokenRuleList object.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Property</h2>
+            <section>
+              <h3 id="brokenRules"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">brokenRules</span><small class="property-type">
+                &nbsp;<a href="bo.rules.BrokenRuleList.html">bo.rules.BrokenRuleList</a></small></h3>
+              <p>The list of the broken rules.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Method</h2>
+            <section>
+              <h3 id="getValue"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">getValue</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Returns the value of a model property.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on December 31, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

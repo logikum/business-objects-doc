@@ -1,0 +1,697 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: read-only-child-collection.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: read-only-child-collection.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+//region Imports
+
+
+
+var util = require(&#x27;util&#x27;);
+
+var EnsureArgument = require(&#x27;./system/ensure-argument.js&#x27;);
+
+
+
+var CollectionBase = require(&#x27;./collection-base.js&#x27;);
+
+var ModelError = require(&#x27;./shared/model-error.js&#x27;);
+
+
+
+var CLASS_NAME = &#x27;ReadOnlyChildCollection&#x27;;
+
+
+
+//endregion
+
+
+
+/**
+
+ * Factory method to create definitions of asynchronous read-only child collections.
+
+ *
+
+ *    Valid collection item types are:
+
+ *
+
+ *      * ReadOnlyChildModel
+
+ *
+
+ * @function bo.ReadOnlyChildCollection
+
+ * @param {string} name - The name of the collection.
+
+ * @param {ReadOnlyChildModel} itemType - The model type of the collection items.
+
+ * @returns {ReadOnlyChildCollection} The constructor of an asynchronous read-only child collection.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The collection name must be a non-empty string.
+
+ * @throws {@link bo.shared.ModelError Model error}: The item type must be an ReadOnlyChildModel.
+
+ */
+
+var ReadOnlyChildCollectionFactory = function (name, itemType) {
+
+
+
+  name = EnsureArgument.isMandatoryString(name,
+
+      &#x27;c_manString&#x27;, CLASS_NAME, &#x27;name&#x27;);
+
+
+
+  // Check tree reference.
+
+  if (typeof itemType !== &#x27;string&#x27;) {
+
+    // Verify the model type of the item type.
+
+    if (itemType.modelType !== &#x27;ReadOnlyChildModel&#x27;)
+
+      throw new ModelError(&#x27;invalidItem&#x27;,
+
+          itemType.prototype.name, itemType.modelType,
+
+          CLASS_NAME, &#x27;ReadOnlyChildModel&#x27;);
+
+  }
+
+
+
+  /**
+
+   * @classdesc
+
+   *    Represents the definition of an asynchronous read-only child collection.
+
+   * @description
+
+   *    Creates a new asynchronous read-only child collection instance.
+
+   *
+
+   *    _The name of the model type available as:
+
+   *    __&amp;amp;lt;instance&amp;amp;gt;.constructor.modelType__, returns &#x27;ReadOnlyChildCollection&#x27;._
+
+   *
+
+   *    Valid parent model types are:
+
+   *
+
+   *      * ReadOnlyRootModel
+
+   *      * ReadOnlyChildModel
+
+   *      * CommandObject
+
+   *
+
+   * @name ReadOnlyChildCollection
+
+   * @constructor
+
+   * @param {object} parent - The parent business object.
+
+   * @param {bo.shared.EventHandlerList} [eventHandlers] - The event handlers of the instance.
+
+   *
+
+   * @extends CollectionBase
+
+   *
+
+   * @throws {@link bo.system.ArgumentError Argument error}:
+
+   *    The parent object must be an ReadOnlyRootModel, ReadOnlyChildModel
+
+   *    or CommandObject instance.
+
+   */
+
+  var ReadOnlyChildCollection = function (parent, eventHandlers) {
+
+    CollectionBase.call(this);
+
+
+
+    // Verify the model type of the parent model.
+
+    parent = EnsureArgument.isModelType(parent,
+
+        [
+
+          &#x27;ReadOnlyRootModel&#x27;,
+
+          &#x27;ReadOnlyChildModel&#x27;,
+
+          &#x27;CommandObject&#x27;
+
+        ],
+
+        &#x27;c_modelType&#x27;, name, &#x27;parent&#x27;);
+
+
+
+    // Resolve tree reference.
+
+    if (typeof itemType === &#x27;string&#x27;) {
+
+      if (itemType === parent.$modelName)
+
+        itemType = parent.constructor;
+
+      else
+
+        throw new ModelError(&#x27;invalidTree&#x27;, itemType, parent.$modelName);
+
+    }
+
+
+
+    var self = this;
+
+    var items = [];
+
+
+
+    /**
+
+     * The name of the model.
+
+     *
+
+     * @name ReadOnlyChildCollection#$modelName
+
+     * @type {string}
+
+     * @readonly
+
+     */
+
+    this.$modelName = name;
+
+
+
+    /**
+
+     * The count of the child objects in the collection.
+
+     *
+
+     * @name ReadOnlyChildCollection#count
+
+     * @type {number}
+
+     * @readonly
+
+     */
+
+    Object.defineProperty(self, &#x27;count&#x27;, {
+
+      get: function () {
+
+        return items.length;
+
+      },
+
+      enumerable: false
+
+    });
+
+
+
+    //region Transfer object methods
+
+
+
+    /**
+
+     * Transforms the business object collection to a plain object array to send to the client.
+
+     * &amp;lt;br/&gt;_This method is usually called by the parent object._
+
+     *
+
+     * @function ReadOnlyChildCollection#toCto
+
+     * @returns {Array.&amp;lt;object&gt;} The client transfer object.
+
+     */
+
+    this.toCto = function () {
+
+      var cto = [];
+
+      items.forEach(function (item) {
+
+        cto.push(item.toCto());
+
+      });
+
+      return cto;
+
+    };
+
+
+
+    //endregion
+
+
+
+    //region Actions
+
+
+
+    /**
+
+     * Initializes the items in the collection with data retrieved from the repository.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function ReadOnlyChildCollection#fetch
+
+     * @protected
+
+     * @param {Array.&amp;lt;object&gt;} [data] - The data to load into the business object collection.
+
+     * @param {external.cbDataPortal} callback - Returns the eventual error.
+
+     */
+
+    this.fetch = function (data, callback) {
+
+      if (data instanceof Array &amp;amp;&amp;amp; data.length) {
+
+        var count = 0;
+
+        var error = null;
+
+        data.forEach(function (dto) {
+
+          itemType.load(parent, dto, eventHandlers, function (err, item) {
+
+            if (err)
+
+              error = error || err;
+
+            else
+
+              items.push(item);
+
+            // Check if all items are done.
+
+            if (++count === data.length) {
+
+              callback(error);
+
+            }
+
+          });
+
+        });
+
+      } else
+
+        callback(null);
+
+    };
+
+
+
+    /**
+
+     * Indicates whether all items of the business collection are valid.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function ReadOnlyChildCollection#isValid
+
+     * @protected
+
+     * @returns {boolean}
+
+     */
+
+    this.isValid = function () {
+
+      return items.every(function (item) {
+
+        return item.isValid();
+
+      })
+
+    };
+
+
+
+    /**
+
+     * Executes validation on all items of the collection.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function ReadOnlyChildCollection#checkRules
+
+     * @protected
+
+     */
+
+    this.checkRules = function () {
+
+      items.forEach(function (item) {
+
+        item.checkRules();
+
+      });
+
+    };
+
+
+
+    /**
+
+     * Gets the broken rules of all items of the collection.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function ReadOnlyChildCollection#getBrokenRules
+
+     * @protected
+
+     * @param {string} [namespace] - The namespace of the message keys when messages are localizable.
+
+     * @returns {Array.&amp;lt;bo.rules.BrokenRulesOutput&gt;} The broken rules of the collection.
+
+     */
+
+    this.getBrokenRules = function(namespace) {
+
+      var bro = [];
+
+      items.forEach(function (item) {
+
+        var childBrokenRules = item.getBrokenRules(namespace);
+
+        if (childBrokenRules)
+
+          bro.push(childBrokenRules);
+
+      });
+
+      return bro.length ? bro : null;
+
+    };
+
+
+
+    //endregion
+
+
+
+    //region Public array methods
+
+
+
+    /**
+
+     * Gets a collection item at a specific position.
+
+     *
+
+     * @function ReadOnlyChildCollection#at
+
+     * @param {number} index - The index of the required item in the collection.
+
+     * @returns {ReadOnlyChildModel} The required collection item.
+
+     */
+
+    this.at = function (index) {
+
+      return items[index];
+
+    };
+
+
+
+    /**
+
+     * Executes a provided function once per collection item.
+
+     *
+
+     * @function ReadOnlyChildCollection#forEach
+
+     * @param {external.cbCollectionItem} callback - Function that produces an item of the new collection.
+
+     */
+
+    this.forEach = function (callback) {
+
+      items.forEach(callback);
+
+    };
+
+
+
+    /**
+
+     * Tests whether all items in the collection pass the test implemented by the provided function.
+
+     *
+
+     * @function ReadOnlyChildCollection#every
+
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+
+     * @returns {boolean} True when callback returns truthy value for each item, otherwise false.
+
+     */
+
+    this.every = function (callback) {
+
+      return items.every(callback);
+
+    };
+
+
+
+    /**
+
+     * Tests whether some item in the collection pass the test implemented by the provided function.
+
+     *
+
+     * @function ReadOnlyChildCollection#some
+
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+
+     * @returns {boolean} True when callback returns truthy value for some item, otherwise false.
+
+     */
+
+    this.some = function (callback) {
+
+      return items.some(callback);
+
+    };
+
+
+
+    /**
+
+     * Creates a new array with all collection items that pass the test
+
+     * implemented by the provided function.
+
+     *
+
+     * @function ReadOnlyChildCollection#filter
+
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+
+     * @returns {Array.&amp;lt;ReadOnlyChildModel&gt;} The new array of collection items.
+
+     */
+
+    this.filter = function (callback) {
+
+      return items.filter(callback);
+
+    };
+
+
+
+    /**
+
+     * Creates a new array with the results of calling a provided function
+
+     * on every item in this collection.
+
+     *
+
+     * @function ReadOnlyChildCollection#map
+
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+
+     * @returns {Array.&amp;lt;*&gt;} The new array of callback results.
+
+     */
+
+    this.map = function (callback) {
+
+      return items.map(callback);
+
+    };
+
+
+
+    /**
+
+     * Sorts the items of the collection in place and returns the collection.
+
+     *
+
+     * @function ReadOnlyChildCollection#sort
+
+     * @param {external.cbCompare} [fnCompare] - Function that defines the sort order.
+
+     *      If omitted, the collection is sorted according to each character&#x27;s Unicode
+
+     *      code point value, according to the string conversion of each item.
+
+     * @returns {ReadOnlyChildCollection} The sorted collection.
+
+     */
+
+    this.sort = function (fnCompare) {
+
+      return items.sort(fnCompare);
+
+    };
+
+
+
+    //endregion
+
+
+
+    // Immutable object.
+
+    Object.freeze(this);
+
+  };
+
+  util.inherits(ReadOnlyChildCollection, CollectionBase);
+
+
+
+  /**
+
+   * The name of the model type.
+
+   *
+
+   * @property {string} ReadOnlyChildCollection.constructor.modelType
+
+   * @default ReadOnlyChildCollection
+
+   * @readonly
+
+   */
+
+  Object.defineProperty(ReadOnlyChildCollection, &#x27;modelType&#x27;, {
+
+    get: function () { return CLASS_NAME; }
+
+  });
+
+
+
+  return ReadOnlyChildCollection;
+
+};
+
+
+
+module.exports = ReadOnlyChildCollectionFactory;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

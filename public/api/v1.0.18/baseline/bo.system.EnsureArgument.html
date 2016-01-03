@@ -1,0 +1,1727 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: EnsureArgument</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div><small><a href="bo.html">bo</a>.<wbr>system.<wbr></small><span class="symbol-name">EnsureArgument</span></h1>
+            <p class="source-link">Source: <a href="system_ensure-argument.js.html#source-line-33">system/<wbr>ensure-argument.<wbr>js:33</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Provides helper methods to check arguments.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.system.EnsureArgument.html#.hasValue">hasValue(value[, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isDefined">isDefined(value[, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isEnumMember">isEnumMember([value], type[, defaultValue][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isMandatoryArray">isMandatoryArray([value], type[, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isMandatoryBoolean">isMandatoryBoolean([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isMandatoryFunction">isMandatoryFunction([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isMandatoryInteger">isMandatoryInteger([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.system.EnsureArgument.html#.isMandatoryNumber">isMandatoryNumber([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isMandatoryObject">isMandatoryObject([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isMandatoryString">isMandatoryString([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isMandatoryType">isMandatoryType([value], type[, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isModelType">isModelType([value], model[, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isOptionalArray">isOptionalArray([value], type[, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isOptionalBoolean">isOptionalBoolean([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.system.EnsureArgument.html#.isOptionalFunction">isOptionalFunction([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isOptionalInteger">isOptionalInteger([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isOptionalNumber">isOptionalNumber([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isOptionalObject">isOptionalObject([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isOptionalString">isOptionalString([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isOptionalType">isOptionalType([value], type[, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.system.EnsureArgument.html#.isString">isString([value][, message][, .<wbr>.<wbr>.<wbr>messageParams])</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="EnsureArgument">new&nbsp;<span class="symbol-name">EnsureArgument</span><span class="signature"><span class="signature-params">()</span></span></h2>
+            <p>Creates a new argument checking object.</p>
+            <dl class="dl-compact">
+            </dl>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id=".hasValue"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">hasValue</span><span class="signature"><span class="signature-params">(value[, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> any type</span></span></h3>
+              <p>Checks if value is not undefined and is not null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument is required.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>any type</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isDefined"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isDefined</span><span class="signature"><span class="signature-params">(value[, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> any type</span></span></h3>
+              <p>Checks if value is not undefined.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: TThe argument must be supplied.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>any type</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isEnumMember"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isEnumMember</span><span class="signature"><span class="signature-params">([value], type[, defaultValue][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> number</span></span></h3>
+              <p>Checks if value is member of a given enumeration.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>constructor</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The type of the enumeration.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>defaultValue</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The type of the enumeration.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: Type is not an enumeration type.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an enumeration type item.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>number</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isMandatoryArray"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isMandatoryArray</span><span class="signature"><span class="signature-params">([value], type[, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> Array of type</span></span></h3>
+              <p>Checks if value is an array of a given type.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>Array of type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The type of the array items - a primitive type or a constructor.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an array of TYPE values, or a single TYPE values or null.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an array of TYPE objects, or a single TYPE object or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of type</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isMandatoryBoolean"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isMandatoryBoolean</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Checks if value is a Boolean.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a Boolean value.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isMandatoryFunction"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isMandatoryFunction</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> function()</span></span></h3>
+              <p>Checks if value is a function.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a function.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>function()</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isMandatoryInteger"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isMandatoryInteger</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> number</span></span></h3>
+              <p>Checks if value is an integer.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an integer value.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>number</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isMandatoryNumber"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isMandatoryNumber</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> number</span></span></h3>
+              <p>Checks if value is a number.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a number value.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>number</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isMandatoryObject"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isMandatoryObject</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> object</span></span></h3>
+              <p>Checks if value is an object.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an object.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>object</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isMandatoryString"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isMandatoryString</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Checks if value is a non-empty string.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a non-empty string.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isMandatoryType"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isMandatoryType</span><span class="signature"><span class="signature-params">([value], type[, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> object</span></span></h3>
+              <p>Checks if value is a given type.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>(constructor or Array of constructor)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The type that value must inherit.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a TYPE object.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>object</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isModelType"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isModelType</span><span class="signature"><span class="signature-params">([value], model[, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (object or null)</span></span></h3>
+              <p>Checks if value is an instance of a given model type.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(object or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>model</p>
+                      </td>
+                      <td>
+                        <p>(constructor or Array of constructor)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The model type that value must be an instance of.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a model type.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(object or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isOptionalArray"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isOptionalArray</span><span class="signature"><span class="signature-params">([value], type[, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (Array of type or null)</span></span></h3>
+              <p>Checks if value is an array of a given type or null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(Array of type or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The type of the array items - a primitive type or a constructor.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an array of TYPE values, or a single TYPE values or null.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an array of TYPE objects, or a single TYPE object or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(Array of type or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isOptionalBoolean"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isOptionalBoolean</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (boolean or null)</span></span></h3>
+              <p>Checks if value is a Boolean or null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(boolean or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a Boolean value or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(boolean or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isOptionalFunction"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isOptionalFunction</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (function() or null)</span></span></h3>
+              <p>Checks if value is a function or null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(function() or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a function or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(function() or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isOptionalInteger"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isOptionalInteger</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (number or null)</span></span></h3>
+              <p>Checks if value is an integer or null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(number or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an integer value or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(number or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isOptionalNumber"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isOptionalNumber</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (number or null)</span></span></h3>
+              <p>Checks if value is a number or null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(number or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a number value or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(number or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isOptionalObject"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isOptionalObject</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (object or null)</span></span></h3>
+              <p>Checks if value is an object or null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(object or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be an object or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(object or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isOptionalString"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isOptionalString</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (string or null)</span></span></h3>
+              <p>Checks if value is a string or null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(string or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a string value or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(string or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isOptionalType"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isOptionalType</span><span class="signature"><span class="signature-params">([value], type[, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> (object or null)</span></span></h3>
+              <p>Checks if value is a given type or null.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>(object or null)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>(constructor or Array of constructor)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The type that value must inherit.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a TYPE object or null.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(object or null)</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+              <h3 id=".isString"><div class="symbol-detail-labels"><span class="label label-static">static</span></div><span class="symbol-name">isString</span><span class="signature"><span class="signature-params">([value][, message][, ...messageParams])</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Checks if value is a string.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the error.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>messageParams</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional interpolation parameters of the message.</p>
+                        <p>Value can be repeated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The argument must be a string value.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code>&nbsp;The checked value.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

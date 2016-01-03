@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: DataType</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div><small><a href="bo.html">bo</a>.<wbr>dataTypes.<wbr></small><span class="symbol-name">DataType</span></h1>
+            <p class="source-link">Source: <a href="data-types_data-type.js.html#source-line-17">data-types/<wbr>data-type.<wbr>js:17</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Serves as the base class for data type definitions.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Property</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.dataTypes.DataType.html#name">name</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.dataTypes.DataType.html#hasValue">hasValue(value)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.dataTypes.DataType.html#isValid">isValid([value])</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="DataType">new&nbsp;<span class="symbol-name">DataType</span><span class="signature"><span class="signature-params">()</span></span></h2>
+            <p>Creates a new data type definition. The data type instances should be frozen.</p>
+            <dl class="dl-compact">
+            </dl>
+          </section>
+          <section>
+            <h2>Property</h2>
+            <section>
+              <h3 id="name"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">name</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the data type. The default value is the name of the constructor.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id="hasValue"><div class="symbol-detail-labels"><span class="label label-virtual">abstract</span></div><span class="symbol-name">hasValue</span><span class="signature"><span class="signature-params">(value)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Abstract method to check if the data type of the value conforms to the data type definition and it is not null.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.NotImplementedError.html">Not implemented error</a>: The DataType.hasValue method is not implemented.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True if the value is the defined data type and not null, otherwise false.</p>
+                </dd>
+              </dl>
+              <h3 id="isValid"><div class="symbol-detail-labels"><span class="label label-virtual">abstract</span></div><span class="symbol-name">isValid</span><span class="signature"><span class="signature-params">([value])</span>&nbsp;&rarr; <span class="signature-returns"> any type</span></span></h3>
+              <p>Abstract method to check if the value conforms to the data type definition. Returns the value when it has the required data type. If not, but it can be converted into the required data type, then returns the converted value. Otherwise returns
+                <em>undefined</em> to mark the value as invalid.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.NotImplementedError.html">Not implemented error</a>: The DataType.check method is not implemented.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>any type</code>&nbsp;The value in the defined data type or null when the value is valid, otherwise undefined.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on December 31, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

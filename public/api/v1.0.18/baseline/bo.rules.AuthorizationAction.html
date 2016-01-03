@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: AuthorizationAction</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div><small><a href="bo.html">bo</a>.<wbr>rules.<wbr></small><span class="symbol-name">AuthorizationAction</span></h1>
+            <p class="source-link">Source: <a href="rules_authorization-action.js.html#source-line-26">rules/<wbr>authorization-action.<wbr>js:26</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Specifies the operations of models to authorize.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.rules.AuthorizationAction.html#$name">$name</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.rules.AuthorizationAction.html#createObject">createObject</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.rules.AuthorizationAction.html#executeCommand">executeCommand</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.rules.AuthorizationAction.html#executeMethod">executeMethod</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.rules.AuthorizationAction.html#fetchObject">fetchObject</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.rules.AuthorizationAction.html#readProperty">readProperty</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.rules.AuthorizationAction.html#removeObject">removeObject</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.rules.AuthorizationAction.html#updateObject">updateObject</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.rules.AuthorizationAction.html#writeProperty">writeProperty</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Method</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.rules.AuthorizationAction.html#hasValue">hasValue(name)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="AuthorizationAction">new&nbsp;<span class="symbol-name">AuthorizationAction</span><span class="signature"><span class="signature-params">()</span></span></h2>
+            <p>Creates a new enumeration to define the authorization actions. Members:</p>
+            <ul>
+              <li>fetchObject</li>
+              <li>createObject</li>
+              <li>updateObject</li>
+              <li>removeObject</li>
+              <li>executeCommand</li>
+              <li>executeMethod</li>
+              <li>readProperty</li>
+              <li>writeProperty</li>
+            </ul>
+            <dl class="dl-compact">
+              <dt>Extends</dt>
+              <dd><a href="bo.system.Enumeration.html">bo.system.Enumeration</a>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <h3 id="$name"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">$name</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the enumeration. The default value is the name of the constructor.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.system.Enumeration.html#$name">bo.system.Enumeration#$name</a>
+                </dd>
+              </dl>
+              <h3 id="createObject"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">createObject</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The user tries to save the values of a new model to the repository.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+              <h3 id="executeCommand"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">executeCommand</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The user tries to execute a command in the repository.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+              <h3 id="executeMethod"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">executeMethod</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The user tries to execute a custom action in the repository. It can be a custom fetch or execute action.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+              <h3 id="fetchObject"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">fetchObject</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The user tries to retrieve the values of a model from the repository.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+              <h3 id="readProperty"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">readProperty</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The user tries to get the value of a property.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+              <h3 id="removeObject"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">removeObject</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The user tries to delete the values of a model from the repository.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+              <h3 id="updateObject"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">updateObject</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The user tries to save the changed values of a model to the repository.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+              <h3 id="writeProperty"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">writeProperty</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The user tries to set the value of a property.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+            </section>
+            <h2>Method</h2>
+            <section>
+              <h3 id="hasValue"><span class="symbol-name">hasValue</span><span class="signature"><span class="signature-params">(name)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Determines if the enumeration has an item with the given name.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>name</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The name of the enumeration item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.system.Enumeration.html#hasValue">bo.system.Enumeration#hasValue</a>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p>True if the name is an enumeration item, otherwise false.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

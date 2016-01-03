@@ -1,0 +1,1115 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: system/ensure-argument.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: system/ensure-argument.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+var ArgumentError = require(&#x27;./argument-error.js&#x27;);
+
+
+
+//region Helper methods
+
+
+
+function failed (argArray, skip, message, other) {
+
+  var args = [null, message].concat(Array.prototype.slice.call(argArray, skip));
+
+  if (other) args.push(other);
+
+  var constructor = ArgumentError.bind.apply(ArgumentError, args);
+
+  throw new constructor();
+
+}
+
+
+
+function typeNames (types) {
+
+  var list = &#x27;&amp;lt;&amp;lt; no types &gt;&gt;&#x27;;
+
+  if (types.length) {
+
+    list = types.map(function (type) {
+
+      return type.name ? type.name : &#x27;-unknown-&#x27;
+
+    }).join(&#x27; | &#x27;);
+
+  }
+
+  return list;
+
+}
+
+
+
+//endregion
+
+
+
+/**
+
+ * @classdesc Provides helper methods to check arguments.
+
+ * @description Creates a new argument checking object.
+
+ *
+
+ * @memberof bo.system
+
+ * @constructor
+
+ */
+
+var EnsureArgument = function () {};
+
+
+
+//region Generic
+
+
+
+/**
+
+ * Checks if value is not undefined.
+
+ *
+
+ * @function bo.system.EnsureArgument.isDefined
+
+ * @param {*} value - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {*} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: TThe argument must be supplied.
+
+ */
+
+EnsureArgument.isDefined = function (value, message) {
+
+  if (value === undefined)
+
+    failed(arguments, 2, message || &#x27;defined&#x27;);
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is not undefined and is not null.
+
+ *
+
+ * @function bo.system.EnsureArgument.hasValue
+
+ * @param {*} value - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {*} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument is required.
+
+ */
+
+EnsureArgument.hasValue = function (value, message) {
+
+  if (value === null || value === undefined)
+
+    failed(arguments, 2, message || &#x27;required&#x27;);
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region String
+
+
+
+/**
+
+ * Checks if value is a string.
+
+ *
+
+ * @function bo.system.EnsureArgument.isString
+
+ * @param {string} [value] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {string} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a string value.
+
+ */
+
+EnsureArgument.isString = function (value, message) {
+
+  if (typeof value !== &#x27;string&#x27; &amp;amp;&amp;amp; !(value instanceof String))
+
+    failed(arguments, 2, message || &#x27;string&#x27;);
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is a string or null.
+
+ *
+
+ * @function bo.system.EnsureArgument.isOptionalString
+
+ * @param {(string|null)} [value=null] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(string|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a string value or null.
+
+ */
+
+EnsureArgument.isOptionalString = function (value, message) {
+
+  if (value === undefined)
+
+    value = null;
+
+  if (value !== null &amp;amp;&amp;amp; typeof value !== &#x27;string&#x27; &amp;amp;&amp;amp; !(value instanceof String))
+
+    failed(arguments, 2, message || &#x27;optString&#x27;);
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is a non-empty string.
+
+ *
+
+ * @function bo.system.EnsureArgument.isMandatoryString
+
+ * @param {string} [value] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {string} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a non-empty string.
+
+ */
+
+EnsureArgument.isMandatoryString = function (value, message) {
+
+  if (typeof value !== &#x27;string&#x27; &amp;amp;&amp;amp; !(value instanceof String) || value.trim().length === 0)
+
+    failed(arguments, 2, message || &#x27;manString&#x27;);
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Number
+
+
+
+/**
+
+ * Checks if value is a number or null.
+
+ *
+
+ * @function bo.system.EnsureArgument.isOptionalNumber
+
+ * @param {(number|null)} [value=null] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(number|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a number value or null.
+
+ */
+
+EnsureArgument.isOptionalNumber = function (value, message) {
+
+  if (value === undefined)
+
+    value = null;
+
+  if (value !== null &amp;amp;&amp;amp; typeof value !== &#x27;number&#x27; &amp;amp;&amp;amp; !(value instanceof Number))
+
+    failed(arguments, 2, message || &#x27;optNumber&#x27;);
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is a number.
+
+ *
+
+ * @function bo.system.EnsureArgument.isMandatoryNumber
+
+ * @param {number} [value] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {number} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a number value.
+
+ */
+
+EnsureArgument.isMandatoryNumber = function (value, message) {
+
+  if (typeof value !== &#x27;number&#x27; &amp;amp;&amp;amp; !(value instanceof Number))
+
+    failed(arguments, 2, message || &#x27;manNumber&#x27;);
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Integer
+
+
+
+/**
+
+ * Checks if value is an integer or null.
+
+ *
+
+ * @function bo.system.EnsureArgument.isOptionalInteger
+
+ * @param {(number|null)} [value=null] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(number|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be an integer value or null.
+
+ */
+
+EnsureArgument.isOptionalInteger = function (value, message) {
+
+  if (value === undefined)
+
+    value = null;
+
+  if (value !== null &amp;amp;&amp;amp; (typeof value !== &#x27;number&#x27; &amp;amp;&amp;amp; !(value instanceof Number) || value % 1 !== 0))
+
+    failed(arguments, 2, message || &#x27;optInteger&#x27;);
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is an integer.
+
+ *
+
+ * @function bo.system.EnsureArgument.isMandatoryInteger
+
+ * @param {number} [value] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {number} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be an integer value.
+
+ */
+
+EnsureArgument.isMandatoryInteger = function (value, message) {
+
+  if (typeof value !== &#x27;number&#x27; &amp;amp;&amp;amp; !(value instanceof Number) || value % 1 !== 0)
+
+    failed(arguments, 2, message || &#x27;manInteger&#x27;);
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Boolean
+
+
+
+/**
+
+ * Checks if value is a Boolean or null.
+
+ *
+
+ * @function bo.system.EnsureArgument.isOptionalBoolean
+
+ * @param {(boolean|null)} [value=null] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(boolean|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a Boolean value or null.
+
+ */
+
+EnsureArgument.isOptionalBoolean = function (value, message) {
+
+  if (value === undefined)
+
+    value = null;
+
+  if (value !== null &amp;amp;&amp;amp; typeof value !== &#x27;boolean&#x27; &amp;amp;&amp;amp; !(value instanceof Boolean))
+
+    failed(arguments, 2, message || &#x27;optBoolean&#x27;);
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is a Boolean.
+
+ *
+
+ * @function bo.system.EnsureArgument.isMandatoryBoolean
+
+ * @param {boolean} [value] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {boolean} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a Boolean value.
+
+ */
+
+EnsureArgument.isMandatoryBoolean = function (value, message) {
+
+  if (typeof value !== &#x27;boolean&#x27; &amp;amp;&amp;amp; !(value instanceof Boolean))
+
+    failed(arguments, 2, message || &#x27;manBoolean&#x27;);
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Object
+
+
+
+/**
+
+ * Checks if value is an object or null.
+
+ *
+
+ * @function bo.system.EnsureArgument.isOptionalObject
+
+ * @param {(object|null)} [value=null] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(object|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be an object or null.
+
+ */
+
+EnsureArgument.isOptionalObject = function (value, message) {
+
+  if (value === undefined)
+
+    value = null;
+
+  if (typeof value !== &#x27;object&#x27;)
+
+    failed(arguments, 2, message || &#x27;optObject&#x27;);
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is an object.
+
+ *
+
+ * @function bo.system.EnsureArgument.isMandatoryObject
+
+ * @param {object} [value] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {object} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be an object.
+
+ */
+
+EnsureArgument.isMandatoryObject = function (value, message) {
+
+  if (typeof value !== &#x27;object&#x27; || value === null)
+
+    failed(arguments, 2, message || &#x27;manObject&#x27;);
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Function
+
+
+
+/**
+
+ * Checks if value is a function or null.
+
+ *
+
+ * @function bo.system.EnsureArgument.isOptionalFunction
+
+ * @param {(function|null)} [value=null] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(function|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a function or null.
+
+ */
+
+EnsureArgument.isOptionalFunction = function (value, message) {
+
+  if (value === undefined)
+
+    value = null;
+
+  if (value !== null &amp;amp;&amp;amp; typeof value !== &#x27;function&#x27;)
+
+    failed(arguments, 2, message || &#x27;optFunction&#x27;);
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is a function.
+
+ *
+
+ * @function bo.system.EnsureArgument.isMandatoryFunction
+
+ * @param {function} [value] - The value to check.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {function} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a function.
+
+ */
+
+EnsureArgument.isMandatoryFunction = function (value, message) {
+
+  if (typeof value !== &#x27;function&#x27;)
+
+    failed(arguments, 2, message || &#x27;manFunction&#x27;);
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Type
+
+
+
+/**
+
+ * Checks if value is a given type or null.
+
+ *
+
+ * @function bo.system.EnsureArgument.isOptionalType
+
+ * @param {(object|null)} [value=null] - The value to check.
+
+ * @param {(constructor|Array.&amp;lt;constructor&gt;)} type - The type that value must inherit.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(object|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a TYPE object or null.
+
+ */
+
+EnsureArgument.isOptionalType = function (value, type, message) {
+
+  if (value === undefined)
+
+    value = null;
+
+  var types = type instanceof Array ? type : [ type ];
+
+  if (value !== null &amp;amp;&amp;amp; !(types.some(function (option) {
+
+      return value &amp;amp;&amp;amp; (value instanceof option || value.super_ === option);
+
+    })))
+
+    failed(arguments, 3, message || &#x27;optType&#x27;, typeNames(types));
+
+  return value;
+
+};
+
+
+
+/**
+
+ * Checks if value is a given type.
+
+ *
+
+ * @function bo.system.EnsureArgument.isMandatoryType
+
+ * @param {object} [value] - The value to check.
+
+ * @param {(constructor|Array.&amp;lt;constructor&gt;)} type - The type that value must inherit.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {object} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a TYPE object.
+
+ */
+
+EnsureArgument.isMandatoryType = function (value, type, message) {
+
+  var types = type instanceof Array ? type : [ type ];
+
+  if (!(types.some(function (option) {
+
+      return value &amp;amp;&amp;amp; (value instanceof option || value.super_ === option);
+
+    })))
+
+    failed(arguments, 3, message || &#x27;manType&#x27;, typeNames(types));
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Model
+
+
+
+/**
+
+ * Checks if value is an instance of a given model type.
+
+ *
+
+ * @function bo.system.EnsureArgument.isModelType
+
+ * @param {(object|null)} [value=null] - The value to check.
+
+ * @param {(constructor|Array.&amp;lt;constructor&gt;)} model - The model type that value must be an instance of.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(object|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be a model type.
+
+ */
+
+EnsureArgument.isModelType = function (value, model, message) {
+
+  var models = model instanceof Array ? model : [ model ];
+
+  if (!(models.some(function (modelType) {
+
+        return value &amp;amp;&amp;amp; value.constructor &amp;amp;&amp;amp; value.constructor.modelType === modelType;
+
+      })))
+
+    failed(arguments, 3, message || &#x27;modelType&#x27;, models.join(&#x27; | &#x27;));
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Enumeration
+
+
+
+/**
+
+ * Checks if value is member of a given enumeration.
+
+ *
+
+ * @function bo.system.EnsureArgument.isEnumMember
+
+ * @param {number} [value] - The value to check.
+
+ * @param {constructor} type - The type of the enumeration.
+
+ * @param {number} [defaultValue] - The type of the enumeration.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {number} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: Type is not an enumeration type.
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The argument must be an enumeration type item.
+
+ */
+
+EnsureArgument.isEnumMember = function (value, type, defaultValue, message) {
+
+  if (typeof this === &#x27;function&#x27; &amp;amp;&amp;amp; this.name === &#x27;set_noAccessBehavior&#x27;) {
+
+    var source;
+
+    try {
+
+      //var constructor = Error.bind.apply(this);
+
+      //throw new constructor();
+
+      throw new Error();
+
+    }
+
+    catch (e) {
+
+      var re = /([\w.]+)@|at ([\w.]+) \(/g, st = e.stack, m;
+
+      m = re.exec(st);
+
+      source = m[1] || m[2];
+
+    }
+
+    var methodName = source.substr(source.lastIndexOf(&#x27;.&#x27;) + 1);
+
+    var className = source.substr(0, source.indexOf(&#x27;.&#x27;));
+
+    //var className = Object.getPrototypeOf(this).constructor.name;
+
+  }
+
+  if (!(type &amp;amp;&amp;amp; type.hasMember &amp;amp;&amp;amp; type.constructor &amp;amp;&amp;amp;
+
+      type.constructor.super_ &amp;amp;&amp;amp; type.constructor.super_.name === &#x27;Enumeration&#x27;))
+
+    failed(arguments, 4, &#x27;enumType&#x27;, type);
+
+  if ((value === null || value === undefined) &amp;amp;&amp;amp; typeof defaultValue === &#x27;number&#x27;)
+
+    value = defaultValue;
+
+  if (!type.hasMember(value))
+
+    failed(arguments, 4, message || &#x27;enumMember&#x27;, type);
+
+  return value;
+
+};
+
+
+
+//endregion
+
+
+
+//region Array
+
+
+
+/**
+
+ * Checks if value is an array of a given type or null.
+
+ *
+
+ * @function bo.system.EnsureArgument.isOptionalArray
+
+ * @param {(Array.&amp;lt;type&gt;|null)} [value=Array.&amp;lt;type&gt;] - The value to check.
+
+ * @param {*} type - The type of the array items - a primitive type or a constructor.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {(Array.&amp;lt;type&gt;|null)} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}:
+
+ *      The argument must be an array of TYPE values, or a single TYPE values or null.
+
+ * @throws {@link bo.system.ArgumentError Argument error}:
+
+ *      The argument must be an array of TYPE objects, or a single TYPE object or null.
+
+ */
+
+EnsureArgument.isOptionalArray = function (value, type, message) {
+
+  if (value === undefined || value === null)
+
+    return [];
+
+  var msgKey = &#x27;optArray&#x27;;
+
+  if (type === String || type === Number || type === Boolean) {
+
+    msgKey = &#x27;optArrayPrim&#x27;;
+
+    var typeName = type.name.toLowerCase();
+
+    if (typeof value === typeName || value instanceof type)
+
+      return [value];
+
+    if (value instanceof Array &amp;amp;&amp;amp; (!value.length || value.every(function (item) {
+
+        return typeof item === typeName || item instanceof type;
+
+      })))
+
+      return value;
+
+  } else {
+
+    if (value instanceof type)
+
+      return [value];
+
+    if (value instanceof Array &amp;amp;&amp;amp; (!value.length || value.every(function (item) {
+
+        return item instanceof type;
+
+      })))
+
+      return value;
+
+  }
+
+  failed(arguments, 3, message || msgKey, type);
+
+};
+
+
+
+/**
+
+ * Checks if value is an array of a given type.
+
+ *
+
+ * @function bo.system.EnsureArgument.isMandatoryArray
+
+ * @param {Array.&amp;lt;type&gt;} [value] - The value to check.
+
+ * @param {*} type - The type of the array items - a primitive type or a constructor.
+
+ * @param {string} [message] - Human-readable description of the error.
+
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+
+ * @returns {Array.&amp;lt;type&gt;} The checked value.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}:
+
+ *      The argument must be an array of TYPE values, or a single TYPE values or null.
+
+ * @throws {@link bo.system.ArgumentError Argument error}:
+
+ *      The argument must be an array of TYPE objects, or a single TYPE object or null.
+
+ */
+
+EnsureArgument.isMandatoryArray = function (value, type, message) {
+
+  var msgKey = &#x27;manArray&#x27;;
+
+  if (type === String || type === Number || type === Boolean) {
+
+    msgKey = &#x27;manArrayPrim&#x27;;
+
+    var typeName = type.name.toLowerCase();
+
+    if (typeof value === typeName || value instanceof type)
+
+      return [value];
+
+    if (value instanceof Array &amp;amp;&amp;amp; value.length &amp;amp;&amp;amp; value.every(function (item) {
+
+        return typeof item === typeName || item instanceof type;
+
+      }))
+
+      return value;
+
+  } else {
+
+    if (value instanceof type)
+
+      return [value];
+
+    if (value instanceof Array &amp;amp;&amp;amp; value.length &amp;amp;&amp;amp; value.every(function (item) {
+
+        return item instanceof type;
+
+      }))
+
+      return value;
+
+  }
+
+  failed(arguments, 3, message || msgKey, type);
+
+};
+
+
+
+//endregion
+
+
+
+Object.freeze(EnsureArgument);
+
+
+
+module.exports = EnsureArgument;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

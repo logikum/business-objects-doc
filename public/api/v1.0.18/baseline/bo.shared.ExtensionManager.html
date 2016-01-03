@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: ExtensionManager</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div><small><a href="bo.html">bo</a>.<wbr>shared.<wbr></small><span class="symbol-name">ExtensionManager</span></h1>
+            <p class="source-link">Source: <a href="shared_extension-manager.js.html#source-line-23">shared/<wbr>extension-manager.<wbr>js:23</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Provides properties to customize asynchronous models' behavior.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.ExtensionManager.html#daoBuilder">daoBuilder</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#dataCreate">dataCreate</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#dataExecute">dataExecute</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#dataFetch">dataFetch</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#dataInsert">dataInsert</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.ExtensionManager.html#dataRemove">dataRemove</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#dataSource">dataSource</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#dataUpdate">dataUpdate</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#fromCto">fromCto</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#fromDto">fromDto</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.ExtensionManager.html#modelPath">modelPath</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#toCto">toCto</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.ExtensionManager.html#toDto">toDto</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="ExtensionManager">new&nbsp;<span class="symbol-name">ExtensionManager</span><span class="signature"><span class="signature-params">(dataSource, modelPath)</span></span></h2>
+            <p>Creates a new extension manager object for an asynchronous model.</p>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>dataSource</p>
+                    </td>
+                    <td>
+                      <p>string</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The name of the data source.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>modelPath</p>
+                    </td>
+                    <td>
+                      <p>string</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The full path of the model.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Extends</dt>
+              <dd><a href="bo.shared.ExtensionManagerBase.html">bo.shared.ExtensionManagerBase</a>
+              </dd>
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The data source must be a non-empty string.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The model path must be a non-empty string.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <h3 id="daoBuilder"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">daoBuilder</span><small class="property-type">
+                &nbsp;<a href="external.html#.daoBuilder">external.daoBuilder</a></small></h3>
+              <p>Factory method to create the data access object for a model instance.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#daoBuilder">bo.shared.ExtensionManagerBase#daoBuilder</a>
+                </dd>
+              </dl>
+              <h3 id="dataCreate"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">dataCreate</span><small class="property-type">
+                &nbsp;<a href="external.html#.dataCreate">external.dataCreate</a></small></h3>
+              <p>Returns the property values of a new instance from the data source.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#dataCreate">bo.shared.ExtensionManagerBase#dataCreate</a>
+                </dd>
+              </dl>
+              <h3 id="dataExecute"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">dataExecute</span><small class="property-type">
+                &nbsp;<a href="external.html#.dataExecute">external.dataExecute</a></small></h3>
+              <p>Executes a command on the data source.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#dataExecute">bo.shared.ExtensionManagerBase#dataExecute</a>
+                </dd>
+              </dl>
+              <h3 id="dataFetch"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">dataFetch</span><small class="property-type">
+                &nbsp;<a href="external.html#.dataFetch">external.dataFetch</a></small></h3>
+              <p>Returns the property values of an existing instance from the data source.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#dataFetch">bo.shared.ExtensionManagerBase#dataFetch</a>
+                </dd>
+              </dl>
+              <h3 id="dataInsert"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">dataInsert</span><small class="property-type">
+                &nbsp;<a href="external.html#.dataInsert">external.dataInsert</a></small></h3>
+              <p>Saves a new instance into the data source.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#dataInsert">bo.shared.ExtensionManagerBase#dataInsert</a>
+                </dd>
+              </dl>
+              <h3 id="dataRemove"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">dataRemove</span><small class="property-type">
+                &nbsp;<a href="external.html#.dataRemove">external.dataRemove</a></small></h3>
+              <p>Deletes an existing instance from the data source.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#dataRemove">bo.shared.ExtensionManagerBase#dataRemove</a>
+                </dd>
+              </dl>
+              <h3 id="dataSource"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">dataSource</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the data source.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#dataSource">bo.shared.ExtensionManagerBase#dataSource</a>
+                </dd>
+              </dl>
+              <h3 id="dataUpdate"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">dataUpdate</span><small class="property-type">
+                &nbsp;<a href="external.html#.dataUpdate">external.dataUpdate</a></small></h3>
+              <p>Saves an existing instance into the data source.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#dataUpdate">bo.shared.ExtensionManagerBase#dataUpdate</a>
+                </dd>
+              </dl>
+              <h3 id="fromCto"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">fromCto</span><small class="property-type">
+                &nbsp;<a href="external.html#.fromCto">external.fromCto</a></small></h3>
+              <p>Converts the client transfer object to model instance.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#fromCto">bo.shared.ExtensionManagerBase#fromCto</a>
+                </dd>
+              </dl>
+              <h3 id="fromDto"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">fromDto</span><small class="property-type">
+                &nbsp;<a href="external.html#.fromDto">external.fromDto</a></small></h3>
+              <p>Converts the data transfer object to model instance.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#fromDto">bo.shared.ExtensionManagerBase#fromDto</a>
+                </dd>
+              </dl>
+              <h3 id="modelPath"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">modelPath</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The path of the model definition.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#modelPath">bo.shared.ExtensionManagerBase#modelPath</a>
+                </dd>
+              </dl>
+              <h3 id="toCto"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">toCto</span><small class="property-type">
+                &nbsp;<a href="external.html#.toCto">external.toCto</a></small></h3>
+              <p>Converts the model instance to client transfer object.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#toCto">bo.shared.ExtensionManagerBase#toCto</a>
+                </dd>
+              </dl>
+              <h3 id="toDto"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">toDto</span><small class="property-type">
+                &nbsp;<a href="external.html#.toDto">external.toDto</a></small></h3>
+              <p>Converts the model instance to data transfer object.</p>
+              <dl class="dl-compact">
+                <dt>Inherited from</dt>
+                <dd><a href="bo.shared.ExtensionManagerBase.html#toDto">bo.shared.ExtensionManagerBase#toDto</a>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

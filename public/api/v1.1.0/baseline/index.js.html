@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: index.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: index.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+//var ModelBase = require(&#x27;./model-base.js&#x27;);
+
+//var CollectionBase = require(&#x27;./collection-base.js&#x27;);
+
+
+
+var EditableRootModel = require(&#x27;./editable-root-model.js&#x27;);
+
+var EditableChildModel = require(&#x27;./editable-child-model.js&#x27;);
+
+var EditableRootCollection = require(&#x27;./editable-root-collection.js&#x27;);
+
+var EditableChildCollection = require(&#x27;./editable-child-collection.js&#x27;);
+
+var ReadOnlyRootModel = require(&#x27;./read-only-root-model.js&#x27;);
+
+var ReadOnlyChildModel = require(&#x27;./read-only-child-model.js&#x27;);
+
+var ReadOnlyRootCollection = require(&#x27;./read-only-root-collection.js&#x27;);
+
+var ReadOnlyChildCollection = require(&#x27;./read-only-child-collection.js&#x27;);
+
+var CommandObject = require(&#x27;./command-object.js&#x27;);
+
+
+
+var EditableRootModelSync = require(&#x27;./editable-root-model-sync.js&#x27;);
+
+var EditableChildModelSync = require(&#x27;./editable-child-model-sync.js&#x27;);
+
+var EditableRootCollectionSync = require(&#x27;./editable-root-collection-sync.js&#x27;);
+
+var EditableChildCollectionSync = require(&#x27;./editable-child-collection-sync.js&#x27;);
+
+var ReadOnlyRootModelSync = require(&#x27;./read-only-root-model-sync.js&#x27;);
+
+var ReadOnlyChildModelSync = require(&#x27;./read-only-child-model-sync.js&#x27;);
+
+var ReadOnlyRootCollectionSync = require(&#x27;./read-only-root-collection-sync.js&#x27;);
+
+var ReadOnlyChildCollectionSync = require(&#x27;./read-only-child-collection-sync.js&#x27;);
+
+var CommandObjectSync = require(&#x27;./command-object-sync.js&#x27;);
+
+
+
+var commonRules = require(&#x27;./common-rules/index.js&#x27;);
+
+var dataAccess = require(&#x27;./data-access/index.js&#x27;);
+
+var dataTypes = require(&#x27;./data-types/index.js&#x27;);
+
+var rules = require(&#x27;./rules/index.js&#x27;);
+
+var shared = require(&#x27;./shared/index.js&#x27;);
+
+var system = require(&#x27;./system/index.js&#x27;);
+
+
+
+var configuration = require(&#x27;./shared/configuration-reader.js&#x27;);
+
+var i18n = require(&#x27;./locales/i18n.js&#x27;);
+
+
+
+/**
+
+ * List of models and helper namespaces.
+
+ *
+
+ * @namespace bo
+
+ *
+
+ * @property {namespace} commonRules - {@link bo.commonRules Common rules namespace}
+
+ *      contains frequently used rules.
+
+ * @property {namespace} dataAccess - {@link bo.dataAccess Data access namespace}
+
+ *      contains data access components.
+
+ * @property {namespace} dataTypes - {@link bo.dataTypes Data types namespace}
+
+ *      contains data type components and definitions.
+
+ * @property {namespace} rules - {@link bo.rules Rules namespace}
+
+ *      contains components of validation and authorization rules.
+
+ * @property {namespace} shared - {@link bo.shared Shared namespace}
+
+ *      contains components used by models, collections and other components.
+
+ * @property {namespace} system - {@link bo.system System namespace}
+
+ *      contains general components.
+
+ *
+
+ * @property {object} configuration - Object containing
+
+ *      {@link bo.shared~configuration configuration} data of the business objects.
+
+ * @property {function} i18n - {@link bo.i18n Internationalization}
+
+ *      constructor to create new a message localizer object.
+
+ */
+
+var index = {
+
+  //ModelBase: ModelBase,
+
+  //CollectionBase: CollectionBase,
+
+
+
+  EditableRootModel: EditableRootModel,
+
+  EditableChildModel: EditableChildModel,
+
+  EditableRootCollection: EditableRootCollection,
+
+  EditableChildCollection: EditableChildCollection,
+
+  ReadOnlyRootModel: ReadOnlyRootModel,
+
+  ReadOnlyChildModel: ReadOnlyChildModel,
+
+  ReadOnlyRootCollection: ReadOnlyRootCollection,
+
+  ReadOnlyChildCollection: ReadOnlyChildCollection,
+
+  CommandObject: CommandObject,
+
+
+
+  EditableRootModelSync: EditableRootModelSync,
+
+  EditableChildModelSync: EditableChildModelSync,
+
+  EditableRootCollectionSync: EditableRootCollectionSync,
+
+  EditableChildCollectionSync: EditableChildCollectionSync,
+
+  ReadOnlyRootModelSync: ReadOnlyRootModelSync,
+
+  ReadOnlyChildModelSync: ReadOnlyChildModelSync,
+
+  ReadOnlyRootCollectionSync: ReadOnlyRootCollectionSync,
+
+  ReadOnlyChildCollectionSync: ReadOnlyChildCollectionSync,
+
+  CommandObjectSync: CommandObjectSync,
+
+
+
+  commonRules: commonRules,
+
+  dataAccess: dataAccess,
+
+  dataTypes: dataTypes,
+
+  rules: rules,
+
+  shared: shared,
+
+  system: system,
+
+
+
+  configuration: configuration,
+
+  i18n: i18n,
+
+
+
+  /**
+
+   * Initializes the business objects.
+
+   *
+
+   * @function bo.initialize
+
+   * @param {string} cfgPath -
+
+   *    The relative path of the {@link external.configurationFile configuration file} (.js or .json).
+
+   *    E.g. /config/business-objects.json
+
+   */
+
+  initialize: function (cfgPath) {
+
+    this.configuration.initialize(cfgPath);
+
+    this.i18n.initialize(this.configuration.pathOfLocales, this.configuration.getLocale);
+
+  }
+
+};
+
+
+
+// Immutable object.
+
+Object.freeze(index);
+
+
+
+module.exports = index;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on December 31, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,985 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: editable-child-collection.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: editable-child-collection.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+//region Imports
+
+
+
+var util = require(&#x27;util&#x27;);
+
+var Argument = require(&#x27;./system/argument-check.js&#x27;);
+
+
+
+var CollectionBase = require(&#x27;./collection-base.js&#x27;);
+
+var ModelError = require(&#x27;./shared/model-error.js&#x27;);
+
+
+
+var MODEL_STATE = require(&#x27;./shared/model-state.js&#x27;);
+
+var CLASS_NAME = &#x27;EditableChildCollection&#x27;;
+
+
+
+//endregion
+
+
+
+/**
+
+ * Factory method to create definitions of asynchronous editable child collections.
+
+ *
+
+ *    Valid collection item types are:
+
+ *
+
+ *      * EditableChildModel
+
+ *
+
+ * @function bo.EditableChildCollection
+
+ * @param {string} name - The name of the collection.
+
+ * @param {EditableChildModel} itemType - The model type of the collection items.
+
+ * @returns {EditableChildCollection} The constructor of an asynchronous editable child collection.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The collection name must be a non-empty string.
+
+ * @throws {@link bo.shared.ModelError Model error}: The item type must be an EditableChildModel.
+
+ */
+
+var EditableChildCollectionFactory = function (name, itemType) {
+
+
+
+  name = Argument.inConstructor(CLASS_NAME)
+
+      .check(name).forMandatory(&#x27;name&#x27;).asString();
+
+
+
+  // Check tree reference.
+
+  if (typeof itemType !== &#x27;string&#x27;) {
+
+    // Verify the model type of the item type.
+
+    if (itemType.modelType !== &#x27;EditableChildModel&#x27;)
+
+      throw new ModelError(&#x27;invalidItem&#x27;,
+
+          itemType.prototype.name, itemType.modelType,
+
+          CLASS_NAME, &#x27;EditableChildModel&#x27;);
+
+  }
+
+
+
+  /**
+
+   * @classdesc
+
+   *    Represents the definition of an asynchronous editable child collection.
+
+   * @description
+
+   *    Creates a new asynchronous editable child collection instance.
+
+   *
+
+   *    _The name of the model type available as:
+
+   *    __&amp;amp;lt;instance&amp;amp;gt;.constructor.modelType__, returns &#x27;EditableChildCollection&#x27;._
+
+   *
+
+   *    Valid parent model types are:
+
+   *
+
+   *      * EditableRootModel
+
+   *      * EditableChildModel
+
+   *
+
+   * @name EditableChildCollection
+
+   * @constructor
+
+   * @param {object} parent - The parent business object.
+
+   * @param {bo.shared.EventHandlerList} [eventHandlers] - The event handlers of the instance.
+
+   *
+
+   * @extends CollectionBase
+
+   *
+
+   * @throws {@link bo.system.ArgumentError Argument error}:
+
+   *    The parent object must be an EditableRootModel or EditableChildModel instance.
+
+   */
+
+  var EditableChildCollection = function (parent, eventHandlers) {
+
+    CollectionBase.call(this);
+
+
+
+    // Verify the model type of the parent model.
+
+    parent = Argument.inConstructor(name).check(parent).for(&#x27;parent&#x27;).asModelType([
+
+      &#x27;EditableRootModel&#x27;,
+
+      &#x27;EditableChildModel&#x27;
+
+    ]);
+
+
+
+    // Resolve tree reference.
+
+    if (typeof itemType === &#x27;string&#x27;) {
+
+      if (itemType === parent.$modelName)
+
+        itemType = parent.constructor;
+
+      else
+
+        throw new ModelError(&#x27;invalidTree&#x27;, itemType, parent.$modelName);
+
+    }
+
+
+
+    var self = this;
+
+    var items = [];
+
+
+
+    /**
+
+     * The name of the model.
+
+     *
+
+     * @name EditableChildCollection#$modelName
+
+     * @type {string}
+
+     * @readonly
+
+     */
+
+    this.$modelName = name;
+
+
+
+    /**
+
+     * The count of the child objects in the collection.
+
+     *
+
+     * @name EditableChildCollection#count
+
+     * @type {number}
+
+     * @readonly
+
+     */
+
+    Object.defineProperty(self, &#x27;count&#x27;, {
+
+      get: function () {
+
+        return items.length;
+
+      },
+
+      enumerable: false
+
+    });
+
+
+
+    //region Transfer object methods
+
+
+
+    /**
+
+     * Transforms the business object collection to a plain object array to send to the client.
+
+     * &amp;lt;br/&gt;_This method is usually called by the parent object._
+
+     *
+
+     * @function EditableChildCollection#toCto
+
+     * @returns {Array.&amp;lt;object&gt;} The client transfer object.
+
+     */
+
+    this.toCto = function () {
+
+      var cto = [];
+
+      items.forEach(function (item) {
+
+        cto.push(item.toCto());
+
+      });
+
+      return cto;
+
+    };
+
+
+
+    /**
+
+     * Rebuilds the business object collection from a plain object array sent by the client.
+
+     * &amp;lt;br/&gt;_This method is usually called by the parent object._
+
+     *
+
+     * @function EditableChildCollection#fromCto
+
+     * @param {Array.&amp;lt;object&gt;} data - The array of client transfer objects.
+
+     * @param {external.cbFromCto} callback - Returns the eventual error.
+
+     */
+
+    this.fromCto = function (data, callback) {
+
+      if (!(data instanceof Array))
+
+        callback(null);
+
+
+
+      var dataNew = data.filter(function () { return true; });
+
+      var itemsLive = [];
+
+      var itemsLate = [];
+
+      var count = 0;
+
+      var error = null;
+
+      var index;
+
+
+
+      function finish() {
+
+        if (++count == dataNew.length) {
+
+          return callback(error);
+
+        }
+
+      }
+
+      function handleOldNew() {
+
+        count = 0;
+
+
+
+        // Remove non existing items.
+
+        for (index = 0; index &amp;lt; itemsLate.length; index++) {
+
+          items[itemsLate[index]].remove();
+
+        }
+
+        // Insert non existing data.
+
+        if (dataNew.length) {
+
+          dataNew.forEach(function (cto) {
+
+            itemType.create(parent, eventHandlers, function (err, item) {
+
+              if (err) {
+
+                error = error || err;
+
+                finish();
+
+              } else {
+
+                item.fromCto(cto, function (err) {
+
+                  if (err)
+
+                    error = error || err;
+
+                  else
+
+                    items.push(item);
+
+                  finish();
+
+                });
+
+              }
+
+            });
+
+          });
+
+        } else
+
+          return callback(null);
+
+      }
+
+
+
+      // Discover changed items.
+
+      for (index = 0; index &amp;lt; items.length; index++) {
+
+        var dataFound = false;
+
+        var i = 0;
+
+        for (; i &amp;lt; dataNew.length; i++) {
+
+          if (items[index].keyEquals(data[i])) {
+
+            itemsLive.push({ item: index, cto: i });
+
+            dataFound = true;
+
+            break;
+
+          }
+
+        }
+
+        if (dataFound)
+
+          dataNew.splice(i, 1);
+
+        else
+
+          itemsLate.push(index);
+
+      }
+
+      // Update existing items.
+
+      if (itemsLive.length)
+
+        for (index = 0; index &amp;lt; itemsLive.length; index++) {
+
+          var ix = itemsLive[index];
+
+          items[ix.item].fromCto(data[ix.cto], function (err) {
+
+            if (err)
+
+              error = error || err;
+
+            if (++count == itemsLive.length)
+
+              handleOldNew();
+
+          });
+
+        }
+
+      else
+
+        handleOldNew();
+
+    };
+
+
+
+    //endregion
+
+
+
+    //region Actions
+
+
+
+    /**
+
+     * Creates a new item and adds it to the collection at the specified index.
+
+     *
+
+     * @function EditableChildCollection#create
+
+     * @param {number} index - The index of the new item.
+
+     * @param {external.cbDataPortal} callback - Returns the newly created editable business object.
+
+     */
+
+    this.createItem = function (index, callback) {
+
+      if (!callback) {
+
+        callback = index;
+
+        index = items.length;
+
+      }
+
+      itemType.create(parent, eventHandlers, function (err, item) {
+
+        if (err)
+
+          callback(err);
+
+        var ix = parseInt(index, 10);
+
+        ix = isNaN(ix) ? items.length : ix;
+
+        items.splice(ix, 0, item);
+
+        callback(null, item);
+
+      });
+
+    };
+
+
+
+    /**
+
+     * Initializes the items in the collection with data retrieved from the repository.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function EditableChildCollection#fetch
+
+     * @protected
+
+     * @param {Array.&amp;lt;object&gt;} [data] - The data to load into the business object collection.
+
+     * @param {external.cbDataPortal} callback - Returns the eventual error.
+
+     */
+
+    this.fetch = function (data, callback) {
+
+      if (data instanceof Array &amp;amp;&amp;amp; data.length) {
+
+        var count = 0;
+
+        var error = null;
+
+
+
+        data.forEach(function (dto) {
+
+          itemType.load(parent, dto, eventHandlers, function (err, item) {
+
+            if (err)
+
+              error = error || err;
+
+            else
+
+              items.push(item);
+
+            // Check if all items are done.
+
+            if (++count === data.length) {
+
+              callback(error);
+
+            }
+
+          });
+
+        });
+
+      } else
+
+        callback(null);
+
+    };
+
+
+
+    /**
+
+     * Saves the changes of the business object collection to the repository.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function EditableChildCollection#save
+
+     * @protected
+
+     * @param {object} connection - The connection data.
+
+     * @param {external.cbDataPortal} callback - Returns the eventual error.
+
+     */
+
+    this.save = function (connection, callback) {
+
+      var count = 0;
+
+      var error = null;
+
+      if (items.length) {
+
+        items.forEach(function (item) {
+
+          item.save(connection, function (err) {
+
+            error = error || err;
+
+            // Check if all items are done.
+
+            if (++count === items.length) {
+
+              items = items.filter(function (item) {
+
+                return item.getModelState() !== MODEL_STATE.getName(MODEL_STATE.removed);
+
+              });
+
+              callback(error);
+
+            }
+
+          });
+
+        });
+
+      } else
+
+        callback(null);
+
+    };
+
+
+
+    /**
+
+     * Marks all items in the collection to be deleted from the repository on next save.
+
+     *
+
+     * @function EditableChildCollection#remove
+
+     */
+
+    this.remove = function () {
+
+      items.forEach(function (item) {
+
+        item.remove();
+
+      });
+
+    };
+
+
+
+    /**
+
+     * Indicates whether all items of the business collection are valid.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function EditableChildCollection#isValid
+
+     * @protected
+
+     * @returns {boolean}
+
+     */
+
+    this.isValid = function () {
+
+      return items.every(function (item) {
+
+        return item.isValid();
+
+      });
+
+    };
+
+
+
+    /**
+
+     * Executes validation on all items of the collection.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function EditableChildCollection#checkRules
+
+     * @protected
+
+     */
+
+    this.checkRules = function () {
+
+      items.forEach(function (item) {
+
+        item.checkRules();
+
+      });
+
+    };
+
+
+
+    /**
+
+     * Gets the broken rules of all items of the collection.
+
+     *
+
+     * _This method is called by the parent object._
+
+     *
+
+     * @function EditableChildCollection#getBrokenRules
+
+     * @protected
+
+     * @param {string} [namespace] - The namespace of the message keys when messages are localizable.
+
+     * @returns {Array.&amp;lt;bo.rules.BrokenRulesOutput&gt;} The broken rules of the collection.
+
+     */
+
+    this.getBrokenRules = function(namespace) {
+
+      var bro = [];
+
+      items.forEach(function (item) {
+
+        var childBrokenRules = item.getBrokenRules(namespace);
+
+        if (childBrokenRules)
+
+          bro.push(childBrokenRules);
+
+      });
+
+      return bro.length ? bro : null;
+
+    };
+
+
+
+    //endregion
+
+
+
+    //region Public array methods
+
+
+
+    /**
+
+     * Gets a collection item at a specific position.
+
+     *
+
+     * @function EditableChildCollection#at
+
+     * @param {number} index - The index of the required item in the collection.
+
+     * @returns {EditableChildModel} The required collection item.
+
+     */
+
+    this.at = function (index) {
+
+      return items[index];
+
+    };
+
+
+
+    /**
+
+     * Executes a provided function once per collection item.
+
+     *
+
+     * @function EditableChildCollection#forEach
+
+     * @param {external.cbCollectionItem} callback - Function that produces an item of the new collection.
+
+     */
+
+    this.forEach = function (callback) {
+
+      items.forEach(callback);
+
+    };
+
+
+
+    /**
+
+     * Tests whether all items in the collection pass the test implemented by the provided function.
+
+     *
+
+     * @function EditableChildCollection#every
+
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+
+     * @returns {boolean} True when callback returns truthy value for each item, otherwise false.
+
+     */
+
+    this.every = function (callback) {
+
+      return items.every(callback);
+
+    };
+
+
+
+    /**
+
+     * Tests whether some item in the collection pass the test implemented by the provided function.
+
+     *
+
+     * @function EditableChildCollection#some
+
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+
+     * @returns {boolean} True when callback returns truthy value for some item, otherwise false.
+
+     */
+
+    this.some = function (callback) {
+
+      return items.some(callback);
+
+    };
+
+
+
+    /**
+
+     * Creates a new array with all collection items that pass the test
+
+     * implemented by the provided function.
+
+     *
+
+     * @function EditableChildCollection#filter
+
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+
+     * @returns {Array.&amp;lt;EditableChildModel&gt;} The new array of collection items.
+
+     */
+
+    this.filter = function (callback) {
+
+      return items.filter(callback);
+
+    };
+
+
+
+    /**
+
+     * Creates a new array with the results of calling a provided function
+
+     * on every item in this collection.
+
+     *
+
+     * @function EditableChildCollection#map
+
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+
+     * @returns {Array.&amp;lt;*&gt;} The new array of callback results.
+
+     */
+
+    this.map = function (callback) {
+
+      return items.map(callback);
+
+    };
+
+
+
+    /**
+
+     * Sorts the items of the collection in place and returns the collection.
+
+     *
+
+     * @function EditableChildCollection#sort
+
+     * @param {external.cbCompare} [fnCompare] - Function that defines the sort order.
+
+     *      If omitted, the collection is sorted according to each character&#x27;s Unicode
+
+     *      code point value, according to the string conversion of each item.
+
+     * @returns {EditableChildCollection} The sorted collection.
+
+     */
+
+    this.sort = function (fnCompare) {
+
+      return items.sort(fnCompare);
+
+    };
+
+
+
+    //endregion
+
+
+
+    // Immutable object.
+
+    Object.freeze(this);
+
+  };
+
+  util.inherits(EditableChildCollection, CollectionBase);
+
+
+
+  /**
+
+   * The name of the model type.
+
+   *
+
+   * @property {string} EditableChildCollection.constructor.modelType
+
+   * @default EditableChildCollection
+
+   * @readonly
+
+   */
+
+  Object.defineProperty(EditableChildCollection, &#x27;modelType&#x27;, {
+
+    get: function () { return CLASS_NAME; }
+
+  });
+
+
+
+  return EditableChildCollection;
+
+};
+
+
+
+module.exports = EditableChildCollectionFactory;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on December 31, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

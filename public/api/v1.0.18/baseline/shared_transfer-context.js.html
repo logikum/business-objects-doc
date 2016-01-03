@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: shared/transfer-context.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: shared/transfer-context.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+var CLASS_NAME = &#x27;TransferContext&#x27;;
+
+
+
+var EnsureArgument = require(&#x27;./../system/ensure-argument.js&#x27;);
+
+var ModelError = require(&#x27;./model-error.js&#x27;);
+
+var PropertyInfo = require(&#x27;./property-info.js&#x27;);
+
+
+
+/**
+
+ * @classdesc
+
+ *    Provides the context for custom transfer objects.
+
+ * @description
+
+ *    Creates a new transfer context object.
+
+ *      &amp;lt;/br&gt;&amp;lt;/br&gt;
+
+ *    &amp;lt;i&gt;&amp;lt;b&gt;Warning:&amp;lt;/b&gt; Transfer context objects are created in models internally.
+
+ *    They are intended only to make publicly available the values of model properties
+
+ *    for custom transfer objects.&amp;lt;/i&gt;
+
+ *
+
+ * @memberof bo.shared
+
+ * @constructor
+
+ * @param {Array.&amp;lt;bo.shared.PropertyInfo&gt;} [properties] - An array of property definitions.
+
+ * @param {internal~getValue} [getValue] - A function that returns the current value of a property.
+
+ * @param {internal~setValue} [setValue] - A function that changes the current value of a property.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The properties must be an array
+
+ *    of PropertyInfo objects, or a single PropertyInfo object or null.
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The getValue argument must be a function.
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The setValue argument must be a function.
+
+ */
+
+function TransferContext (properties, getValue, setValue) {
+
+  var self = this;
+
+
+
+  /**
+
+   * Array of property definitions that may appear on the transfer object.
+
+   * @type {Array.&amp;lt;bo.shared.PropertyInfo&gt;}
+
+   * @readonly
+
+   */
+
+  this.properties = EnsureArgument.isOptionalArray(properties, PropertyInfo,
+
+      &#x27;c_optArray&#x27;, CLASS_NAME, &#x27;properties&#x27;);
+
+  getValue = EnsureArgument.isOptionalFunction(getValue,
+
+      &#x27;c_optFunction&#x27;, CLASS_NAME, &#x27;getValue&#x27;);
+
+  setValue = EnsureArgument.isOptionalFunction(setValue,
+
+      &#x27;c_optFunction&#x27;, CLASS_NAME, &#x27;setValue&#x27;);
+
+
+
+  function getByName (name) {
+
+    for (var i = 0; i &amp;lt; self.properties.length; i++) {
+
+      if (self.properties[i].name === name)
+
+        return self.properties[i];
+
+    }
+
+    throw new ModelError(&#x27;noProperty&#x27;, properties.name, name);
+
+  }
+
+
+
+  /**
+
+   * Gets the current value of a model property.
+
+   *
+
+   * @param {string} propertyName - The name of the property.
+
+   * @returns {*} The value of a model property.
+
+   *
+
+   * @throws {@link bo.system.ArgumentError Argument error}: The name must be a non-empty string.
+
+   * @throws {@link bo.system.ArgumentError Argument error}: The model has no property with the given name.
+
+   */
+
+  this.getValue = function (propertyName) {
+
+    if (getValue) {
+
+      propertyName = EnsureArgument.isMandatoryString(propertyName,
+
+          &#x27;m_manString&#x27;, CLASS_NAME, &#x27;getValue&#x27;, &#x27;propertyName&#x27;);
+
+      return getValue(getByName(propertyName));
+
+    } else
+
+      throw new ModelError(&#x27;getValue&#x27;);
+
+  };
+
+
+
+  /**
+
+   * Sets the current value of a model property.
+
+   *
+
+   * @param {string} propertyName - The name of the property.
+
+   * @param {*} value - The new value of the property.
+
+   *
+
+   * @throws {@link bo.system.ArgumentError Argument error}: The name must be a non-empty string.
+
+   * @throws {@link bo.system.ArgumentError Argument error}: The model has no property with the given name.
+
+   */
+
+  this.setValue = function (propertyName, value) {
+
+    if (setValue) {
+
+      propertyName = EnsureArgument.isMandatoryString(propertyName,
+
+          &#x27;m_manString&#x27;, CLASS_NAME, &#x27;setValue&#x27;, &#x27;propertyName&#x27;);
+
+      if (value !== undefined) {
+
+        setValue(getByName(propertyName), value);
+
+      }
+
+    } else
+
+      throw new ModelError(&#x27;setValue&#x27;);
+
+  };
+
+
+
+  // Immutable object.
+
+  Object.freeze(this);
+
+}
+
+
+
+module.exports = TransferContext;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

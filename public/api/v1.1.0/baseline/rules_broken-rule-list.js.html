@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: rules/broken-rule-list.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: rules/broken-rule-list.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+var CLASS_NAME = &#x27;BrokenRuleList&#x27;;
+
+
+
+var Argument = require(&#x27;../system/argument-check.js&#x27;);
+
+var PropertyInfo = require(&#x27;../shared/property-info.js&#x27;);
+
+var BrokenRule = require(&#x27;./broken-rule.js&#x27;);
+
+var BrokenRulesOutput = require(&#x27;./broken-rules-output.js&#x27;);
+
+var RuleNotice = require(&#x27;./rule-notice.js&#x27;);
+
+var RuleSeverity = require(&#x27;./rule-severity.js&#x27;);
+
+
+
+/**
+
+ * @classdesc Represents the lists of broken rules.
+
+ * @description Creates a new broken rule list instance.
+
+ *
+
+ * @memberof bo.rules
+
+ * @constructor
+
+ * @param {string} modelName - The name of the model.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The model name must be a non-empty string.
+
+ */
+
+var BrokenRuleList = function (modelName) {
+
+
+
+  modelName = Argument.inConstructor(CLASS_NAME).check(modelName).forMandatory(&#x27;modelName&#x27;).asString();
+
+
+
+  var items = {};
+
+  var length = 0;
+
+
+
+  /**
+
+   * Adds a broken rule to the list.
+
+   *
+
+   * @param {bo.rules.BrokenRule} brokenRule - A broken rule to add.
+
+   *
+
+   * @throws {@link bo.system.ArgumentError Argument error}: The rule must be a BrokenRule object.
+
+   */
+
+  this.add = function (brokenRule) {
+
+    brokenRule = Argument.inMethod(CLASS_NAME, &#x27;add&#x27;)
+
+        .check(brokenRule).forMandatory(&#x27;brokenRule&#x27;).asType(BrokenRule);
+
+
+
+    if (items[brokenRule.propertyName])
+
+      items[brokenRule.propertyName].push(brokenRule);
+
+    else {
+
+      items[brokenRule.propertyName] = new Array(brokenRule);
+
+      length++;
+
+    }
+
+  };
+
+
+
+  /**
+
+   * Removes the broken rules of a property except of the retained ones.
+
+   *
+
+   * @param {string} propertyName - The name of the property that broken rules are deleted of.
+
+   */
+
+  function clearFor (propertyName) {
+
+    if (items[propertyName]) {
+
+      var preserved = items[propertyName].filter(function (item) {
+
+        return item.isPreserved;
+
+      });
+
+      if (preserved.length)
+
+        items[propertyName] = preserved;
+
+      else {
+
+        delete items[propertyName];
+
+        length--;
+
+      }
+
+    }
+
+  }
+
+
+
+  /**
+
+   * Removes the broken rules of a property except of the retained ones.
+
+   * If property is omitted, all broken rules are removed
+
+   * except of the retained ones.
+
+   *
+
+   * @param {bo.rules.PropertyInfo} [property] - A property definition.
+
+   */
+
+  this.clear = function (property) {
+
+    if (property instanceof PropertyInfo)
+
+      clearFor(property.name);
+
+    else
+
+      for (var propertyName in items) {
+
+        if (items.hasOwnProperty(propertyName))
+
+          clearFor(propertyName);
+
+      }
+
+  };
+
+
+
+  /**
+
+   * Removes the broken rules of a property, including retained ones.
+
+   * If property is omitted, all broken rules are removed.
+
+   *
+
+   * @param property
+
+   */
+
+  this.clearAll = function (property) {
+
+    if (property instanceof PropertyInfo) {
+
+      delete items[property.name];
+
+      length--;
+
+    } else {
+
+      items = {};
+
+      length = 0;
+
+    }
+
+  };
+
+
+
+  /**
+
+   * Determines if the model is valid. The model is valid when it has no
+
+   * broken rule with error severity.
+
+   *
+
+   * @returns {boolean} - True if the model is valid, otherwise false.
+
+   */
+
+  this.isValid = function () {
+
+    for (var propertyName in items) {
+
+      if (items.hasOwnProperty(propertyName)) {
+
+
+
+        if (items[propertyName].some(function (item) {
+
+              return item.severity === RuleSeverity.error;
+
+            }))
+
+          return false;
+
+      }
+
+    }
+
+    return true;
+
+  };
+
+
+
+  /**
+
+   * Transforms the broken rules into a format that can be sent to the client.
+
+   *
+
+   * @param {string} [namespace] - The namespace of the message keys when messages are localizable.
+
+   * @returns {bo.rules.BrokenRulesOutput} The response object to send.
+
+   *
+
+   * @throws {@link bo.system.ArgumentError Argument error}: The namespace must be a string.
+
+   */
+
+  this.output = function (namespace) {
+
+
+
+    namespace = Argument.inMethod(CLASS_NAME, &#x27;output&#x27;)
+
+        .check(namespace).forOptional(&#x27;namespace&#x27;).asString();
+
+
+
+    var data = new BrokenRulesOutput();
+
+    if (length) {
+
+
+
+      var ns = namespace ? namespace + &#x27;:&#x27; : &#x27;&#x27;;
+
+      for (var property in items) {
+
+        if (items.hasOwnProperty(property)) {
+
+
+
+          items[property].forEach(function(brokenRule) {
+
+
+
+            var propertyName = modelName + &#x27;.&#x27; + brokenRule.propertyName;
+
+            var message = brokenRule.message || ns + propertyName + &#x27;.&#x27; + brokenRule.ruleName;
+
+            var notice = new RuleNotice(message, brokenRule.severity);
+
+
+
+            data.add(propertyName, notice);
+
+          });
+
+        }
+
+      }
+
+    }
+
+    return data;
+
+  };
+
+};
+
+
+
+module.exports = BrokenRuleList;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on December 31, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

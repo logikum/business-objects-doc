@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Source: shared/property-info.js</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: shared/property-info.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+
+
+var CLASS_NAME = &#x27;PropertyInfo&#x27;;
+
+
+
+var EnsureArgument = require(&#x27;./../system/ensure-argument.js&#x27;);
+
+var DataType = require(&#x27;../data-types/data-type.js&#x27;);
+
+var PropertyFlag = require(&#x27;../shared/property-flag.js&#x27;);
+
+var ModelBase = require(&#x27;../model-base.js&#x27;);
+
+var CollectionBase = require(&#x27;../collection-base.js&#x27;);
+
+
+
+/**
+
+ * @classdesc
+
+ *    Defines a property of a business object model.
+
+ * @description
+
+ *    Creates a new property definition.
+
+ *      &amp;lt;/br&gt;&amp;lt;/br&gt;
+
+ *    The data type can be any one from the {@link bo.dataTypes} namespace
+
+ *    or a custom data type based on {@link bo.dataTypes.DataType DataType} object,
+
+ *    or can be any business object model or collection defined by the
+
+ *    model types available in the {@link bo} namespace (i.e. models based on
+
+ *    {@link bo.ModelBase ModelBase} or {@link bo.CollectionBase CollectionBase}
+
+ *    objects).
+
+ *      &amp;lt;/br&gt;&amp;lt;/br&gt;
+
+ *    The flags parameter is ignored when data type is a model or collection.
+
+ *
+
+ * @memberof bo.shared
+
+ * @constructor
+
+ * @param {string} name - The name of the property.
+
+ * @param {*} type - The data type of the property.
+
+ * @param {bo.shared.PropertyFlag} [flags] - Other attributes of the property.
+
+ * @param {external.propertyGetter} [getter] - Custom function to read the value of the property.
+
+ * @param {external.propertySetter} [setter] - Custom function to write the value of the property.
+
+ *
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The name must be a non-empty string.
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The type must be a data type, a model or a collection.
+
+ * @throws {@link bo.system.ArgumentError Argument error}: The flags must be PropertyFlag items.
+
+ */
+
+function PropertyInfo (name, type, flags, getter, setter) {
+
+
+
+  /**
+
+   * The name of the property.
+
+   * @type {string}
+
+   * @readonly
+
+   */
+
+  this.name = EnsureArgument.isMandatoryString(name,
+
+      &#x27;c_manString&#x27;, CLASS_NAME, &#x27;name&#x27;);
+
+
+
+  /**
+
+   * The data type of the property.
+
+   *    &amp;lt;/br&gt;&amp;lt;/br&gt;
+
+   * The data type can be any one from the {@link bo.dataTypes} namespace
+
+   * or a custom data type based on {@link bo.dataTypes.DataType DataType} object,
+
+   * or can be any business object model or collection defined by the
+
+   * model types available in the {@link bo} namespace (i.e. models based on
+
+   * {@link bo.ModelBase ModelBase} or {@link bo.CollectionBase CollectionBase}
+
+   * objects).
+
+   *
+
+   * @type {*}
+
+   * @readonly
+
+   */
+
+  this.type = EnsureArgument.isMandatoryType(type, [ DataType, ModelBase, CollectionBase ],
+
+      &#x27;c_manType&#x27;, CLASS_NAME, &#x27;type&#x27;);
+
+
+
+  /**
+
+   * The custom getter function of the property.
+
+   * @type {external.propertyGetter}
+
+   * @readonly
+
+   */
+
+  this.getter = EnsureArgument.isOptionalFunction(getter,
+
+      &#x27;c_optFunction&#x27;, CLASS_NAME, &#x27;getter&#x27;);
+
+
+
+  /**
+
+   * The custom setter function of the property.
+
+   * @type {external.propertySetter}
+
+   * @readonly
+
+   */
+
+  this.setter = EnsureArgument.isOptionalFunction(setter,
+
+      &#x27;c_optFunction&#x27;, CLASS_NAME, &#x27;setter&#x27;);
+
+
+
+  flags = type instanceof DataType ?
+
+    EnsureArgument.isMandatoryInteger(flags || PropertyFlag.none,
+
+        &#x27;c_optInteger&#x27;, CLASS_NAME, &#x27;flags&#x27;) :
+
+    PropertyFlag.readOnly | PropertyFlag.notOnDto | PropertyFlag.notOnCto;
+
+
+
+  /**
+
+   * Indicates whether the value of the property can be modified.
+
+   * @type {string}
+
+   * @readonly
+
+   */
+
+  this.isReadOnly = (flags &amp;amp; PropertyFlag.readOnly) === PropertyFlag.readOnly;
+
+  /**
+
+   * Indicates if the property is a key element.
+
+   * @type {string}
+
+   * @readonly
+
+   */
+
+  this.isKey = (flags &amp;amp; PropertyFlag.key) === PropertyFlag.key;
+
+  /**
+
+   * Indicates if the property is a key element of the parent object.
+
+   * @type {string}
+
+   * @readonly
+
+   */
+
+  this.isParentKey = (flags &amp;amp; PropertyFlag.parentKey) === PropertyFlag.parentKey;
+
+  /**
+
+   * Indicates whether the value of the property would be passed to the data access object
+
+   * or would be received from the data access object, respectively.
+
+   * @type {string}
+
+   * @readonly
+
+   */
+
+  this.isOnDto = (flags &amp;amp; PropertyFlag.notOnDto) === PropertyFlag.none;
+
+  /**
+
+   * Indicates whether the value of the property would be passed to the client
+
+   * or would be received from the client, respectively.
+
+   * @type {string}
+
+   * @readonly
+
+   */
+
+  this.isOnCto = (flags &amp;amp; PropertyFlag.notOnCto) === PropertyFlag.none;
+
+
+
+  /**
+
+   * Checks if value has the appropriate type and it is not null,
+
+   * and not empty in case of Text data type.
+
+   *
+
+   * @function bo.shared.PropertyInfo#hasValue
+
+   * @param {data} value - The value to check.
+
+   * @returns {boolean} True if the value is neither null nor empty, otherwise false.
+
+   */
+
+  this.hasValue = function (value) {
+
+    return this.type.hasValue(value);
+
+  };
+
+
+
+  // Immutable object.
+
+  Object.freeze(this);
+
+}
+
+
+
+module.exports = PropertyInfo;
+
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

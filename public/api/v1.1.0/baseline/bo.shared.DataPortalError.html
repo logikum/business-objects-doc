@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: DataPortalError</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div><small><a href="bo.html">bo</a>.<wbr>shared.<wbr></small><span class="symbol-name">DataPortalError</span></h1>
+            <p class="source-link">Source: <a href="shared_data-portal-error.js.html#source-line-28">shared/<wbr>data-portal-error.<wbr>js:28</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Represents a data portal error error.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalError.html#action">action</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.DataPortalError.html#innerError">innerError</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalError.html#message">message</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.DataPortalError.html#modelName">modelName</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalError.html#modelType">modelType</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.DataPortalError.html#name">name</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="DataPortalError">new&nbsp;<span class="symbol-name">DataPortalError</span><span class="signature"><span class="signature-params">(modeltype, modelName, action, interceptedError)</span></span></h2>
+            <p>Creates a data portal error object.</p>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>modeltype</p>
+                    </td>
+                    <td>
+                      <p>string</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The type of the model the error occurred in.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>modelName</p>
+                    </td>
+                    <td>
+                      <p>string</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The name of the model the error occurred in.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>action</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.shared.DataPortalAction.html">bo.shared.DataPortalAction</a>
+                      </p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The data portal action the error occurred in.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>interceptedError</p>
+                    </td>
+                    <td>
+                      <p>error</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The error to be wrapped.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Extends</dt>
+              <dd>Error</dd>
+              <dt>See also</dt>
+              <dd><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a> for further information.</dd>
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The model type must be a non-empty string.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The model name must be a non-empty string.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The action must be a DataPortalAction object.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <h3 id="action"><span class="symbol-name">action</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the action executing that the intercepted error occurred in.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="innerError"><span class="symbol-name">innerError</span><small class="property-type">
+                &nbsp;error</small></h3>
+              <p>The intercepted error of the data portal action.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="message"><span class="symbol-name">message</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>Human-readable description of the error.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="modelName"><span class="symbol-name">modelName</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the model the intercepted error occurred in.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="modelType"><span class="symbol-name">modelType</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The type of the model the intercepted error occurred in.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="name"><span class="symbol-name">name</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the error type.</p>
+              <dl class="dl-compact">
+                <dt>Default value</dt>
+                <dd>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on December 31, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

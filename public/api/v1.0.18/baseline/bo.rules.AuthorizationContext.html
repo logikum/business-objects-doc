@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: AuthorizationContext</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div><small><a href="bo.html">bo</a>.<wbr>rules.<wbr></small><span class="symbol-name">AuthorizationContext</span></h1>
+            <p class="source-link">Source: <a href="rules_authorization-context.js.html#source-line-31">rules/<wbr>authorization-context.<wbr>js:31</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Provides the context for custom authorization rules.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.rules.AuthorizationContext.html#brokenRules">brokenRules</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.rules.AuthorizationContext.html#locale">locale</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.rules.AuthorizationContext.html#ruleId">ruleId</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.rules.AuthorizationContext.html#user">user</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="AuthorizationContext">new&nbsp;<span class="symbol-name">AuthorizationContext</span><span class="signature"><span class="signature-params">(action[, targetName], brokenRules)</span></span></h2>
+            <p>Creates a new authorization context object.
+              </br>
+              </br>
+              <i><b>Warning:</b> Authorization context objects are created in models internally.
+   They are intended only to make publicly available the context
+   for custom authorization rules.</i>
+            </p>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>action</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.rules.AuthorizationAction.html">bo.rules.AuthorizationAction</a>
+                      </p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The operation to authorize.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>targetName</p>
+                    </td>
+                    <td>
+                      <p>string</p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>Eventual parameter of the authorization action.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>brokenRules</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.rules.BrokenRuleList.html">bo.rules.BrokenRuleList</a>
+                      </p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The list of the broken rules.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The action must be an AuthorizationAction item.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The target name must be a string value.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The broken rules must be a BrokenRuleList object.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <h3 id="brokenRules"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">brokenRules</span><small class="property-type">
+                &nbsp;<a href="bo.rules.BrokenRuleList.html">bo.rules.BrokenRuleList</a></small></h3>
+              <p>The list of the broken rules.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="locale"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">locale</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The current locale.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="ruleId"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">ruleId</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The identifier of the authorization action. Generally it is the action value, or when target is not empty, the action value and the target name separated by a dot, respectively.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="user"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">user</span><small class="property-type">
+                &nbsp;<a href="bo.system.UserInfo.html">bo.system.UserInfo</a></small></h3>
+              <p>The current user.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

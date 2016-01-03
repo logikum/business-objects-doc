@@ -1,0 +1,568 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: ReadOnlyChildModelSync</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span></div><small></small><span class="symbol-name">ReadOnlyChildModelSync</span></h1>
+            <p class="source-link">Source: <a href="read-only-child-model-sync.js.html#source-line-74">read-only-child-model-sync.<wbr>js:74</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Represents the definition of a synchronous read-only child model.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Property</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyChildModelSync.html#$modelName">$modelName</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyChildModelSync.html#.create">create(parent[, eventHandlers])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyChildModelSync.html#.load">load(parent, data[, eventHandlers])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyChildModelSync.html#checkRules">checkRules()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyChildModelSync.html#fetch">fetch([data][, method])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyChildModelSync.html#getBrokenRules">getBrokenRules([namespace])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyChildModelSync.html#isValid">isValid()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyChildModelSync.html#toCto">toCto()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Events</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyChildModelSync.html#event:postFetch">postFetch</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyChildModelSync.html#event:preFetch">preFetch</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="ReadOnlyChildModelSync">new&nbsp;<span class="symbol-name">ReadOnlyChildModelSync</span><span class="signature"><span class="signature-params">(parent[, eventHandlers])</span></span></h2>
+            <p>Creates a new synchronous read-only child model instance.</p>
+            <p> <em>The name of the model type available as:
+   <strong>&lt;instance&gt;.constructor.modelType</strong>, returns 'ReadOnlyChildModelSync'.</em>
+            </p>
+            <p> Valid parent model types are:</p>
+            <pre class="prettyprint source"><code> * ReadOnlyRootCollectionSync
+ * ReadOnlyChildCollectionSync
+ * ReadOnlyRootModelSync
+ * ReadOnlyChildModelSync
+ * CommandObjectSync</code></pre>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>parent</p>
+                    </td>
+                    <td>
+                      <p>object</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The parent business object.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>eventHandlers</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.shared.EventHandlerList.html">bo.shared.EventHandlerList</a>
+                      </p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>The event handlers of the instance.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Extends</dt>
+              <dd><a href="ModelBase.html">ModelBase</a>
+              </dd>
+              <dt>Fires</dt>
+              <dd><a href="ReadOnlyChildModelSync.html#event:preFetch">ReadOnlyChildModelSync#event:preFetch</a>
+              </dd>
+              <dd><a href="ReadOnlyChildModelSync.html#event:postFetch">ReadOnlyChildModelSync#event:postFetch</a>
+              </dd>
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The parent object must be a ReadOnlyRootCollectionSync, ReadOnlyChildCollectionSync, ReadOnlyRootModelSync, ReadOnlyChildModelSync or CommandObjectSync instance.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The event handlers must be an EventHandlerList object or null.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Property</h2>
+            <section>
+              <h3 id="$modelName"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">$modelName</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the model. However, it can be hidden by a model property with the same name.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id=".create"><div class="symbol-detail-labels"><span class="label label-protected">protected</span>&nbsp;<span class="label label-static">static</span></div><span class="symbol-name">create</span><span class="signature"><span class="signature-params">(parent[, eventHandlers])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ReadOnlyChildModelSync.html">ReadOnlyChildModelSync</a></span></span></h3>
+              <p>Creates a new read-only business object instance.
+                <br/><em>This method is called by the parent object.</em>
+              </p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>parent</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The parent business object.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>eventHandlers</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.EventHandlerList.html">bo.shared.EventHandlerList</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The event handlers of the instance.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="ReadOnlyChildModelSync.html">ReadOnlyChildModelSync</a></code>&nbsp;A new read-only business object.</p>
+                </dd>
+              </dl>
+              <h3 id=".load"><div class="symbol-detail-labels"><span class="label label-protected">protected</span>&nbsp;<span class="label label-static">static</span></div><span class="symbol-name">load</span><span class="signature"><span class="signature-params">(parent, data[, eventHandlers])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ReadOnlyChildModelSync.html">ReadOnlyChildModelSync</a></span></span></h3>
+              <p>Initializes a read-only business object width data retrieved from the repository.
+                <br/><em>This method is called by the parent object.</em>
+              </p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>parent</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The parent business object.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The data to load into the business object.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>eventHandlers</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.EventHandlerList.html">bo.shared.EventHandlerList</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The event handlers of the instance.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.rules.AuthorizationError.html">Authorization error</a>: The user has no permission to execute the action.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="ReadOnlyChildModelSync.html">ReadOnlyChildModelSync</a></code>&nbsp;The required read-only business object.</p>
+                </dd>
+              </dl>
+              <h3 id="checkRules"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">checkRules</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Executes all the validation rules of the business object, including the ones of its child objects.</p>
+              <p><em>This method is called by the parent object.</em>
+              </p>
+              <p><em>By default read-only business objects are supposed to be valid.</em>
+              </p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="fetch"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">fetch</span><span class="signature"><span class="signature-params">([data][, method])</span></span></h3>
+              <p>Initializes a business object with data retrieved from the repository.
+                <br/><em>This method is called by the parent object.</em>
+              </p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The data to load into the business object.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>method</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>An alternative fetch method to check for permission.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="getBrokenRules"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">getBrokenRules</span><span class="signature"><span class="signature-params">([namespace])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="bo.rules.BrokenRulesOutput.html">bo.rules.BrokenRulesOutput</a></span></span></h3>
+              <p>Gets the broken rules of the business object.</p>
+              <p><em>This method is called by the parent object.</em>
+              </p>
+              <p><em>By default read-only business objects are supposed to be valid.</em>
+              </p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>namespace</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The namespace of the message keys when messages are localizable.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="bo.rules.BrokenRulesOutput.html">bo.rules.BrokenRulesOutput</a></code>&nbsp;The broken rules of the business object.</p>
+                </dd>
+              </dl>
+              <h3 id="isValid"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">isValid</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Indicates whether all the validation rules of the business object, including the ones of its child objects, succeeds. A valid business object may have broken rules with severity of success, information and warning.</p>
+              <p><em>This method is called by the parent object.</em>
+              </p>
+              <p><em>By default read-only business objects are supposed to be valid.</em>
+              </p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True when the business object is valid, otherwise false.</p>
+                </dd>
+              </dl>
+              <h3 id="toCto"><span class="symbol-name">toCto</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> object</span></span></h3>
+              <p>Transforms the business object to a plain object to send to the client.
+                <br/><em>This method is usually called by the parent object.</em>
+              </p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>object</code>&nbsp;The client transfer object.</p>
+                </dd>
+              </dl>
+            </section>
+            <h2>Events</h2>
+            <section>
+              <h3 id="event:postFetch"><span class="symbol-name">postFetch</span></h3>
+              <p>The event arises after the business object instance has been retrieved from the repository.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>eventArgs</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.DataPortalEventArgs.html">bo.shared.DataPortalEventArgs</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Data portal event arguments.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>newObject</p>
+                      </td>
+                      <td>
+                        <p><a href="ReadOnlyChildModelSync.html">ReadOnlyChildModelSync</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The instance of the model after the data portal action.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="event:preFetch"><span class="symbol-name">preFetch</span></h3>
+              <p>The event arises before the business object instance will be retrieved from the repository.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>eventArgs</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.DataPortalEventArgs.html">bo.shared.DataPortalEventArgs</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Data portal event arguments.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>oldObject</p>
+                      </td>
+                      <td>
+                        <p><a href="ReadOnlyChildModelSync.html">ReadOnlyChildModelSync</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The instance of the model before the data portal action.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on October 22, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

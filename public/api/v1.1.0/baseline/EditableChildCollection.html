@@ -1,0 +1,754 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.3.0-beta1">
+  <meta charset="utf-8">
+  <title>Class: EditableChildCollection</title>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span></div><small></small><span class="symbol-name">EditableChildCollection</span></h1>
+            <p class="source-link">Source: <a href="editable-child-collection.js.html#source-line-45">editable-child-collection.<wbr>js:45</a>
+            </p>
+            <div class="symbol-classdesc">
+              <p>Represents the definition of an asynchronous editable child collection.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="EditableChildCollection.html#$modelName">$modelName</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="EditableChildCollection.html#count">count</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="EditableChildCollection.html#at">at(index)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#checkRules">checkRules()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#create">create(index, callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#every">every(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#fetch">fetch([data], callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#filter">filter(callback)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="EditableChildCollection.html#forEach">forEach(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#fromCto">fromCto(data, callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#getBrokenRules">getBrokenRules([namespace])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#isValid">isValid()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#map">map(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#remove">remove()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="EditableChildCollection.html#save">save(connection, callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#some">some(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#sort">sort([fnCompare])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="EditableChildCollection.html#toCto">toCto()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="EditableChildCollection">new&nbsp;<span class="symbol-name">EditableChildCollection</span><span class="signature"><span class="signature-params">(parent[, eventHandlers])</span></span></h2>
+            <p>Creates a new asynchronous editable child collection instance.</p>
+            <p> <em>The name of the model type available as:
+   <strong>&lt;instance&gt;.constructor.modelType</strong>, returns 'EditableChildCollection'.</em>
+            </p>
+            <p> Valid parent model types are:</p>
+            <pre class="prettyprint source"><code> * EditableRootModel
+ * EditableChildModel</code></pre>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>parent</p>
+                    </td>
+                    <td>
+                      <p>object</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The parent business object.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>eventHandlers</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.shared.EventHandlerList.html">bo.shared.EventHandlerList</a>
+                      </p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>The event handlers of the instance.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Extends</dt>
+              <dd><a href="CollectionBase.html">CollectionBase</a>
+              </dd>
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The parent object must be an EditableRootModel or EditableChildModel instance.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <h3 id="$modelName"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">$modelName</span><small class="property-type">
+                &nbsp;string</small></h3>
+              <p>The name of the model.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="count"><div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div><span class="symbol-name">count</span><small class="property-type">
+                &nbsp;number</small></h3>
+              <p>The count of the child objects in the collection.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id="at"><span class="symbol-name">at</span><span class="signature"><span class="signature-params">(index)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="EditableChildModel.html">EditableChildModel</a></span></span></h3>
+              <p>Gets a collection item at a specific position.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>index</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The index of the required item in the collection.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="EditableChildModel.html">EditableChildModel</a></code>&nbsp;The required collection item.</p>
+                </dd>
+              </dl>
+              <h3 id="checkRules"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">checkRules</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Executes validation on all items of the collection.</p>
+              <p><em>This method is called by the parent object.</em>
+              </p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="create"><span class="symbol-name">create</span><span class="signature"><span class="signature-params">(index, callback)</span></span></h3>
+              <p>Creates a new item and adds it to the collection at the specified index.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>index</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The index of the new item.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbDataPortal">external.cbDataPortal</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Returns the newly created editable business object.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="every"><span class="symbol-name">every</span><span class="signature"><span class="signature-params">(callback)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Tests whether all items in the collection pass the test implemented by the provided function.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function to test for each collection item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True when callback returns truthy value for each item, otherwise false.</p>
+                </dd>
+              </dl>
+              <h3 id="fetch"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">fetch</span><span class="signature"><span class="signature-params">([data], callback)</span></span></h3>
+              <p>Initializes the items in the collection with data retrieved from the repository.</p>
+              <p><em>This method is called by the parent object.</em>
+              </p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>Array of object</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The data to load into the business object collection.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbDataPortal">external.cbDataPortal</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Returns the eventual error.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="filter"><span class="symbol-name">filter</span><span class="signature"><span class="signature-params">(callback)</span>&nbsp;&rarr; <span class="signature-returns"> Array of <a href="EditableChildModel.html">EditableChildModel</a></span></span></h3>
+              <p>Creates a new array with all collection items that pass the test implemented by the provided function.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function to test for each collection item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of <a href="EditableChildModel.html">EditableChildModel</a></code>&nbsp;The new array of collection items.</p>
+                </dd>
+              </dl>
+              <h3 id="forEach"><span class="symbol-name">forEach</span><span class="signature"><span class="signature-params">(callback)</span></span></h3>
+              <p>Executes a provided function once per collection item.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function that produces an item of the new collection.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="fromCto"><span class="symbol-name">fromCto</span><span class="signature"><span class="signature-params">(data, callback)</span></span></h3>
+              <p>Rebuilds the business object collection from a plain object array sent by the client.
+                <br/><em>This method is usually called by the parent object.</em>
+              </p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>Array of object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The array of client transfer objects.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbFromCto">external.cbFromCto</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Returns the eventual error.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="getBrokenRules"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">getBrokenRules</span><span class="signature"><span class="signature-params">([namespace])</span>&nbsp;&rarr; <span class="signature-returns"> Array of <a href="bo.rules.BrokenRulesOutput.html">bo.rules.BrokenRulesOutput</a></span></span></h3>
+              <p>Gets the broken rules of all items of the collection.</p>
+              <p><em>This method is called by the parent object.</em>
+              </p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>namespace</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The namespace of the message keys when messages are localizable.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of <a href="bo.rules.BrokenRulesOutput.html">bo.rules.BrokenRulesOutput</a></code>&nbsp;The broken rules of the collection.</p>
+                </dd>
+              </dl>
+              <h3 id="isValid"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">isValid</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Indicates whether all items of the business collection are valid.</p>
+              <p><em>This method is called by the parent object.</em>
+              </p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;</p>
+                </dd>
+              </dl>
+              <h3 id="map"><span class="symbol-name">map</span><span class="signature"><span class="signature-params">(callback)</span>&nbsp;&rarr; <span class="signature-returns"> Array of any type</span></span></h3>
+              <p>Creates a new array with the results of calling a provided function on every item in this collection.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function to test for each collection item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of any type</code>&nbsp;The new array of callback results.</p>
+                </dd>
+              </dl>
+              <h3 id="remove"><span class="symbol-name">remove</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Marks all items in the collection to be deleted from the repository on next save.</p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="save"><div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><span class="symbol-name">save</span><span class="signature"><span class="signature-params">(connection, callback)</span></span></h3>
+              <p>Saves the changes of the business object collection to the repository.</p>
+              <p><em>This method is called by the parent object.</em>
+              </p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>connection</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The connection data.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbDataPortal">external.cbDataPortal</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Returns the eventual error.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="some"><span class="symbol-name">some</span><span class="signature"><span class="signature-params">(callback)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Tests whether some item in the collection pass the test implemented by the provided function.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function to test for each collection item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True when callback returns truthy value for some item, otherwise false.</p>
+                </dd>
+              </dl>
+              <h3 id="sort"><span class="symbol-name">sort</span><span class="signature"><span class="signature-params">([fnCompare])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="EditableChildCollection.html">EditableChildCollection</a></span></span></h3>
+              <p>Sorts the items of the collection in place and returns the collection.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>fnCompare</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCompare">external.cbCompare</a>
+                        </p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Function that defines the sort order. If omitted, the collection is sorted according to each character's Unicode code point value, according to the string conversion of each item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="EditableChildCollection.html">EditableChildCollection</a></code>&nbsp;The sorted collection.</p>
+                </dd>
+              </dl>
+              <h3 id="toCto"><span class="symbol-name">toCto</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array of object</span></span></h3>
+              <p>Transforms the business object collection to a plain object array to send to the client.
+                <br/><em>This method is usually called by the parent object.</em>
+              </p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of object</code>&nbsp;The client transfer object.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0-beta1 on December 31, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>
