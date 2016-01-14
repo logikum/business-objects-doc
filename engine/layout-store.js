@@ -210,7 +210,7 @@ var LayoutStore = function( layoutDir, documentFile, layoutFile, menus ) {
       return '<li><a href="/set-language/' + item + '">' + nameOf(item) + '</a></li>\n';
     }
 
-    if (languages.length > 2) {
+    if (languages.length > 1) {
 
       // Dropdown list of selectable languages.
       var list = '<li class="dropdown">\n';
@@ -225,11 +225,11 @@ var LayoutStore = function( layoutDir, documentFile, layoutFile, menus ) {
       list += '</li>\n';
       return list;
 
-    } else if (languages.length == 2) {
-
-      // Link to alternate language.
-      var lang = languages[0] === language ? languages[1] : languages[0];
-      return linkOf(lang);
+    //} else if (languages.length == 2) {
+    //
+    //  // Link to alternate language.
+    //  var lang = languages[0] === language ? languages[1] : languages[0];
+    //  return linkOf(lang);
 
     } else
       // No language selection.
