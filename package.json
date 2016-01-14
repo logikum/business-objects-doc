@@ -1,6 +1,6 @@
 {
   "name": "business-objects-doc",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "documentation for business-objects library",
   "dependencies": {
     "body-parser": "^1.12",

@@ -9,7 +9,7 @@
     "port": 6379,
     "pass": "L7EDUawXq04wzolZ2guqQZ/FWgOyh4JRRD9CKp5OiOM=",
     "ttl": 3600,
-    "db": 1
+    "db": 3
   },
   "mailer": {
     "service": "Gmail",
