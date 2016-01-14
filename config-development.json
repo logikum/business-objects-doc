@@ -1,0 +1,23 @@
+{
+  "locale": {
+    "default": "v1.1.0",
+    "v1.0.18": "Version 1.0.18",
+    "v1.1.0": "Version v1.1.0"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "db": 1
+  },
+  "mailer": {
+    "service": "Gmail",
+    "auth": {
+      "user": "logikum.kft@gmail.com",
+      "pass": "8=ksY9K(.'(`xX-k"
+    }
+  },
+  "message": {
+    "from": "logikum.kft@gmail.com",
+    "to": "logikum@logikum.hu"
+  }
+}

@@ -1,3 +1,3 @@
-# Documentation for business-objects library
+# Documentation of business-objects library
 
 Description...

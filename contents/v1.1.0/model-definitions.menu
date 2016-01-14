@@ -1,0 +1,9 @@
++++
+--- Search engine
+title:        business-objects
+description:  Model definitions of business objects.
+keywords:     business-objects, JavaScript, node.js
+--- Menu system
+order:        20
+text:         Model definitions
++++

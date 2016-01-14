@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="row sheet">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed"
+                  data-toggle="collapse" data-target="#navbar-collapse-menu">
+            <span class="sr-only">Navigáció-váltás</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">{{header}}</a>
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-menu">
+{{menu}}
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row sheet">
+{{content}}
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row footer">
+    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+{{footer}}
+    </div>
+  </div>
+</div>

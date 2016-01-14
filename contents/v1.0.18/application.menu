@@ -1,0 +1,9 @@
++++
+--- Search engine
+title:        business-objects
+description:  Application of business objects.
+keywords:     business-objects, JavaScript, node.js
+--- Menu system
+order:        40
+text:         Application
++++

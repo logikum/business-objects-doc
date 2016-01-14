@@ -1,75 +1,89 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var marked = require('marked');
-var getRenderer = require('./marked-renderer.js');
-var referenceReader = require('./reference-reader.js');
-var LayoutStore = require('./layout-store.js');
-var ContentStore = require('./content-store.js');
-var MenuStore = require('./menu-store.js');
+var fs = require( 'fs' );
+var path = require( 'path' );
+var marked = require( 'marked' );
+var config = require( './configuration.js' );
+var getRenderer = require( './marked-renderer.js' );
+var referenceReader = require( './reference-reader.js' );
+var LayoutStore = require( './layout-store.js' );
+var ContentStore = require( './content-store.js' );
+var MenuStore = require( './menu-store.js' );
 
-var renderer = getRenderer(marked);
+var renderer = getRenderer( marked );
 
-function ContentManager (contentDir, layoutFile, referenceFile) {
+function ContentManager( contentDir, layoutDir ) {
 
   var self = this;
+  var contentsPath = path.join( process.cwd(), contentDir );
   var references = null;
   var layout = null;
-  var contents = new ContentStore();
-  var menus = new MenuStore();
+  var contents = { };
+  var menus = { };
 
   //region Menu building
 
-  function createMenuItem (menu, definition, contentPath, isDirectory) {
+  function createMenuItem( menu, definition, contentPath, isDirectory ) {
 
     // Default values for item properties,
-    var order = parseInt(definition.order || 1, 10);
-    var title = definition.title || '-?-';
+    var order = parseInt( definition.order || 1, 10 );
+    var text  = definition.text || '-?-';
     var umbel = definition.umbel && definition.umbel.toLowerCase() == 'true';
-    if (isNaN(order)) {
+    if (isNaN( order )) {
       order = 0;
-      title = '* ' + title;
+      text = '* ' + text;
     }
+    var hidden = definition.hidden && definition.hidden.toLowerCase() === 'true';
 
-    if (isDirectory)
-    // Add sub-menu item.
-      return menu.branch(title, order);
-    else {
+    if (isDirectory) {
+      // Add sub-menu item.
+      return menu.branch(text, order, hidden);
+    }
+    // Omit hidden item.
+    else if (!hidden) {
       // Add menu item.
       var path = contentPath;
       var length = path.length;
       if (length >= 6 && path.substr(-6) === '/index') {
         // Cut down closing index.
         var end = length > 6 ? 6 : 5;
-        path = path.substr(0, length - end);
+        path = path.substr( 0, length - end );
       }
-      menu.add(title, order, path, umbel);
-      return title !== '---';
+      menu.add( text, order, path, umbel );
     }
   }
 
-  function buildDefinition (context) {
-    var definition = null;
-
+  function readDefinition( context ) {
+    var definition = { };
     var lines = context.text.split('\n');
 
     // Starts with menu info?
     if (lines.length && lines[0].substring(0, 3) === '+++') {
 
-      definition = { };
       var line = lines.shift();
       var canDo = true;
+      var key;
 
       // Build menu definition.
       do {
         line = lines.shift();
-        if (line.substring(0, 3) === '+++')
+        // Comment?
+        if (line.substring(0, 3) === '---')
+          continue;
+        // End of definition?
+        else if (line.substring(0, 3) === '+++')
           canDo = false;
+        // Continue previous item?
+        else if (line.substring(0, 3) === '   ') {
+          if (key)
+            definition[key] = definition[key].trim() + ' ' + line.substring(3).trim();
+        }
+        // New key-value pair?
         else {
           var pair = line.split(':');
           if (pair.length > 1) {
-            definition[pair[0].trim()] = pair[1].trim();
+            key = pair[0].trim();
+            definition[key] = pair[1].trim();
           }
         }
       } while (canDo);
@@ -79,32 +93,23 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
     return definition;
   }
 
-  function buildMenuItem (menu, context) {
-    // Starts with menu info?
-    var definition = buildDefinition(context);
-    if (definition)
-      return createMenuItem(menu, definition, context.path, false);
-    else
-      return true;
-  }
-
-  function buildSubMenu (menu, itemPath, contentPath) {
+  function buildSubMenu( menu, itemPath, contentPath ) {
     // Get sub-menu info.
     try {
-      var stats = fs.statSync(itemPath);
+      var stats = fs.statSync( itemPath );
       if (stats && stats.isFile()) {
         var context = { };
 
         // Read sub-menu info.
-        context.text = fs.readFileSync(itemPath, { encoding: 'utf8' });
-        var definition = buildDefinition(context);
+        context.text = fs.readFileSync( itemPath, { encoding: 'utf8' } );
+        // Read definition.
+        var definition = readDefinition( context );
 
         // Create sub-menu item.
-        if (definition)
-          return createMenuItem(menu, definition, contentPath, true);
+        return createMenuItem( menu, definition, contentPath, true );
       }
     } catch (err) {
-      console.log(err.message);
+      console.log( err.message );
     }
   }
 
@@ -112,48 +117,57 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
 
   //region Content reading
 
-  function addContents (cm, contentDir, contentRoot, menuNode) {
+  function addContents( cm, contentDir, contentRoot, menuNode ) {
 
     // Read directory items.
-    var items = fs.readdirSync(contentDir);
+    var items = fs.readdirSync( contentDir );
 
-    items.forEach(function (item) {
+    items.forEach( function( item ) {
 
       // Get full path of item.
-      var itemPath = path.join(contentDir, item);
+      var itemPath = path.join( contentDir, item );
       // Get item info.
-      var stats = fs.statSync(itemPath);
+      var stats = fs.statSync( itemPath );
 
       if (stats.isDirectory()) {
+
         // Determine content path.
         var directoryPath = contentRoot + '/' + item;
         // Create menu item.
-        var directoryNode = buildSubMenu(menuNode, itemPath + '.menu', directoryPath);
+        var directoryNode = buildSubMenu( menuNode, itemPath + '.menu', directoryPath );
+
         // Read subdirectory.
         if (directoryNode)
-          addContents(cm, itemPath, directoryPath, directoryNode.children);
+          addContents( cm, itemPath, directoryPath, directoryNode.children );
         else
-          addContents(cm, itemPath, directoryPath, menuNode);
+          addContents( cm, itemPath, directoryPath, menuNode );
       }
-      else if (stats.isFile() && path.extname(item) === '.md') {
+      else if (stats.isFile() && path.extname( item ) === '.md') {
         var context = { };
 
         // Read, convert and store the markdown file.
-        var basename = path.basename(item, '.md');
+        var basename = path.basename( item, '.md' );
         // Determine content path.
         context.path = contentRoot + '/' + basename;
         // Get content.
-        context.text = fs.readFileSync(itemPath, { encoding: 'utf-8' });
+        context.text = fs.readFileSync( itemPath, { encoding: 'utf-8' } );
+
+        // Read definition.
+        var definition = readDefinition( context );
+        // Contains menu info?
+        if (definition.order || definition.text)
         // Create menu item.
-        if (buildMenuItem(menuNode, context)) {
+          createMenuItem( menuNode, definition, context.path, false );
+
+        // Generate HTML from markdown text.
+        if (definition.text !== '---') {
           // Convert content.
-          var html = marked(context.text + references, { renderer: renderer });
+          var html = marked( context.text + references, { renderer: renderer } );
           // Store content.
-          cm.add(html, context.path);
+          cm.add( html, definition, context.path );
         }
-        //console.log('Content added: ' + contentPath);
       }
-    });
+    } );
   }
 
   //endregion
@@ -161,9 +175,29 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
   //region Initialization
 
   function initialize() {
-    references = referenceReader(referenceFile);
-    addContents(contents, path.join(process.cwd(), contentDir), '', menus);
-    layout = new LayoutStore(layoutFile, menus);
+
+    references = referenceReader( path.join( contentDir, config.content.referenceFile ) );
+
+    // Read subdirectory items as language containers.
+    var items = fs.readdirSync( contentsPath );
+    items.forEach( function( item ) {
+
+      // Get full path of item.
+      var itemPath = path.join( contentsPath, item );
+      // Get item info.
+      var stats = fs.statSync( itemPath );
+
+      if (stats.isDirectory()) {
+        // Create new managers for the language.
+        contents[item] = new ContentStore();
+        menus[item] = new MenuStore();
+
+        // Find and add markdown contents.
+        addContents( contents[item], itemPath, '', menus[item] );
+      }
+    } );
+
+    layout = new LayoutStore( layoutDir, config.content.documentFile, config.content.layoutFile, menus );
   }
 
   //endregion
@@ -172,31 +206,49 @@ function ContentManager (contentDir, layoutFile, referenceFile) {
 
   //region Public methods
 
-  this.get = function (path) {
-    return layout.get( contents.get(path), path );
+  this.get = function( path, language ) {
+    return contents[language] ?
+        layout.get( contents[language], path, language ) :
+        'Unknown language: ' + language;
   };
 
-  this.restart = function () {
+  this.restart = function( language ) {
     var layout = null;
-    var contents = new ContentStore();
-    var menus = new MenuStore();
+    var contents = { };
+    var menus = { };
 
     initialize();
 
-    return self.get('/');
+    return self.get( '/', language );
   };
 
-  this.setRoutes = function (app) {
+  this.setRoutes = function( app ) {
+
+    // Set up language.
+    app.use( function( req, res, next ) {
+      if (!req.session) {
+        req.session = { language: config.locale.default };
+      } else if (!req.session.language) {
+        req.session.language = config.locale.default;
+      }
+      next();
+    } );
+
+    // Change language.
+    app.use( '/set-language', function( req, res, next ) {
+      req.session.language = req.url.length > 1 ? req.url.substr(1) : config.locale.default;
+      res.redirect( '/' );
+    } );
 
     // Reread the contents.
-    app.use('/restart', function (req, res, next) {
-      res.status(200).send( self.restart() );
-    });
+    app.use( '/restart', function( req, res, next ) {
+      res.status(200).send( self.restart( req.session.language ) );
+    } );
 
     // Serve markdown contents.
-    app.use('*', function (req, res, next) {
-      res.status(200).send( self.get(req.baseUrl) );
-    });
+    app.use( '*', function( req, res, next ) {
+      res.status(200).send( self.get( req.baseUrl, req.session.language ) );
+    } );
   };
 
   //endregion
