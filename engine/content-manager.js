@@ -16,7 +16,6 @@ function ContentManager( contentDir, layoutDir ) {
 
   var self = this;
   var contentsPath = path.join( process.cwd(), contentDir );
-  var references = null;
   var layout = null;
   var contents = { };
   var menus = { };
@@ -117,7 +116,7 @@ function ContentManager( contentDir, layoutDir ) {
 
   //region Content reading
 
-  function addContents( cm, contentDir, contentRoot, menuNode ) {
+  function addContents( cm, contentDir, contentRoot, menuNode, references ) {
 
     // Read directory items.
     var items = fs.readdirSync( contentDir );
@@ -138,9 +137,9 @@ function ContentManager( contentDir, layoutDir ) {
 
         // Read subdirectory.
         if (directoryNode)
-          addContents( cm, itemPath, directoryPath, directoryNode.children );
+          addContents( cm, itemPath, directoryPath, directoryNode.children, references );
         else
-          addContents( cm, itemPath, directoryPath, menuNode );
+          addContents( cm, itemPath, directoryPath, menuNode, references );
       }
       else if (stats.isFile() && path.extname( item ) === '.md') {
         var context = { };
@@ -176,7 +175,10 @@ function ContentManager( contentDir, layoutDir ) {
 
   function initialize() {
 
-    references = referenceReader( path.join( contentDir, config.content.referenceFile ) );
+    var references = null;
+    // Get general references.
+    if (config.content.referenceFile.charAt(0) != '~')
+      references = referenceReader( path.join( contentDir, config.content.referenceFile ) );
 
     // Read subdirectory items as language containers.
     var items = fs.readdirSync( contentsPath );
@@ -192,8 +194,15 @@ function ContentManager( contentDir, layoutDir ) {
         contents[item] = new ContentStore();
         menus[item] = new MenuStore();
 
+        // Get language specific references.
+        if (config.content.referenceFile.charAt(0) == '~')
+          references = referenceReader( path.join(
+              contentDir,
+              item + config.content.referenceFile.substr(1)
+          ) );
+
         // Find and add markdown contents.
-        addContents( contents[item], itemPath, '', menus[item] );
+        addContents( contents[item], itemPath, '', menus[item], references );
       }
     } );
 

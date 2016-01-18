@@ -1,7 +1,6 @@
-[~]: http://logikum.github.io/business-objects
+[~]: /api/v1.0.18/docstrap
 [DependencyRule]: ~/bo.commonRules.DependencyRule.html
 [ExpressionRule]: ~/bo.commonRules.ExpressionRule.html
-[commonRules]: ~/bo.commonRules.html
 [InformationRule]: ~/bo.commonRules.InformationRule.html
 [IsInAllRolesRule]: ~/bo.commonRules.IsInAllRolesRule.html
 [IsInAnyRoleRule]: ~/bo.commonRules.IsInAnyRoleRule.html
@@ -18,17 +17,14 @@
 [ConnectionManagerBase]: ~/bo.dataAccess.ConnectionManagerBase.html
 [DaoBase]: ~/bo.dataAccess.DaoBase.html
 [DaoError]: ~/bo.dataAccess.DaoError.html
-[dataAccess]: ~/bo.dataAccess.html
 [Boolean]: ~/bo.dataTypes.Boolean.html
 [DataType]: ~/bo.dataTypes.DataType.html
 [DateTime]: ~/bo.dataTypes.DateTime.html
 [Decimal]: ~/bo.dataTypes.Decimal.html
 [Email]: ~/bo.dataTypes.Email.html
 [Enum]: ~/bo.dataTypes.Enum.html
-[dataTypes]: ~/bo.dataTypes.html
 [Integer]: ~/bo.dataTypes.Integer.html
 [Text]: ~/bo.dataTypes.Text.html
-[i18n]: ~/bo.i18n.html
 [I18nError]: ~/bo.I18nError.html
 [AuthorizationAction]: ~/bo.rules.AuthorizationAction.html
 [AuthorizationContext]: ~/bo.rules.AuthorizationContext.html

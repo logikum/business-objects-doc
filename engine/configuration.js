@@ -21,6 +21,6 @@ if (!config.content.layouts) config.content.layouts = "/layouts";
 if (!config.content.locales) config.content.locales = "/locales";
 if (!config.content.documentFile) config.content.documentFile = "document.html";
 if (!config.content.layoutFile) config.content.layoutFile = "layout.html";
-if (!config.content.referenceFile) config.content.referenceFile = "references.txt";
+if (!config.content.referenceFile) config.content.referenceFile = "~/references.txt";
 
 module.exports = config;
