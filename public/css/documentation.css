@@ -42,3 +42,6 @@ td.arg-desc {
     width: 85%;
     border-top: 0px !important;
 }
+pre code {
+    font-size: 14px;
+}
