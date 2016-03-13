@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 
-var referenceDir = '../Source/api/v1.1.0/docstrap';
+var referenceDir = '../business-objects/api/v1.1.0/docstrap';
 var referenceFile = 'references.txt';
 var count = 0;
 //var text = '[~]: http://logikum.github.io/business-objects\r\n';
