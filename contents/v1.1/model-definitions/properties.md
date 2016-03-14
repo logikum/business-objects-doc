@@ -44,10 +44,10 @@ Argument `flags` is a combination of [PropertyFlag] values:
   The property is a key element of the business object.
 * __parentKey__  
   The property holds the key element of the parent business object.
-* __notOnDto__  
+* __onCtoOnly__  
   The property is not cloned onto the data transfer object, i.e. it is not persisted.
   It usually marks a calculated property that is required by the client application.
-* __notOnCto__  
+* __onDtoOnly__  
   The property is not cloned onto the client transfer object, but it is required for
   the business logic.
 
@@ -60,8 +60,8 @@ Some examples:
 ```
 var orderItemKey = new Property('orderItemKey', DataType.Integer, F.key | F.readOnly);
 var orderKey = new Property('orderKey', DataType.Integer, F.parentKey | F.readOnly);
-var fullName = new Property('fullName', DataType.Text, F.notOnDto | F.readOnly);
-var secret = new Property('secret', DataType.Text, F.notOnCto);
+var fullName = new Property('fullName', DataType.Text, F.onCtoOnly | F.readOnly);
+var secret = new Property('secret', DataType.Text, F.onDtoOnly);
 ```
 
 Argument `getter` is a function that replaces the internal getter function that is
@@ -81,7 +81,7 @@ function getFullName (ctx) {
 }
 var firstName = new Property('firstName', DataType.Text);
 var lastName = new Property('lastName', DataType.Text);
-var fullName = new Property('fullName', DataType.Text, F.notOnDto | F.readOnly, getFullName);
+var fullName = new Property('fullName', DataType.Text, F.onCtoOnly | F.readOnly, getFullName);
 ```
 
 Similarly, argument `setter` is a function that replaces the internal setter function.
@@ -103,9 +103,9 @@ function setFullName (ctx, value) {
   ctx.setValue('firstName', name[0]);
   ctx.setValue('lastName', name[1]);
 }
-var firstName = new Property('firstName', DataType.Text, F.notOnCto | F.readOnly);
-var lastName = new Property('lastName', DataType.Text, F.notOnCto | F.readOnly);
-var fullName = new Property('fullName', DataType.Text, F.notOnDto, null, setFullName);
+var firstName = new Property('firstName', DataType.Text, F.onDtoOnly | F.readOnly);
+var lastName = new Property('lastName', DataType.Text, F.onDtoOnly | F.readOnly);
+var fullName = new Property('fullName', DataType.Text, F.onCtoOnly, null, setFullName);
 ```
 
 The context argument is a [PropertyContext] object that has the following members to use:

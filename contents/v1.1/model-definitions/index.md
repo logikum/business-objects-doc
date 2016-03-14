@@ -37,6 +37,7 @@ In the above statement ```<ModelType>``` represents one of the following model t
 %indent1%| Asynchronous models | Synchronous models |&nbsp;
 -| ------------------------- | ----------------------------- |-
  | [EditableRootModel]       | [EditableRootModelSync]       |
+ | [EditableRootCollection]  | [EditableRootCollectionSync]  |
  | [EditableChildModel]      | [EditableChildModelSync]      |
  | [EditableChildCollection] | [EditableChildCollectionSync] |
  | [ReadOnlyRootModel]       | [ReadOnlyRootModelSync]       |

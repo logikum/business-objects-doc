@@ -39,7 +39,7 @@ var bo = require('business-objects');
 var convert = require('../lib/convert.js');
 
 var DaoBase = bo.dataAccess.DaoBase;
-var ensureArgument = bo.system.EnsureArgument;
+var DaoError = bo.dataAccess.DaoError;
 
 var daoBuilder = function (dataSource, modelPath, modelName) {
 
@@ -53,9 +53,10 @@ var daoBuilder = function (dataSource, modelPath, modelName) {
   if (!modelStats.isFile())
     throw new Error('The modelPath argument of daoBuilder function is not a valid file path: ' + modelPath);
 
-  //var daoPath = path.join(path.dirname(modelPath), dataSource, path.basename(modelPath));
-  var daoPath = path.join(path.dirname(modelPath), dataSource,
-      convert.dashize(modelName) + path.extname(modelPath));
+  var daoPath = path.join(
+    path.dirname(modelPath),
+    path.basename(modelPath, path.extname(modelPath)) + '.' + dataSource + path.extname(modelPath)
+  );
 
   var daoStats = fs.statSync(daoPath);
   if (!daoStats.isFile())
@@ -66,8 +67,10 @@ var daoBuilder = function (dataSource, modelPath, modelName) {
   if (typeof daoCtor !== 'function')
     throw new Error('The data access file must return a constructor: ' + daoPath);
 
-  return ensureArgument.isMandatoryType(new daoCtor(), DaoBase,
-      daoPath + ' must inherit DaoBase type.');
+  var daoInstance = new daoConstructor();
+  if (!(daoInstance instanceof DaoBase) && daoInstance.super_ !== DaoBase)
+    throw new DaoError('daoType', daoPath);
+  return daoInstance;
 };
 
 module.exports = daoBuilder;

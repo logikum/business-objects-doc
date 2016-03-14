@@ -20,9 +20,9 @@ summarizes the business object events by model types:
 [EditableRootModel]       |x|x|x|x|x|x|-
 [EditableChildModel]      |x|x|-|x|x|x|-
 [EditableChildCollection] |-|-|-|-|-|-|-
-[ReadOnlyRootModel]       |x|-|-|-|-|-|-
-[ReadOnlyChildModel]      |x|-|-|-|-|-|-
-[ReadOnlyRootCollection]  |x|-|-|-|-|-|-
+[ReadOnlyRootModel]       |-|x|-|-|-|-|-
+[ReadOnlyChildModel]      |-|x|-|-|-|-|-
+[ReadOnlyRootCollection]  |-|x|-|-|-|-|-
 [ReadOnlyChildCollection] |-|-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|-|x
 

@@ -24,6 +24,7 @@ The table below summarizes the models and their methods that factory ojects can 
 %indent3%|create|fetch
 -|:-:|:-:
 [EditableRootModel]       |x|x
+[EditableRootCollection]  |x|x
 [ReadOnlyRootModel]       |-|x
 [ReadOnlyRootCollection]  |-|x
 [CommandObject]           |x|-
@@ -38,15 +39,34 @@ var TaskFactory = {
   create: function (eventHandlers, callback) {
     Task.create(eventHandlers, callback);
   },
-  getByKey: function (key, eventHandlers) {
+  getByKey: function (key, eventHandlers, callback) {
     Task.fetch(key, null, eventHandlers, callback);
   },
-  getByName: function (name, eventHandlers) {
+  getByName: function (name, eventHandlers, callback) {
     Task.fetch(name, 'fetchByName', eventHandlers, callback);
   }
 };
 
 TaskFactory.create(function (err, task) {
+  ...
+});
+
+// Editable root collection
+var Tasks = bo.EditableRootCollection( 'Tasks', TaskItem, rules, extensions );
+
+var TasksFactory = {
+  create: function (eventHandlers, callback) {
+    Tasks.create(eventHandlers, callback);
+  },
+  getUserDailyList: function (userCode, eventHandlers, callback) {
+    Tasks.fetch({ user: userCode, date: Date.now() }, null, eventHandlers, callback);
+  },
+  getAllTasksOfDay: function (date, eventHandlers, callback) {
+    Tasks.fetch(date, 'fetchAllTasksOfDay', eventHandlers, callback);
+  }
+};
+
+TasksFactory.getUserDailyList('Caliban', function (err, tasks) {
   ...
 });
 
@@ -117,6 +137,23 @@ var TaskFactory = {
 };
 
 var task = TaskFactory.create();
+
+// Editable root collection
+var Tasks = bo.EditableRootCollection( 'Tasks', TaskItem, rules, extensions );
+
+var TasksFactory = {
+  create: function (eventHandlers) {
+    return Tasks.create(eventHandlers);
+  },
+  getUserDailyList: function (userCode, eventHandlers) {
+    return Tasks.fetch({ user: userCode, date: Date.now() }, null, eventHandlers);
+  },
+  getAllTasksOfDay: function (date, eventHandlers) {
+    return Tasks.fetch(date, 'fetchAllTasksOfDay', eventHandlers);
+  }
+};
+
+var tasks = TasksFactory.getUserDailyList('Caliban');
 
 // Read-only root model
 var TaskView = bo.ReadOnlyRootModelSync( properties, rules, extensions );

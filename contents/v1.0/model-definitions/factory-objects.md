@@ -38,10 +38,10 @@ var TaskFactory = {
   create: function (eventHandlers, callback) {
     Task.create(eventHandlers, callback);
   },
-  getByKey: function (key, eventHandlers) {
+  getByKey: function (key, eventHandlers, callback) {
     Task.fetch(key, null, eventHandlers, callback);
   },
-  getByName: function (name, eventHandlers) {
+  getByName: function (name, eventHandlers, callback) {
     Task.fetch(name, 'fetchByName', eventHandlers, callback);
   }
 };

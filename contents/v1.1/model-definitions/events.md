@@ -18,11 +18,12 @@ summarizes the business object events by model types:
  |preCreate<br>postCreate|preFetch<br>postFetch|preSave<br>postSave|preInsert<br>postInsert|preUpdate<br>postUpdate|preRemove<br>postRemove|preExecute<br>postExecute
 -|-|-|-|-|-|-|-
 [EditableRootModel]       |x|x|x|x|x|x|-
+[EditableRootCollection]  |x|x|x|x|x|x|-
 [EditableChildModel]      |x|x|-|x|x|x|-
 [EditableChildCollection] |-|-|-|-|-|-|-
-[ReadOnlyRootModel]       |x|-|-|-|-|-|-
-[ReadOnlyChildModel]      |x|-|-|-|-|-|-
-[ReadOnlyRootCollection]  |x|-|-|-|-|-|-
+[ReadOnlyRootModel]       |-|x|-|-|-|-|-
+[ReadOnlyChildModel]      |-|x|-|-|-|-|-
+[ReadOnlyRootCollection]  |-|x|-|-|-|-|-
 [ReadOnlyChildCollection] |-|-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|-|x
 

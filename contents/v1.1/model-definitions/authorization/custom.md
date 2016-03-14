@@ -104,9 +104,9 @@ the creation of the IsAdultRule class is very simple:
 var util = require('util');
 var bo = require('business-objects');
 var t = bo.i18n('', 'CustomRules');
+var Argument = bo.system.Argument;
 var AuthorizationRule = bo.rules.AuthorizationRule;
 var RuleSeverity = bo.rules.RuleSeverity;
-var EnsureArgument = bo.system.EnsureArgument;
 
 // Constructor of IsAdultRule class.
 function IsAdultRule (action, target, ageLimit, message, priority, stopsProcessing) {
@@ -114,7 +114,8 @@ function IsAdultRule (action, target, ageLimit, message, priority, stopsProcessi
   AuthorizationRule.call(this, 'IsAdult');
 
   // Check and save the age limit.
-  this.ageLimit = EnsureArgument.isMandatoryInteger(ageLimit, 'c_manInteger', 'IsAdultRule', 'ageLimit');
+  this.ageLimit = Argument.inConstructor('IsAdultRule').check(ageLimit)
+      .forMandatory('ageLimit').asInteger();
 
   // Initialize base properties.
   this.initialize(
@@ -134,11 +135,11 @@ util.inherits(IsAdultRule, AuthorizationRule);
 IsAdultRule.prototype.execute = function (userInfo) {
 
   // Check argument.
-  userInfo = EnsureArgument.isOptionalType(userInfo, UserInfo,
-    'm_optType', 'IsAdultRule', 'execute', 'userInfo', 'UserInfo');
+  property = Argument.inMethod('IsAdultRule', 'execute').check(userInfo)
+      .forOptional('userInfo').asType(UserInfo);
 
   // Determine entitlement.
-  var hasPermission = userInfo.age < this.ageLimit;
+  var hasPermission = userInfo && userInfo.age < this.ageLimit;
 
   if (!hasPermission)
     // Return a result object that indicates the failure of the rule.
@@ -156,7 +157,7 @@ when the authorization fails:
   ...
   "CustomRules": {
     ...
-    "isAdult": "The {1} argument of {0} constructor must be an integer value.",
+    "isAdult": "You must be at least {0} year old to access this service.",
     ...
   },
   ...

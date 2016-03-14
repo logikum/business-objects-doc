@@ -20,9 +20,9 @@ The next table summarizes the data portal functions by the business object types
 [EditableRootModel]       |x|x|x|x|x|-
 [EditableChildModel]      |x|x|x|x|x|-
 [EditableChildCollection] |-|-|-|-|-|-
-[ReadOnlyRootModel]       |x|-|-|-|-|-
-[ReadOnlyChildModel]      |x|-|-|-|-|-
-[ReadOnlyRootCollection]  |x|-|-|-|-|-
+[ReadOnlyRootModel]       |-|x|-|-|-|-
+[ReadOnlyChildModel]      |-|x|-|-|-|-
+[ReadOnlyRootCollection]  |-|x|-|-|-|-
 [ReadOnlyChildCollection] |-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|x
 

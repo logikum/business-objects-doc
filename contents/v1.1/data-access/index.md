@@ -26,6 +26,7 @@ data access objects may have:
 -|-|-|-|-|-|-|-
 [EditableRootModel]       |x|x|x|x|x|-
 [EditableChildModel]      |x|-|x|x|x|-
+[EditableRootCollection]  |-|x|-|-|-|-
 [EditableChildCollection] |-|-|-|-|-|-
 [ReadOnlyRootModel]       |-|x|-|-|-|-
 [ReadOnlyChildModel]      |-|-|-|-|-|-
@@ -33,16 +34,18 @@ data access objects may have:
 [ReadOnlyChildCollection] |-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|x
 
-Each editable model requires a data access object. The root data access models usually have
-`create()`, `fetch*()`, `insert()`, `update()` and `remove()` methods. The child data access
-models do not have `fetch*()` methods. Editable collections have no data access objects.
-
-Read-only root business objects require data access objects that have `fetch*()` methods.
-Read-only child business objects do not have data access objects.
+The data access objects can have `fetch*()` methods in case of __root models and
+collections__ only.
 
 > If a root business object have child objects, then the root `fetch()` method retrieve
 > the data of the child objects as well, and passes them to the child objects.
-> This way requires less data store resources and is faster.
+> This way is faster for it requires only one call to the data store.
+
+The data access objects of __editable models__ usually have `create()`, `insert()`,
+`update()` and `remove()` methods as well.
+
+Editable child collections and read-only child models and collections do not have data
+access objects.
 
 Command objects require data access objects that have `execute*()` methods.
 

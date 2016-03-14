@@ -18,11 +18,12 @@ The next table summarizes the data portal functions by the business object types
  |dataCreate|dataFetch|dataInsert|dataUpdate|dataRemove|dataExecute
 -|-|-|-|-|-|-
 [EditableRootModel]       |x|x|x|x|x|-
+[EditableRootCollection]  |-|x|-|-|-|-
 [EditableChildModel]      |x|x|x|x|x|-
 [EditableChildCollection] |-|-|-|-|-|-
-[ReadOnlyRootModel]       |x|-|-|-|-|-
-[ReadOnlyChildModel]      |x|-|-|-|-|-
-[ReadOnlyRootCollection]  |x|-|-|-|-|-
+[ReadOnlyRootModel]       |-|x|-|-|-|-
+[ReadOnlyChildModel]      |-|x|-|-|-|-
+[ReadOnlyRootCollection]  |-|x|-|-|-|-
 [ReadOnlyChildCollection] |-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|x
 
