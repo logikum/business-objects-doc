@@ -24,7 +24,7 @@ the constructor of it and creates an instance of the type. If the data access ob
 cannot be instantiated the function returns a [DaoError] object that describes the issue.
 
 > If a model demands a special data access builder, it can be provided via
-> [extensions](/model-definitions/extensions#daoBuilder).
+> [extensions](/definitions/extensions#daoBuilder).
 
 The code hereunder demonstrates a `daoBuilder()` function. It searches the file of data access
 object in a subdirectory compared to the model file. The name of the subdirectory should match

@@ -45,7 +45,7 @@ validation.addInputProperty(property);
 validation.addAffectedProperty(property);
 ```
 
-See [Validation](/model-definitions/validation) page for more information about validation
+See [Validation](/definitions/validation) page for more information about validation
 rules. 
 
 ### Authorization rules
@@ -67,14 +67,14 @@ Construction of authorization rules generally follow this pattern:
 var authorization = new RuleName(action, target, role, message, priority, stopsProcessing);
 ```
 
-See [Authorization](/model-definitions/authorization) page for more information about
+See [Authorization](/definitions/authorization) page for more information about
 authorization rules. 
 
 ### Common and custom rules
 
 The [commonRules] namespace contains some frequently used rules. The lists of the predefined
-rules are available on [Predefined validation rules](/model-definitions/validation/predefined)
-and [Predefined authorization rules](/model-definitions/authorization/predefined) pages.
+rules are available on [Predefined validation rules](/definitions/validation/predefined)
+and [Predefined authorization rules](/definitions/authorization/predefined) pages.
 In most cases the these rules are enough to set the constraints of business objects:
 
 ```
@@ -93,5 +93,5 @@ rules2.add( cr.isInRole(Action.fetchObject, null, 'managers', 'You are not autho
 
 If there is no predefined rule in [commonRules] to apply a condition, then a custom
 rule can be written as described on these pages:
-[Custom validation rules](/model-definitions/validation/custom) and
-[Custom authorization rules](/model-definitions/authorization/custom).
+[Custom validation rules](/definitions/validation/custom) and
+[Custom authorization rules](/definitions/authorization/custom).

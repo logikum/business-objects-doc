@@ -36,12 +36,12 @@ In the above statement ```<ModelType>``` represents one of the following model t
 
 %indent1%| Asynchronous models | Synchronous models |&nbsp;
 -| ------------------------- | ----------------------------- |-
- | [EditableRootModel]       | [EditableRootModelSync]       |
+ | [EditableRootObject]       | [EditableRootObjectSync]       |
  | [EditableRootCollection]  | [EditableRootCollectionSync]  |
- | [EditableChildModel]      | [EditableChildModelSync]      |
+ | [EditableChildObject]      | [EditableChildObjectSync]      |
  | [EditableChildCollection] | [EditableChildCollectionSync] |
- | [ReadOnlyRootModel]       | [ReadOnlyRootModelSync]       |
- | [ReadOnlyChildModel]      | [ReadOnlyChildModelSync]      |
+ | [ReadOnlyRootObject]       | [ReadOnlyRootObjectSync]       |
+ | [ReadOnlyChildObject]      | [ReadOnlyChildObjectSync]      |
  | [ReadOnlyRootCollection]  | [ReadOnlyRootCollectionSync]  |
  | [ReadOnlyChildCollection] | [ReadOnlyChildCollectionSync] |
  | [CommandObject]           | [CommandObjectSync]           |
@@ -65,7 +65,7 @@ var properties2 = new Properties('Person', key, name, hasCar);
 
 The first argument of the constructor is required, and it will be the name of
 the business object defined.
-See [Property definitions](/model-definitions/properties) page for more information.
+See [Property definitions](/definitions/properties) page for more information.
 
 Argument ```rules``` is an instance of [RuleManager] class that contains the rules
 of the business object:
@@ -78,7 +78,7 @@ var rules = new Rules(
 ```
 
 The rule manager holds the validation rules and the authorization ones, respectively.
-See [Rule definitions](/model-definitions/rules) page for more information.
+See [Rule definitions](/definitions/rules) page for more information.
 
 Argument ```extensions``` is an instance of [ExtensionManager] or [ExtensionManagerSync]
 class. It serves as an extension point of the business model. Its constructor has two
@@ -88,13 +88,13 @@ mandatory arguments: the name of the data source and the full path of the model 
 var extensions = new Extensions('dao', __filename);
 ```
 
-See [Extensions](/model-definitions/extensions) page for more information.
+See [Extensions](/definitions/extensions) page for more information.
 
 Business objects are designed to be instantiated by static methods. Factory objects can be
 created for root models making their usage simpler. For example:
 
 ```
-var Person = bo.EditableRootModel(properties, rules, extensions);
+var Person = bo.EditableRootObject(properties, rules, extensions);
 
 var PersonFactory = {
   create: function (eventHandlers) {
@@ -109,4 +109,4 @@ var PersonFactory = {
 };
 ```
 
-See [Factory objects](/model-definitions/factory-objects) page for more information.
+See [Factory objects](/definitions/factory-objects) page for more information.

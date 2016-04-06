@@ -1,6 +1,6 @@
 # Custom validation rules
 
-> * [Validation](/model-definitions/validation)
+> * [Validation](/definitions/validation)
 > * [Predefined validation rules](predefined)
 > * _Custom validation rules_
 

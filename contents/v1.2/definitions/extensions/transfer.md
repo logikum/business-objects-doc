@@ -1,6 +1,6 @@
 # Custom conversion functions for transfer objects
 
-> * [Extensions + Custom DAO builder function](/model-definitions/extensions)
+> * [Extensions + daoBuilder() + addOtherMethod()](/definitions/extensions)
 > * _Custom conversion functions for transfer objects_
 > * [Custom data portal functions](portal)
 
@@ -11,7 +11,7 @@ access objects, the client transfer objects run between the business objects and
 client application. In base case the values of all properties of a business object
 are copied to the transfer object. One ore more properties can be excluded from the
 transfer object using the `flag` argument of [PropertyInfo] constructor. For details
-see the [Property definitions](/model-definitions/properties) page.
+see the [Property definitions](/definitions/properties) page.
 
 In situations where passing the value of aproperty is conditional or it requires
 transformation, a custom function has to be used. These functions have a `context`

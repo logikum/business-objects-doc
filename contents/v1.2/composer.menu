@@ -1,9 +1,9 @@
 +++
 --- Search engine
 title:        business-objects
-description:  Model definitions of business objects.
+description:  Model composer creates business object classes.
 keywords:     business-objects, JavaScript, node.js
 --- Menu system
 order:        20
-text:         Model definitions
+text:         Composer
 +++

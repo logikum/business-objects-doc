@@ -11,7 +11,7 @@ umbel:        true
 
 # Extensions
 
-> * _Extensions + Custom DAO builder function_
+> * _Extensions + daoBuilder() + addOtherMethod()_
 > * [Custom conversion functions for transfer objects](extensions/transfer)
 > * [Custom data portal functions](extensions/portal)
 
@@ -60,6 +60,8 @@ extensions.dataInsert = function() { };
 extensions.dataUpdate = function() { };
 extensions.dataRemove = function() { };
 extensions.dataExecute = function() { };
+// Special command object function
+extensions.addOtherMethod = function() { };
 ```
 
 ### <a name="daoBuilder"></a>Custom DAO builder function
@@ -93,3 +95,24 @@ function daoBuilder( dataSource, modelPath, modelName ) {
 ```
 
 For more information see [daoBuilder](/application/additions/dao-builder) function.
+
+### Special command object extension
+
+The `addOtherMethod('methodName', isTransaction)` function is applicable to command objects only.
+It creates a new instance method using the passed name as an alternative of the
+`execute('methodName', isTransaction)` call. It is useful on command objects that support several
+execute() call providing more readable code.
+
+```
+/* ----- synchronous example ----- */
+
+// Instead of these calls...
+var count = cmd.execute('countOfItems');
+cmd.execute('rename', true);
+cmd.execute('deleteObsolote', true);
+
+// ...the following can be used:
+var count = cmd.countOfItems();
+cmd.rename();
+cmd.deleteObsolote();
+```

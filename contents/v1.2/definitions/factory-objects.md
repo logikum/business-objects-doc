@@ -23,9 +23,9 @@ The table below summarizes the models and their methods that factory ojects can 
 
 %indent3%|create|fetch
 -|:-:|:-:
-[EditableRootModel]       |x|x
+[EditableRootObject]       |x|x
 [EditableRootCollection]  |x|x
-[ReadOnlyRootModel]       |-|x
+[ReadOnlyRootObject]       |-|x
 [ReadOnlyRootCollection]  |-|x
 [CommandObject]           |x|-
 
@@ -33,7 +33,7 @@ The following examples demonstrate the usage of factory objects:
 
 ```
 // Editable root model
-var Task = bo.EditableRootModel( properties, rules, extensions );
+var Task = bo.EditableRootObject( properties, rules, extensions );
 
 var TaskFactory = {
   create: function (eventHandlers, callback) {
@@ -71,7 +71,7 @@ TasksFactory.getUserDailyList('Caliban', function (err, tasks) {
 });
 
 // Read-only root model
-var TaskView = bo.ReadOnlyRootModel( properties, rules, extensions );
+var TaskView = bo.ReadOnlyRootObject( properties, rules, extensions );
 
 var TaskViewFactory = {
   getByKey: function (key, eventHandlers, callback) {
@@ -122,7 +122,7 @@ Synchronous version of the examples above:
 
 ```
 // Editable root model
-var Task = bo.EditableRootModelSync( properties, rules, extensions );
+var Task = bo.EditableRootObjectSync( properties, rules, extensions );
 
 var TaskFactory = {
   create: function (eventHandlers) {
@@ -156,7 +156,7 @@ var TasksFactory = {
 var tasks = TasksFactory.getUserDailyList('Caliban');
 
 // Read-only root model
-var TaskView = bo.ReadOnlyRootModelSync( properties, rules, extensions );
+var TaskView = bo.ReadOnlyRootObjectSync( properties, rules, extensions );
 
 var TaskViewFactory = {
   getByKey: function (key, eventHandlers) {

@@ -24,12 +24,12 @@ data access objects may have:
 
  |create()|fetch*()|insert()|update()|remove()|execute*()
 -|-|-|-|-|-|-|-
-[EditableRootModel]       |x|x|x|x|x|-
-[EditableChildModel]      |x|-|x|x|x|-
+[EditableRootObject]       |x|x|x|x|x|-
+[EditableChildObject]      |x|-|x|x|x|-
 [EditableRootCollection]  |-|x|-|-|-|-
 [EditableChildCollection] |-|-|-|-|-|-
-[ReadOnlyRootModel]       |-|x|-|-|-|-
-[ReadOnlyChildModel]      |-|-|-|-|-|-
+[ReadOnlyRootObject]       |-|x|-|-|-|-
+[ReadOnlyChildObject]      |-|-|-|-|-|-
 [ReadOnlyRootCollection]  |-|x|-|-|-|-
 [ReadOnlyChildCollection] |-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|x
@@ -56,4 +56,4 @@ with different names. The names of the methods are defined in the factory object
 static methods do not define a name for the actual method, then the `fetch()` and `execute()`
 method names are used.
 
-See [Factory objects](/model-definitions/factory-objects) page for more information.
+See [Factory objects](/definitions/factory-objects) page for more information.

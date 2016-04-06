@@ -79,7 +79,7 @@ var extensions = new Extensions('dao', __filename);
 Now you can compose the model type and its factory object:
 
 ```
-var BlanketOrder = bo.EditableRootModel(properties, rules, extensions);
+var BlanketOrder = bo.EditableRootObject(properties, rules, extensions);
 
 var BlanketOrderFactory = {
   create: function (callback) {

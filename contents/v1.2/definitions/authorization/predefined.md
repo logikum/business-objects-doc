@@ -1,6 +1,6 @@
 # Predefined authorization rules
 
-> * [Authorization](/model-definitions/authorization)
+> * [Authorization](/definitions/authorization)
 > * _Predefined authorization rules_
 > * [Custom authorization rules](custom)
 

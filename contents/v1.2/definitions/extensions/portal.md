@@ -1,6 +1,6 @@
 # Custom data portal functions
 
-> * [Extensions + Custom DAO builder function](/model-definitions/extensions)
+> * [Extensions + daoBuilder() + addOtherMethod()](/definitions/extensions)
 > * [Custom conversion functions for transfer objects](transfer)
 > * _Custom data portal functions_
 
@@ -17,12 +17,12 @@ The next table summarizes the data portal functions by the business object types
 
  |dataCreate|dataFetch|dataInsert|dataUpdate|dataRemove|dataExecute
 -|-|-|-|-|-|-
-[EditableRootModel]       |x|x|x|x|x|-
+[EditableRootObject]       |x|x|x|x|x|-
 [EditableRootCollection]  |-|x|-|-|-|-
-[EditableChildModel]      |x|x|x|x|x|-
+[EditableChildObject]      |x|x|x|x|x|-
 [EditableChildCollection] |-|-|-|-|-|-
-[ReadOnlyRootModel]       |-|x|-|-|-|-
-[ReadOnlyChildModel]      |-|x|-|-|-|-
+[ReadOnlyRootObject]       |-|x|-|-|-|-
+[ReadOnlyChildObject]      |-|x|-|-|-|-
 [ReadOnlyRootCollection]  |-|x|-|-|-|-
 [ReadOnlyChildCollection] |-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|x

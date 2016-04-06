@@ -56,7 +56,7 @@ with the following properties:
   * __showWarning__: The result of a failed rule is a broken rule with warning severity.
   * __showInformation__: The result of a failed rule is a broken rule with information severity.
   
-  _For more information see [Authorization rules](/model-definitions/authorization)
+  _For more information see [Authorization rules](/definitions/authorization)
   and [Error handling](errors) pages._
 
 An example configuration:

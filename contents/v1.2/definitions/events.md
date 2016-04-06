@@ -17,12 +17,12 @@ summarizes the business object events by model types:
 
  |preCreate<br>postCreate|preFetch<br>postFetch|preSave<br>postSave|preInsert<br>postInsert|preUpdate<br>postUpdate|preRemove<br>postRemove|preExecute<br>postExecute
 -|-|-|-|-|-|-|-
-[EditableRootModel]       |x|x|x|x|x|x|-
+[EditableRootObject]       |x|x|x|x|x|x|-
 [EditableRootCollection]  |x|x|x|x|x|x|-
-[EditableChildModel]      |x|x|-|x|x|x|-
+[EditableChildObject]      |x|x|-|x|x|x|-
 [EditableChildCollection] |-|-|-|-|-|-|-
-[ReadOnlyRootModel]       |-|x|-|-|-|-|-
-[ReadOnlyChildModel]      |-|x|-|-|-|-|-
+[ReadOnlyRootObject]       |-|x|-|-|-|-|-
+[ReadOnlyChildObject]      |-|x|-|-|-|-|-
 [ReadOnlyRootCollection]  |-|x|-|-|-|-|-
 [ReadOnlyChildCollection] |-|-|-|-|-|-|-
 [CommandObject]           |-|-|-|-|-|-|x
@@ -37,7 +37,7 @@ insert, update or remove events depending on the state of the root object:
 Event handlers are bound to the business object instances when they are instantiating,
 i.e. in constructors or fetch methods. These functions expect an [EventHandlerList]
 object, that is usually passed in a factory method. For more information see
-[Factory objects](/model-definitions/factory-objects) page.
+[Factory objects](/definitions/factory-objects) page.
 
 The list of event handlers can be extended by the `add` method of the [EventHandlerList]
 object:
