@@ -1,0 +1,414 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Class: DataPortalContext</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div>
+            <h1><small><a href="bo.html">bo</a>.<wbr><a href="bo.shared.html">shared</a>.<wbr></small><span class="symbol-name">DataPortalContext</span></h1>
+            <p class="source-link">Source: <a href="shared_data-portal-context.js.html#source-line-34">shared/<wbr>data-portal-context.<wbr>js:34</a></p>
+            <div class="symbol-classdesc">
+              <p>Provides the context for custom data portal actions.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalContext.html#connection">connection</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.DataPortalContext.html#dao">dao</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalContext.html#isSelfDirty">isSelfDirty</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.DataPortalContext.html#locale">locale</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalContext.html#properties">properties</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.DataPortalContext.html#user">user</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalContext.html#getValue">getValue(propertyName)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalContext.html#setState">setState([connection][, isSelfDirty])</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataPortalContext.html#setValue">setValue(propertyName, value)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="DataPortalContext">new&nbsp;<span class="symbol-name">DataPortalContext</span><span class="signature"><span class="signature-params">(dao, properties[, getValue][, setValue])</span></span></h2>
+            <p>Creates a new data context object.
+              </br>
+              </br>
+              <i><b>Warning:</b> Data context objects are created in models internally.
+   They are intended only to make publicly available the context
+   for custom data portal actions.</i></p>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>dao</p>
+                    </td>
+                    <td>
+                      <p>object</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The data access object of the current model.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>properties</p>
+                    </td>
+                    <td>
+                      <p>Array of <a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a></p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>An array of property definitions.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>getValue</p>
+                    </td>
+                    <td>
+                      <p><a href="internal.html#~getValue">internal~getValue</a></p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>A function that returns the current value of a property.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>setValue</p>
+                    </td>
+                    <td>
+                      <p><a href="internal.html#~setValue">internal~setValue</a></p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>A function that changes the current value of a property.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The dao argument must be an object.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The properties must be an array of PropertyInfo objects, or a single PropertyInfo object or null.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The getValue argument must be a function.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The setValue argument must be a function.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="connection"><span class="symbol-name">connection</span><small class="property-type">
+            &nbsp;object</small></h3>
+              <p>The connection object for the data source.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="dao"><span class="symbol-name">dao</span><small class="property-type">
+            &nbsp;object</small></h3>
+              <p>The data access object of the current model.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="isSelfDirty"><span class="symbol-name">isSelfDirty</span><small class="property-type">
+            &nbsp;boolean</small></h3>
+              <p>Indicates whether the current model itself has been changed.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="locale"><span class="symbol-name">locale</span><small class="property-type">
+            &nbsp;string</small></h3>
+              <p>The current locale.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="properties"><span class="symbol-name">properties</span><small class="property-type">
+            &nbsp;Array of <a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a></small></h3>
+              <p>Array of property definitions that may appear on the data transfer object.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="user"><span class="symbol-name">user</span><small class="property-type">
+            &nbsp;<a href="bo.system.UserInfo.html">bo.system.UserInfo</a></small></h3>
+              <p>The current user.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id="getValue"><span class="symbol-name">getValue</span><span class="signature"><span class="signature-params">(propertyName)</span>&nbsp;&rarr; <span class="signature-returns"> any type</span></span></h3>
+              <p>Gets the current value of a model property.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>propertyName</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The name of the property.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The name must be a non-empty string.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The model has no property with the given name.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.shared.ModelError.html">Model error</a>: Cannot read the properties of a collection.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>any type</code>&nbsp;The value of the model property.</p>
+                </dd>
+              </dl>
+              <h3 id="setState"><span class="symbol-name">setState</span><span class="signature"><span class="signature-params">([connection][, isSelfDirty])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="bo.shared.DataPortalContext.html">bo.shared.DataPortalContext</a></span></span></h3>
+              <p>Sets the current state of the model.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>connection</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The current connection for the data store.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>isSelfDirty</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Indicates whether the current model itself has been changed.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="bo.shared.DataPortalContext.html">bo.shared.DataPortalContext</a></code>&nbsp;The data context object itself.</p>
+                </dd>
+              </dl>
+              <h3 id="setValue"><span class="symbol-name">setValue</span><span class="signature"><span class="signature-params">(propertyName, value)</span></span></h3>
+              <p>Sets the current value of a model property.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>propertyName</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The name of the property.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The new value of the property.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The name must be a non-empty string.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The model has no property with the given name.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.shared.ModelError.html">Model error</a>: Cannot write the properties of a collection.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

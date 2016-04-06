@@ -1,0 +1,1148 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: editable-child-object-sync.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: editable-child-object-sync.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+//region Imports
+
+var util &#x3D; require(&#x27;util&#x27;);
+var config &#x3D; require(&#x27;./shared/configuration-reader.js&#x27;);
+var Argument &#x3D; require(&#x27;./system/argument-check.js&#x27;);
+var Enumeration &#x3D; require(&#x27;./system/enumeration.js&#x27;);
+
+var ModelBase &#x3D; require(&#x27;./model-base.js&#x27;);
+var ModelError &#x3D; require(&#x27;./shared/model-error.js&#x27;);
+var ExtensionManagerSync &#x3D; require(&#x27;./shared/extension-manager-sync.js&#x27;);
+var EventHandlerList &#x3D; require(&#x27;./shared/event-handler-list.js&#x27;);
+var DataStore &#x3D; require(&#x27;./shared/data-store.js&#x27;);
+var DataType &#x3D; require(&#x27;./data-types/data-type.js&#x27;);
+
+var PropertyInfo &#x3D; require(&#x27;./shared/property-info.js&#x27;);
+var PropertyManager &#x3D; require(&#x27;./shared/property-manager.js&#x27;);
+var PropertyContext &#x3D; require(&#x27;./shared/property-context.js&#x27;);
+var ValidationContext &#x3D; require(&#x27;./rules/validation-context.js&#x27;);
+var TransferContext &#x3D; require(&#x27;./shared/transfer-context.js&#x27;);
+
+var RuleManager &#x3D; require(&#x27;./rules/rule-manager.js&#x27;);
+var DataTypeRule &#x3D; require(&#x27;./rules/data-type-rule.js&#x27;);
+var BrokenRuleList &#x3D; require(&#x27;./rules/broken-rule-list.js&#x27;);
+var RuleSeverity &#x3D; require(&#x27;./rules/rule-severity.js&#x27;);
+var AuthorizationAction &#x3D; require(&#x27;./rules/authorization-action.js&#x27;);
+var AuthorizationContext &#x3D; require(&#x27;./rules/authorization-context.js&#x27;);
+
+var DataPortalAction &#x3D; require(&#x27;./shared/data-portal-action.js&#x27;);
+var DataPortalContext &#x3D; require(&#x27;./shared/data-portal-context.js&#x27;);
+var DataPortalEvent &#x3D; require(&#x27;./shared/data-portal-event.js&#x27;);
+var DataPortalEventArgs &#x3D; require(&#x27;./shared/data-portal-event-args.js&#x27;);
+var DataPortalError &#x3D; require(&#x27;./shared/data-portal-error.js&#x27;);
+
+var MODEL_STATE &#x3D; require(&#x27;./shared/model-state.js&#x27;);
+var CLASS_NAME &#x3D; &#x27;EditableChildObjectSync&#x27;;
+var MODEL_DESC &#x3D; &#x27;Editable child object&#x27;;
+var M_FETCH &#x3D; DataPortalAction.getName(DataPortalAction.fetch);
+
+//endregion
+
+/**
+ * Factory method to create definitions of synchronous editable child objects.
+ *
+ *    Valid child model types are:
+ *
+ *      * EditableChildCollectionSync
+ *      * EditableChildObjectSync
+ *
+ * @function bo.EditableChildObjectSync
+ * @param {string} name - The name of the model.
+ * @param {bo.shared.PropertyManager} properties - The property definitions.
+ * @param {bo.shared.RuleManager} rules - The validation and authorization rules.
+ * @param {bo.shared.ExtensionManager} extensions - The customization of the model.
+ * @returns {EditableChildObjectSync} The constructor of a synchronous editable child object.
+ *
+ * @throws {@link bo.system.ArgumentError Argument error}: The model name must be a non-empty string.
+ * @throws {@link bo.system.ArgumentError Argument error}: The properties must be a PropertyManager object.
+ * @throws {@link bo.system.ArgumentError Argument error}: The rules must be a RuleManager object.
+ * @throws {@link bo.system.ArgumentError Argument error}: The extensions must be a ExtensionManagerSync object.
+ *
+ * @throws {@link bo.shared.ModelError Model error}:
+ *    The child objects must be EditableChildCollectionSync or EditableChildObjectSync instances.
+ */
+var EditableChildObjectSyncFactory &#x3D; function (name, properties, rules, extensions) {
+  var check &#x3D; Argument.inConstructor(CLASS_NAME);
+
+  name &#x3D; check(name).forMandatory(&#x27;name&#x27;).asString();
+  properties &#x3D; check(properties).forMandatory(&#x27;properties&#x27;).asType(PropertyManager);
+  rules &#x3D; check(rules).forMandatory(&#x27;rules&#x27;).asType(RuleManager);
+  extensions &#x3D; check(extensions).forMandatory(&#x27;extensions&#x27;).asType(ExtensionManagerSync);
+
+  // Verify the model types of child objects.
+  properties.modelName &#x3D; name;
+  properties.verifyChildTypes([ &#x27;EditableChildCollectionSync&#x27;, &#x27;EditableChildObjectSync&#x27; ]);
+
+  // Get data access object.
+  var dao &#x3D; extensions.getDataAccessObject(name);
+
+  /**
+   * @classdesc
+   *    Represents the definition of a synchronous editable child object.
+   * @description
+   *    Creates a new synchronous editable child object instance.
+   *
+   *    _The name of the model type available as:
+   *    __&amp;amp;lt;instance&amp;amp;gt;.constructor.modelType__, returns &#x27;EditableChildObjectSync&#x27;._
+   *
+   *    Valid parent model types are:
+   *
+   *      * EditableChildCollectionSync
+   *      * EditableRootObjectSync
+   *      * EditableChildObjectSync
+   *
+   * @name EditableChildObjectSync
+   * @constructor
+   * @param {object} parent - The parent business object.
+   * @param {bo.shared.EventHandlerList} [eventHandlers] - The event handlers of the instance.
+   *
+   * @extends ModelBase
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}:
+   *    The parent object must be an EditableChildCollectionSync, EditableRootObjectSync or
+   *    EditableChildObjectSync instance.
+   * @throws {@link bo.system.ArgumentError Argument error}:
+   *    The event handlers must be an EventHandlerList object or null.
+   *
+   * @fires EditableChildObjectSync#preCreate
+   * @fires EditableChildObjectSync#postCreate
+   * @fires EditableChildObjectSync#preFetch
+   * @fires EditableChildObjectSync#postFetch
+   * @fires EditableChildObjectSync#preInsert
+   * @fires EditableChildObjectSync#postInsert
+   * @fires EditableChildObjectSync#preUpdate
+   * @fires EditableChildObjectSync#postUpdate
+   * @fires EditableChildObjectSync#preRemove
+   * @fires EditableChildObjectSync#postRemove
+   */
+  var EditableChildObjectSync &#x3D; function (parent, eventHandlers) {
+    ModelBase.call(this);
+    var check &#x3D; Argument.inConstructor(name);
+
+    // Verify the model type of the parent model.
+    parent &#x3D; check(parent).for(&#x27;parent&#x27;).asModelType([
+      &#x27;EditableRootCollectionSync&#x27;,
+      &#x27;EditableChildCollectionSync&#x27;,
+      &#x27;EditableRootObjectSync&#x27;,
+      &#x27;EditableChildObjectSync&#x27;
+    ]);
+
+    eventHandlers &#x3D; check(eventHandlers).forOptional(&#x27;eventHandlers&#x27;).asType(EventHandlerList);
+
+    var self &#x3D; this;
+    var state &#x3D; null;
+    var isDirty &#x3D; false;
+    var store &#x3D; new DataStore();
+    var brokenRules &#x3D; new BrokenRuleList(name);
+    var isValidated &#x3D; false;
+    var propertyContext &#x3D; null;
+    var dataContext &#x3D; null;
+
+    // Set up business rules.
+    rules.initialize(config.noAccessBehavior);
+
+    // Set up event handlers.
+    if (eventHandlers)
+      eventHandlers.setup(self);
+
+    //region Mark object state
+
+    /*
+     * From:         To:  | pri | cre | cha | mfr | rem
+     * -------------------------------------------------
+     * NULL               |  +  |  +  |  N  |  N  |  N
+     * -------------------------------------------------
+     * pristine           |  o  |  -  |  +  |  +  |  -
+     * -------------------------------------------------
+     * created            |  +  |  o  |  o  | (-) |  +
+     * -------------------------------------------------
+     * changed            |  +  |  -  |  o  |  +  |  -
+     * -------------------------------------------------
+     * markedForRemoval   |  -  |  -  |  o  |  o  |  +
+     * -------------------------------------------------
+     * removed            |  -  |  -  |  -  |  -  |  o
+     * -------------------------------------------------
+     *
+     * Explanation:
+     *   +  :  possible transition
+     *   -  :  not allowed transition, throws exception
+     *   o  :  no change, no action
+     *   N  :  impossible start up, throws exception
+     */
+
+    function markAsPristine() {
+      if (state &#x3D;&#x3D;&#x3D; MODEL_STATE.markedForRemoval || state &#x3D;&#x3D;&#x3D; MODEL_STATE.removed)
+        illegal(MODEL_STATE.pristine);
+      else if (state !&#x3D;&#x3D; MODEL_STATE.pristine) {
+        state &#x3D; MODEL_STATE.pristine;
+        isDirty &#x3D; false;
+      }
+    }
+
+    function markAsCreated() {
+      if (state &#x3D;&#x3D;&#x3D; null) {
+        state &#x3D; MODEL_STATE.created;
+        isDirty &#x3D; true;
+        propagateChange(); // up to the parent
+      }
+      else if (state !&#x3D;&#x3D; MODEL_STATE.created)
+        illegal(MODEL_STATE.created);
+    }
+
+    function markAsChanged(itself) {
+      if (state &#x3D;&#x3D;&#x3D; MODEL_STATE.pristine) {
+        state &#x3D; MODEL_STATE.changed;
+        isDirty &#x3D; isDirty || itself;
+        propagateChange(); // up to the parent
+        isValidated &#x3D; false;
+      }
+      else if (state &#x3D;&#x3D;&#x3D; MODEL_STATE.created) {
+        isDirty &#x3D; isDirty || itself;
+        propagateChange(); // up to the parent
+        isValidated &#x3D; false;
+      }
+      else if (state &#x3D;&#x3D;&#x3D; MODEL_STATE.removed)
+        illegal(MODEL_STATE.changed);
+    }
+
+    function markForRemoval() {
+      if (state &#x3D;&#x3D;&#x3D; MODEL_STATE.pristine || state &#x3D;&#x3D;&#x3D; MODEL_STATE.changed) {
+        state &#x3D; MODEL_STATE.markedForRemoval;
+        isDirty &#x3D; true;
+        propagateRemoval(); // down to children
+        propagateChange(); // up to the parent
+      }
+      else if (state &#x3D;&#x3D;&#x3D; MODEL_STATE.created)
+        state &#x3D; MODEL_STATE.removed;
+      else if (state !&#x3D;&#x3D; MODEL_STATE.markedForRemoval)
+        illegal(MODEL_STATE.markedForRemoval);
+    }
+
+    function markAsRemoved() {
+      if (state &#x3D;&#x3D;&#x3D; MODEL_STATE.created || state &#x3D;&#x3D;&#x3D; MODEL_STATE.markedForRemoval) {
+        state &#x3D; MODEL_STATE.removed;
+        isDirty &#x3D; false;
+      }
+      else if (state !&#x3D;&#x3D; MODEL_STATE.removed)
+        illegal(MODEL_STATE.removed);
+    }
+
+    function illegal(newState) {
+      throw new ModelError(&#x27;transition&#x27;,
+        (state &#x3D;&#x3D; null ? &#x27;NULL&#x27; : MODEL_STATE.getName(state)),
+        MODEL_STATE.getName(newState));
+    }
+
+    function propagateChange() {
+      parent.childHasChanged();
+    }
+
+    /**
+     * Notes that a child object has changed.
+     * &amp;lt;br/&gt;_This method is called by child objects._
+     *
+     * @function EditableChildObjectSync#childHasChanged
+     * @protected
+     */
+    this.childHasChanged &#x3D; function() {
+      markAsChanged(false);
+    };
+
+    function propagateRemoval() {
+      properties.children().forEach(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        child.remove();
+      });
+    }
+
+    //endregion
+
+    //region Show object state
+
+    /**
+     * Gets the state of the model. Valid states are:
+     * pristine, created, changed, markedForRemoval and removed.
+     *
+     * @function EditableChildObjectSync#getModelState
+     * @returns {string} The state of the model.
+     */
+    this.getModelState &#x3D; function () {
+      return MODEL_STATE.getName(state);
+    };
+
+    /**
+     * Indicates whether the business object has been created newly and
+     * not has been yet saved, i.e. its state is created.
+     *
+     * @function EditableChildObjectSync#isNew
+     * @returns {boolean} True when the business object is new, otherwise false.
+     */
+    this.isNew &#x3D; function () {
+      return state &#x3D;&#x3D;&#x3D; MODEL_STATE.created;
+    };
+
+    /**
+     * Indicates whether the business object itself or any of its child objects differs the one
+     * that is stored in the repository, i.e. its state is created, changed or markedForRemoval.
+     *
+     * @function EditableChildObjectSync#isDirty
+     * @returns {boolean} True when the business object has been changed, otherwise false.
+     */
+    this.isDirty &#x3D; function () {
+      return state &#x3D;&#x3D;&#x3D; MODEL_STATE.created ||
+             state &#x3D;&#x3D;&#x3D; MODEL_STATE.changed ||
+             state &#x3D;&#x3D;&#x3D; MODEL_STATE.markedForRemoval;
+    };
+
+    /**
+     * Indicates whether the business object itself, ignoring its child objects, differs the one
+     * that is stored in the repository.
+     *
+     * @function EditableChildObjectSync#isSelfDirty
+     * @returns {boolean} True when the business object itself has been changed, otherwise false.
+     */
+    this.isSelfDirty &#x3D; function () {
+      return isDirty;
+    };
+
+    /**
+     * Indicates whether the business object will be deleted from the repository,
+     * i.e. its state is markedForRemoval.
+     *
+     * @function EditableChildObjectSync#isDeleted
+     * @returns {boolean} True when the business object will be deleted, otherwise false.
+     */
+    this.isDeleted &#x3D; function () {
+      return state &#x3D;&#x3D;&#x3D; MODEL_STATE.markedForRemoval;
+    };
+
+    //endregion
+
+    //region Transfer object methods
+
+    function getTransferContext (authorize) {
+      return authorize ?
+          new TransferContext(properties.toArray(), readPropertyValue, writePropertyValue) :
+          new TransferContext(properties.toArray(), getPropertyValue, setPropertyValue);
+    }
+
+    function baseToDto() {
+      var dto &#x3D; {};
+      properties.filter(function (property) {
+        return property.isOnDto;
+      }).forEach(function (property) {
+        dto[property.name] &#x3D; getPropertyValue(property);
+      });
+      return dto;
+    }
+
+    function toDto () {
+      if (extensions.toDto)
+        return extensions.toDto.call(self, getTransferContext(false));
+      else
+        return baseToDto();
+    }
+
+    function baseFromDto(dto) {
+      properties.filter(function (property) {
+        return property.isOnDto;
+      }).forEach(function (property) {
+        if (dto.hasOwnProperty(property.name) &amp;amp;&amp;amp; typeof dto[property.name] !&#x3D;&#x3D; &#x27;function&#x27;) {
+          setPropertyValue(property, dto[property.name]);
+        }
+      });
+    }
+
+    function fromDto (dto) {
+      if (extensions.fromDto)
+        extensions.fromDto.call(self, getTransferContext(false), dto);
+      else
+        baseFromDto(dto);
+    }
+
+    function baseToCto() {
+      var cto &#x3D; {};
+      properties.filter(function (property) {
+        return property.isOnCto;
+      }).forEach(function (property) {
+        cto[property.name] &#x3D; readPropertyValue(property);
+      });
+      return cto;
+    }
+
+    /**
+     * Transforms the business object to a plain object to send to the client.
+     * &amp;lt;br/&gt;_This method is usually called by the parent object._
+     *
+     * @function EditableChildObjectSync#toCto
+     * @returns {object} The client transfer object.
+     */
+    this.toCto &#x3D; function () {
+      var cto &#x3D; {};
+      if (extensions.toCto)
+        cto &#x3D; extensions.toCto.call(self, getTransferContext(true));
+      else
+        cto &#x3D; baseToCto();
+
+      properties.children().forEach(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        cto[property.name] &#x3D; child.toCto();
+      });
+      return cto;
+    };
+
+    function baseFromCto(cto) {
+      if (cto &amp;amp;&amp;amp; typeof cto &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
+        properties.filter(function (property) {
+          return property.isOnCto;
+        }).forEach(function (property) {
+          if (cto.hasOwnProperty(property.name) &amp;amp;&amp;amp; typeof cto[property.name] !&#x3D;&#x3D; &#x27;function&#x27;) {
+            writePropertyValue(property, cto[property.name]);
+          }
+        });
+      }
+    }
+
+    /**
+     * Rebuilds the business object from a plain object sent by the client.
+     * &amp;lt;br/&gt;_This method is usually called by the parent object._
+     *
+     * @function EditableChildObjectSync#fromCto
+     * @param {object} cto - The client transfer object.
+     */
+    this.fromCto &#x3D; function (cto) {
+      if (extensions.fromCto)
+        extensions.fromCto.call(self, getTransferContext(true), cto);
+      else
+        baseFromCto(cto);
+
+      properties.children().forEach(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        if (cto[property.name]) {
+          child.fromCto(cto[property.name]);
+        }
+      });
+    };
+
+    /**
+     * Determines that the passed data contains current values of the model key.
+     *
+     * @function EditableChildObjectSync#keyEquals
+     * @protected
+     * @param {object} data - Data object whose properties can contain the values of the model key.
+     * @param {internal~getValue} getPropertyValue - A function that returns
+     *    the current value of the given property.
+     * @returns {boolean} True when the values are equal, false otherwise.
+     */
+    this.keyEquals &#x3D; function (data) {
+      return properties.keyEquals(data, getPropertyValue);
+    };
+
+    //endregion
+
+    //region Permissions
+
+    function getAuthorizationContext(action, targetName) {
+      return new AuthorizationContext(action, targetName || &#x27;&#x27;, brokenRules);
+    }
+
+    function canBeRead (property) {
+      return rules.hasPermission(
+          getAuthorizationContext(AuthorizationAction.readProperty, property.name)
+      );
+    }
+
+    function canBeWritten (property) {
+      return rules.hasPermission(
+          getAuthorizationContext(AuthorizationAction.writeProperty, property.name)
+      );
+    }
+
+    function canDo (action) {
+      return rules.hasPermission(
+          getAuthorizationContext(action)
+      );
+    }
+
+    function canExecute (methodName) {
+      return rules.hasPermission(
+          getAuthorizationContext(AuthorizationAction.executeMethod, methodName)
+      );
+    }
+
+    //endregion
+
+    //region Child methods
+
+    function fetchChildren(dto) {
+      properties.children().forEach(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        child.fetch(dto[property.name]);
+      });
+    }
+
+    function insertChildren(connection) {
+      properties.children().forEach(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        child.save(connection);
+      });
+    }
+
+    function updateChildren(connection) {
+      properties.children().forEach(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        child.save(connection);
+      });
+    }
+
+    function removeChildren(connection) {
+      properties.children().forEach(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        child.save(connection);
+      });
+    }
+
+    function childrenAreValid() {
+      return properties.children().every(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        return child.isValid();
+      });
+    }
+
+    function checkChildRules() {
+      properties.children().forEach(function(property) {
+        var child &#x3D; getPropertyValue(property);
+        child.checkRules();
+      });
+    }
+
+    function getChildBrokenRules (namespace, bro) {
+      properties.children().forEach(function (property) {
+        var child &#x3D; getPropertyValue(property);
+        var childBrokenRules &#x3D; child.getBrokenRules(namespace);
+        if (childBrokenRules) {
+          if (childBrokenRules instanceof Array)
+            bro.addChildren(property.name, childBrokenRules);
+          else
+            bro.addChild(property.name, childBrokenRules);
+        }
+      });
+      return bro;
+    }
+
+    //endregion
+
+    //region Data portal methods
+
+    //region Helper
+
+    function getDataContext (connection) {
+      if (!dataContext)
+        dataContext &#x3D; new DataPortalContext(
+            dao, properties.toArray(), getPropertyValue, setPropertyValue
+        );
+      return dataContext.setState(connection, isDirty);
+    }
+
+    function raiseEvent (event, methodName, error) {
+      self.emit(
+          DataPortalEvent.getName(event),
+          new DataPortalEventArgs(event, name, null, methodName, error)
+      );
+    }
+
+    function wrapError (action, error) {
+      return new DataPortalError(MODEL_DESC, name, action, error);
+    }
+
+    //endregion
+
+    //region Create
+
+    function data_create () {
+      if (extensions.dataCreate || dao.$hasCreate()) {
+        var connection &#x3D; null;
+        try {
+          // Open connection.
+          connection &#x3D; config.connectionManager.openConnection(extensions.dataSource);
+          // Launch start event.
+          /**
+           * The event arises before the business object instance will be initialized in the repository.
+           * @event EditableChildObjectSync#preCreate
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} oldObject - The instance of the model before the data portal action.
+           */
+          raiseEvent(DataPortalEvent.preCreate);
+          // Execute creation.
+          if (extensions.dataCreate) {
+            // *** Custom creation.
+            extensions.dataCreate.call(self, getDataContext(connection));
+          } else {
+            // *** Standard creation.
+            var dto &#x3D; dao.$runMethod(&#x27;create&#x27;, connection);
+            fromDto.call(self, dto);
+          }
+          markAsCreated();
+          // Launch finish event.
+          /**
+           * The event arises after the business object instance has been initialized in the repository.
+           * @event EditableChildObjectSync#postCreate
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} newObject - The instance of the model after the data portal action.
+           */
+          raiseEvent(DataPortalEvent.postCreate);
+          // Close connection.
+          connection &#x3D; config.connectionManager.closeConnection(extensions.dataSource, connection);
+        } catch (e) {
+          // Wrap the intercepted error.
+          var dpError &#x3D; wrapError(DataPortalAction.create, e);
+          // Launch finish event.
+          if (connection)
+            raiseEvent(DataPortalEvent.postCreate, null, dpError);
+          // Close connection.
+          connection &#x3D; config.connectionManager.closeConnection(extensions.dataSource, connection);
+          // Rethrow error.
+          throw dpError;
+        }
+      }
+    }
+
+    //endregion
+
+    //region Fetch
+
+    function data_fetch (data, method) {
+      // Check permissions.
+      if (method &#x3D;&#x3D;&#x3D; M_FETCH ? canDo(AuthorizationAction.fetchObject) : canExecute(method)) {
+        try {
+          // Launch start event.
+          /**
+           * The event arises before the business object instance will be retrieved from the repository.
+           * @event EditableChildObjectSync#preFetch
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} oldObject - The instance of the model before the data portal action.
+           */
+          raiseEvent(DataPortalEvent.preFetch, method);
+          // Execute fetch.
+          var dto &#x3D; null;
+          if (extensions.dataFetch) {
+            // *** Custom fetch.
+            dto &#x3D; extensions.dataFetch.call(self, getDataContext(null), data, method);
+          } else {
+            // *** Standard fetch.
+            // Child element gets data from parent.
+            dto &#x3D; data;
+            fromDto.call(self, dto);
+          }
+          // Fetch children as well.
+          fetchChildren(dto);
+          markAsPristine();
+          // Launch finish event.
+          /**
+           * The event arises after the business object instance has been retrieved from the repository.
+           * @event EditableChildObjectSync#postFetch
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} newObject - The instance of the model after the data portal action.
+           */
+          raiseEvent(DataPortalEvent.postFetch, method);
+        } catch (e) {
+          // Wrap the intercepted error.
+          var dpError &#x3D; wrapError(DataPortalAction.fetch, e);
+          // Launch finish event.
+          raiseEvent(DataPortalEvent.postFetch, method, dpError);
+          // Rethrow the original error.
+          throw e;
+        }
+      }
+    }
+
+    //endregion
+
+    //region Insert
+
+    function data_insert (connection) {
+      // Check permissions.
+      if (canDo(AuthorizationAction.createObject)) {
+        try {
+          // Launch start event.
+          /**
+           * The event arises before the business object instance will be created in the repository.
+           * @event EditableChildObjectSync#preInsert
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} oldObject - The instance of the model before the data portal action.
+           */
+          raiseEvent(DataPortalEvent.preInsert);
+          // Copy the values of parent keys.
+          var references &#x3D; properties.filter(function (property) {
+            return property.isParentKey;
+          });
+          for (var i &#x3D; 0; i &amp;lt; references.length; i++) {
+            var referenceProperty &#x3D; references[i];
+            var parentValue &#x3D; parent[referenceProperty.name];
+            if (parentValue !&#x3D;&#x3D; undefined)
+              setPropertyValue(referenceProperty, parentValue);
+          }
+          // Execute insert.
+          if (extensions.dataInsert) {
+            // *** Custom insert.
+            extensions.dataInsert.call(self, getDataContext(connection));
+          } else {
+            // *** Standard insert.
+            var dto &#x3D; toDto.call(self);
+            dto &#x3D; dao.$runMethod(&#x27;insert&#x27;, connection, dto);
+            fromDto.call(self, dto);
+          }
+          // Insert children as well.
+          insertChildren(connection);
+          markAsPristine();
+          // Launch finish event.
+          /**
+           * The event arises after the business object instance has been created in the repository.
+           * @event EditableChildObjectSync#postInsert
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} newObject - The instance of the model after the data portal action.
+           */
+          raiseEvent(DataPortalEvent.postInsert);
+        } catch (e) {
+          // Wrap the intercepted error.
+          var dpError &#x3D; wrapError(DataPortalAction.insert, e);
+          // Launch finish event.
+          raiseEvent(DataPortalEvent.postInsert, null, dpError);
+          // Rethrow the original error.
+          throw e;
+        }
+      }
+    }
+
+    //endregion
+
+    //region Update
+
+    function data_update (connection) {
+      // Check permissions.
+      if (canDo(AuthorizationAction.updateObject)) {
+        try {
+          // Launch start event.
+          /**
+           * The event arises before the business object instance will be updated in the repository.
+           * @event EditableChildObjectSync#preUpdate
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} oldObject - The instance of the model before the data portal action.
+           */
+          raiseEvent(DataPortalEvent.preUpdate);
+          // Execute update.
+          if (extensions.dataUpdate) {
+            // *** Custom update.
+            extensions.dataUpdate.call(self, getDataContext(connection));
+          } else if (isDirty) {
+            // *** Standard update.
+            var dto &#x3D; toDto.call(self);
+            dto &#x3D; dao.$runMethod(&#x27;update&#x27;, connection, dto);
+            fromDto.call(self, dto);
+          }
+          // Update children as well.
+          updateChildren(connection);
+          markAsPristine();
+          // Launch finish event.
+          /**
+           * The event arises after the business object instance has been updated in the repository.
+           * @event EditableChildObjectSync#postUpdate
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} newObject - The instance of the model after the data portal action.
+           */
+          raiseEvent(DataPortalEvent.postUpdate);
+        } catch (e) {
+          // Wrap the intercepted error.
+          var dpError &#x3D; wrapError(DataPortalAction.update, e);
+          // Launch finish event.
+          raiseEvent(DataPortalEvent.postUpdate, null, dpError);
+          // Rethrow the original error.
+          throw e;
+        }
+      }
+    }
+
+    //endregion
+
+    //region Remove
+
+    function data_remove (connection) {
+      // Check permissions.
+      if (canDo(AuthorizationAction.removeObject)) {
+        try {
+          // Launch start event.
+          /**
+           * The event arises before the business object instance will be removed from the repository.
+           * @event EditableChildObjectSync#preRemove
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} oldObject - The instance of the model before the data portal action.
+           */
+          raiseEvent(DataPortalEvent.preRemove);
+          // Remove children first.
+          removeChildren(connection);
+          // Execute delete.
+          if (extensions.dataRemove) {
+            // *** Custom removal.
+            extensions.dataRemove.call(self, getDataContext(connection));
+          } else {
+            // *** Standard removal.
+            var filter &#x3D; properties.getKey(getPropertyValue);
+            dao.$runMethod(&#x27;remove&#x27;, connection, filter);
+          }
+          markAsRemoved();
+          // Launch finish event.
+          /**
+           * The event arises after the business object instance has been removed from the repository.
+           * @event EditableChildObjectSync#postRemove
+           * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+           * @param {EditableChildObjectSync} newObject - The instance of the model after the data portal action.
+           */
+          raiseEvent(DataPortalEvent.postRemove);
+        } catch (e) {
+          // Wrap the intercepted error.
+          var dpError &#x3D; wrapError(DataPortalAction.remove, e);
+          // Launch finish event.
+          raiseEvent(DataPortalEvent.postRemove, null, dpError);
+          // Rethrow the original error.
+          throw e;
+        }
+      }
+    }
+
+    //endregion
+
+    //endregion
+
+    //region Actions
+
+    /**
+     * Initializes a newly created business object.
+     * &amp;lt;br/&gt;_This method is called by the parent object._
+     *
+     * @function EditableChildObjectSync#create
+     * @protected
+     */
+    this.create &#x3D; function() {
+      data_create();
+    };
+
+    /**
+     * Initializes a business object with data retrieved from the repository.
+     * &amp;lt;br/&gt;_This method is called by the parent object._
+     *
+     * @function EditableChildObjectSync#fetch
+     * @protected
+     * @param {object} [data] - The data to load into the business object.
+     * @param {string} [method] - An alternative fetch method to check for permission.
+     */
+    this.fetch &#x3D; function(data, method) {
+      data_fetch(data, method || M_FETCH);
+    };
+
+    /**
+     * Saves the changes of the business object to the repository.
+     * &amp;lt;br/&gt;_This method is called by the parent object._
+     *
+     * @function EditableChildObjectSync#save
+     * @protected
+     * @param {object} connection - The connection data.
+     * @returns {EditableChildObjectSync} The business object with the new state after the save.
+     */
+    this.save &#x3D; function(connection) {
+      if (this.isValid()) {
+        switch (state) {
+          case MODEL_STATE.created:
+            data_insert(connection);
+            return this;
+          case MODEL_STATE.changed:
+            data_update(connection);
+            return this;
+          case MODEL_STATE.markedForRemoval:
+            data_remove(connection);
+            return null;
+          default:
+            return this;
+        }
+      }
+    };
+
+    /**
+     * Marks the business object to be deleted from the repository on next save.
+     *
+     * @function EditableChildObjectSync#remove
+     */
+    this.remove &#x3D; function() {
+      markForRemoval();
+    };
+
+    //endregion
+
+    //region Validation
+
+    /**
+     * Indicates whether all the validation rules of the business object, including
+     * the ones of its child objects, succeeds. A valid business object may have
+     * broken rules with severity of success, information and warning.
+     *
+     * _This method is called by the parent object._
+     *
+     * @function EditableChildObjectSync#isValid
+     * @protected
+     * @returns {boolean} True when the business object is valid, otherwise false.
+     */
+    this.isValid &#x3D; function() {
+      if (!isValidated)
+        this.checkRules();
+
+      return brokenRules.isValid() &amp;amp;&amp;amp; childrenAreValid();
+    };
+
+    /**
+     * Executes all the validation rules of the business object, including the ones
+     * of its child objects.
+     *
+     * _This method is called by the parent object._
+     *
+     * @function EditableChildObjectSync#checkRules
+     * @protected
+     */
+    this.checkRules &#x3D; function() {
+      brokenRules.clear();
+
+      var context &#x3D; new ValidationContext(store, brokenRules);
+      properties.forEach(function(property) {
+        rules.validate(property, context);
+      });
+      checkChildRules();
+
+      isValidated &#x3D; true;
+    };
+
+    /**
+     * Gets the broken rules of the business object.
+     *
+     * _This method is called by the parent object._
+     *
+     * @function EditableChildObjectSync#getBrokenRules
+     * @protected
+     * @param {string} [namespace] - The namespace of the message keys when messages are localizable.
+     * @returns {bo.rules.BrokenRulesOutput} The broken rules of the business object.
+     */
+    this.getBrokenRules &#x3D; function(namespace) {
+      var bro &#x3D; brokenRules.output(namespace);
+      bro &#x3D; getChildBrokenRules(namespace, bro);
+      return bro.$length ? bro : null;
+    };
+
+    //endregion
+
+    //region Properties
+
+    function getPropertyValue(property) {
+      return store.getValue(property);
+    }
+
+    function setPropertyValue(property, value) {
+      if (store.setValue(property, value))
+        markAsChanged(true);
+    }
+
+    function readPropertyValue(property) {
+      if (canBeRead(property)) {
+        if (property.getter)
+          return property.getter(getPropertyContext(property));
+        else
+          return store.getValue(property);
+      } else
+        return null;
+    }
+
+    function writePropertyValue(property, value) {
+      if (canBeWritten(property)) {
+        var changed &#x3D; property.setter ?
+          property.setter(getPropertyContext(property), value) :
+          store.setValue(property, value);
+        if (changed &#x3D;&#x3D;&#x3D; true)
+          markAsChanged(true);
+      }
+    }
+
+    function getPropertyContext(primaryProperty) {
+      if (!propertyContext)
+        propertyContext &#x3D; new PropertyContext(
+            name, properties.toArray(), readPropertyValue, writePropertyValue);
+      return propertyContext.with(primaryProperty);
+    }
+
+    properties.map(function(property) {
+
+      if (property.type instanceof DataType) {
+        // Normal property
+        store.initValue(property);
+
+        Object.defineProperty(self, property.name, {
+          get: function () {
+            return readPropertyValue(property);
+          },
+          set: function (value) {
+            if (property.isReadOnly)
+              throw new ModelError(&#x27;readOnly&#x27;, name, property.name);
+            writePropertyValue(property, value);
+          },
+          enumerable: true
+        });
+
+        rules.add(new DataTypeRule(property));
+
+      } else {
+        // Child item/collection
+        if (property.type.create) // Item
+          store.initValue(property, property.type.create(self, eventHandlers));
+        else                      // Collection
+          store.initValue(property, new property.type(self, eventHandlers));
+
+        Object.defineProperty(self, property.name, {
+          get: function () {
+            return readPropertyValue(property);
+          },
+          set: function (value) {
+            throw new ModelError(&#x27;readOnly&#x27;, name, property.name);
+          },
+          enumerable: false
+        });
+      }
+    });
+
+    //endregion
+
+    // Immutable object.
+    Object.freeze(this);
+  };
+  util.inherits(EditableChildObjectSync, ModelBase);
+
+  /**
+   * The name of the model type.
+   *
+   * @property {string} EditableChildObjectSync.constructor.modelType
+   * @default EditableChildObjectSync
+   * @readonly
+   */
+  Object.defineProperty(EditableChildObjectSync, &#x27;modelType&#x27;, {
+    get: function () { return CLASS_NAME; }
+  });
+
+  /**
+   * The name of the model. However, it can be hidden by a model property with the same name.
+   *
+   * @name EditableChildObjectSync#$modelName
+   * @type {string}
+   * @readonly
+   */
+  EditableChildObjectSync.prototype.$modelName &#x3D; name;
+
+  //region Factory methods
+
+  /**
+   * Creates a new editable business object instance.
+   * &amp;lt;br/&gt;_This method is called by the parent object._
+   *
+   * @function EditableChildObjectSync.create
+   * @protected
+   * @param {object} parent - The parent business object.
+   * @param {bo.shared.EventHandlerList} [eventHandlers] - The event handlers of the instance.
+   * @returns {EditableChildObjectSync} A new editable business object.
+   *
+   * @throws {@link bo.rules.AuthorizationError Authorization error}:
+   *      The user has no permission to execute the action.
+   * @throws {@link bo.shared.DataPortalError Data portal error}:
+   *    Creating the business object has failed.
+   */
+  EditableChildObjectSync.create &#x3D; function(parent, eventHandlers) {
+    var instance &#x3D; new EditableChildObjectSync(parent, eventHandlers);
+    instance.create();
+    return instance;
+  };
+
+  /**
+   * Initializes an editable business object width data retrieved from the repository.
+   * &amp;lt;br/&gt;_This method is called by the parent object._
+   *
+   * @function EditableChildObjectSync.load
+   * @protected
+   * @param {object} parent - The parent business object.
+   * @param {object} data - The data to load into the business object.
+   * @param {bo.shared.EventHandlerList} [eventHandlers] - The event handlers of the instance.
+   * @returns {EditableChildObjectSync} The required editable business object.
+   *
+   * @throws {@link bo.rules.AuthorizationError Authorization error}:
+   *      The user has no permission to execute the action.
+   */
+  EditableChildObjectSync.load &#x3D; function(parent, data, eventHandlers) {
+    var instance &#x3D; new EditableChildObjectSync(parent, eventHandlers);
+    instance.fetch(data);
+    return instance;
+  };
+
+  //endregion
+
+  return EditableChildObjectSync;
+};
+
+module.exports &#x3D; EditableChildObjectSyncFactory;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

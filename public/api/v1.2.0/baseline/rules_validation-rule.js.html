@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: rules/validation-rule.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: rules/validation-rule.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+var CLASS_NAME &#x3D; &#x27;ValidationRule&#x27;;
+
+var util &#x3D; require(&#x27;util&#x27;);
+var Argument &#x3D; require(&#x27;../system/argument-check.js&#x27;);
+var RuleBase &#x3D; require(&#x27;./rule-base.js&#x27;);
+var RuleSeverity &#x3D; require(&#x27;./rule-severity.js&#x27;);
+var ValidationResult &#x3D; require(&#x27;./validation-result.js&#x27;);
+var PropertyInfo &#x3D; require(&#x27;../shared/property-info.js&#x27;);
+
+/**
+ * @classdesc
+ *      Represents a validation rule.
+ * @description
+ *      Creates a new validation rule object.
+ *      The rule instances should be frozen.
+ *
+ * @memberof bo.rules
+ * @constructor
+ * @param {string} ruleName - The name of the rule.
+ *    It is typically the name of the constructor, without the Rule suffix.
+ *
+ * @extends bo.rules.RuleBase
+ *
+ * @throws {@link bo.system.ArgumentError Argument error}: The rule name must be a non-empty string.
+ */
+function ValidationRule (ruleName) {
+  RuleBase.call(this, ruleName);
+
+  /**
+   * The definition of the property the rule relates to.
+   * @type {bo.shared.PropertyInfo}
+   * @readonly
+   */
+  this.primaryProperty &#x3D; null;
+
+  /**
+   * Sets the properties of the rule.
+   *
+   * @param {bo.shared.PropertyInfo} primaryProperty - The property definition the rule relates to.
+   * @param {string} message - Human-readable description of the rule failure.
+   * @param {number} [priority&#x3D;10] - The priority of the rule.
+   * @param {boolean} [stopsProcessing&#x3D;false] - Indicates the rule behavior in case of failure.
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}: The primary property must be a PropertyInfo object.
+   * @throws {@link bo.system.ArgumentError Argument error}: The message must be a non-empty string.
+   */
+  this.initialize &#x3D; function (primaryProperty, message, priority, stopsProcessing) {
+
+    this.primaryProperty &#x3D; Argument.inMethod(CLASS_NAME, &#x27;initialize&#x27;)
+        .check(primaryProperty).forMandatory(&#x27;primaryProperty&#x27;).asType(PropertyInfo);
+
+    // Initialize base properties.
+    RuleBase.prototype.initialize.call(this, message, priority, stopsProcessing);
+  };
+
+  var inputProperties &#x3D; [];
+  var affectedProperties &#x3D; [];
+
+  /**
+   * Adds an additional property to the rule that will use its value.
+   *
+   * @param {bo.shared.PropertyInfo} property - An input property that value is used by the rule of.
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}: The input property must be a PropertyInfo object.
+   */
+  this.addInputProperty &#x3D; function (property) {
+
+    property &#x3D; Argument.inMethod(CLASS_NAME, &#x27;addInputProperty&#x27;)
+        .check(property).forMandatory(&#x27;property&#x27;).asType(PropertyInfo);
+
+    if (inputProperties.indexOf(property) &amp;lt; 0)
+      inputProperties.push(property);
+  };
+
+  /**
+   * Adds an additional property that is influenced by the rule.
+   *
+   * @param {bo.shared.PropertyInfo} property - An affected property influenced by the rule.
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}: The affected property must be a PropertyInfo object.
+   */
+  this.addAffectedProperty &#x3D; function (property) {
+
+    property &#x3D; Argument.inMethod(CLASS_NAME, &#x27;addAffectedProperty&#x27;)
+        .check(property).forMandatory(&#x27;property&#x27;).asType(PropertyInfo);
+
+    if (affectedProperties.indexOf(property) &amp;lt; 0)
+      affectedProperties.push(property);
+  };
+
+  /**
+   * Returns the values of the properties that are used by the rule.
+   * This method is called by the rule manager internally to provide
+   * the values of the input properties for the execute() method.
+   *
+   * @protected
+   * @param {internal~getValue} getValue - A function that returns the value of a property.
+   * @returns {object} An object that properties hold the values of the input properties of.
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}: The getValue argument must be a function..
+   */
+  this.getInputValues &#x3D; function (getValue) {
+
+    getValue &#x3D; Argument.inMethod(CLASS_NAME, &#x27;getInputValues&#x27;)
+        .check(getValue).forMandatory(&#x27;getValue&#x27;).asFunction();
+
+    var inputValues &#x3D; {};
+    var combined &#x3D; new Array(this.primaryProperty).concat(inputProperties);
+    for (var i &#x3D; 0; i &amp;lt; combined.length; i++) {
+      var property &#x3D; combined[i];
+      inputValues[property.name] &#x3D; getValue(property);
+    }
+    return inputValues;
+  };
+
+  /**
+   * Returns the result of the rule executed.
+   *
+   * @param {string} [message] - Human-readable description of the rule failure.
+   * @param {bo.rules.RuleSeverity} severity - The severity of the failed rule.
+   * @returns {bo.rules.ValidationResult} The result of the validation rule.
+   */
+  this.result &#x3D; function (message, severity) {
+
+    var result &#x3D; new ValidationResult(this.ruleName, this.primaryProperty.name, message || this.message);
+
+    result.severity &#x3D; Argument.inMethod(CLASS_NAME, &#x27;result&#x27;)
+        .check(severity).for(&#x27;severity&#x27;).asEnumMember(RuleSeverity, RuleSeverity.error);
+    result.stopsProcessing &#x3D; this.stopsProcessing;
+    result.isPreserved &#x3D; false;
+    result.affectedProperties &#x3D; affectedProperties;
+
+    return result;
+  };
+
+  // Immutable object.
+  Object.freeze(ValidationRule);
+}
+util.inherits(ValidationRule, RuleBase);
+
+module.exports &#x3D; ValidationRule;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

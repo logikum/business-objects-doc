@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: rules/broken-rules-output.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: rules/broken-rules-output.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+var CLASS_NAME &#x3D; &#x27;BrokenRulesOutput&#x27;;
+
+var Argument &#x3D; require(&#x27;../system/argument-check.js&#x27;);
+var RuleNotice &#x3D; require(&#x27;./rule-notice.js&#x27;);
+var RuleSeverity &#x3D; require(&#x27;./rule-severity.js&#x27;);
+
+/**
+ * @classdesc
+ *      Represents the public format of broken rules. The output object
+ *      has a property for each model property that has broken rule.
+ *
+ *      If the model property is a simple property, i.e. it is defined by
+ *      a {@link bo.dataTypes.DataType data type}, then the output property
+ *      is an array. The array elements are {@link bo.rules.RuleNotice rule notice}
+ *      objects representing the broken rules.
+ *
+ *      If the model property is a child object, then the output property
+ *      is an object as well, whose properties represents model properties
+ *      with broken rules, as described above.
+ *
+ *      If the model property is a child collection, then the output property
+ *      is an object as well, whose properties are the indeces of the items of
+ *      the collections. The property name is a number in &#x27;00000&#x27; format. The
+ *      property value represents the child item, as described above.
+ * @description
+ *      Creates a new broken rules output instance.
+ *
+ * @memberof bo.rules
+ * @constructor
+ */
+function BrokenRulesOutput () {
+
+  var self &#x3D; this;
+  var length &#x3D; 0;
+  var count &#x3D; 0;
+  var childObjects &#x3D; [];
+  var childCollections &#x3D; [];
+
+  /**
+   * Returns the count of properties that have broken rules.
+   * @name bo.rules.BrokenRulesOutput#$length
+   * @readonly
+   */
+  Object.defineProperty(this, &#x27;$length&#x27;, {
+    get: function () {
+      return length;
+    },
+    enumerable: false
+  });
+
+  /**
+   * Returns the count of broken rules.
+   * @name bo.rules.BrokenRulesOutput#$count
+   * @readonly
+   */
+  Object.defineProperty(this, &#x27;$count&#x27;, {
+    get: function () {
+      var total &#x3D; count;
+
+      // Add notice counts of child objects.
+      childObjects.forEach(function (childName) {
+        total +&#x3D; self[childName].$count;
+      });
+
+      // Add notice counts of child collection items.
+      childCollections.forEach(function (collectionName) {
+        var collection &#x3D; self[collectionName];
+        for (var index in collection) {
+          if (collection.hasOwnProperty(index))
+            total +&#x3D; collection[index].$count;
+        }
+      });
+
+      return total;
+    },
+    enumerable: false
+  });
+
+  /**
+   * Adds a rule notice to the response object.
+   *
+   * @param {string} propertyName - The name of the property.
+   * @param {bo.rules.RuleNotice} notice - The public form of the broken rule.
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}: The property name must be a non-empty string.
+   * @throws {@link bo.system.ArgumentError Argument error}: The notice must be a RuleNotice object.
+   */
+  this.add &#x3D; function (propertyName, notice) {
+    var check &#x3D; Argument.inMethod(CLASS_NAME, &#x27;add&#x27;);
+
+    propertyName &#x3D; check(propertyName).forMandatory(&#x27;propertyName&#x27;).asString();
+    notice &#x3D; check(notice).forMandatory(&#x27;notice&#x27;).asType(RuleNotice);
+
+    if (this[propertyName])
+      this[propertyName].push(notice);
+    else {
+      this[propertyName] &#x3D; new Array(notice);
+      length++;
+    }
+    count++;
+  };
+
+  /**
+   * Adds a child response object to the response object.
+   *
+   * @param {string} propertyName - The name of the property.
+   * @param {bo.rules.BrokenRulesOutput} output - The response object of a child property.
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}: The property name must be a non-empty string.
+   * @throws {@link bo.system.ArgumentError Argument error}: The output must be a BrokenRulesOutput object.
+   */
+  this.addChild &#x3D; function (propertyName, output) {
+    var check &#x3D; Argument.inMethod(CLASS_NAME, &#x27;addChild&#x27;);
+
+    propertyName &#x3D; check(propertyName).forMandatory(&#x27;propertyName&#x27;).asString();
+    output &#x3D; check(output).forMandatory(&#x27;output&#x27;).asType(BrokenRulesOutput);
+
+    this[propertyName] &#x3D; output;
+    childObjects.push(propertyName);
+    length++;
+  };
+
+  /**
+   * Adds child response objects to the response object.
+   *
+   * @param {string} propertyName - The name of the property.
+   * @param {Array.&amp;lt;bo.rules.BrokenRulesOutput&gt;} outputs - The response objects of a child collection property.
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}: The property name must be a non-empty string.
+   * @throws {@link bo.system.ArgumentError Argument error}:
+   *    The outputs must be an array of BrokenRulesOutput objects or a single BrokenRulesOutput object.
+   */
+  this.addChildren &#x3D; function (propertyName, outputs) {
+    var check &#x3D; Argument.inMethod(CLASS_NAME, &#x27;addChildren&#x27;);
+
+    propertyName &#x3D; check(propertyName).forMandatory(&#x27;propertyName&#x27;).asString();
+    outputs &#x3D; check(outputs).forMandatory(&#x27;outputs&#x27;).asArray(BrokenRulesOutput);
+
+    var list &#x3D; {};
+
+    outputs.forEach(function (output, index) {
+      list[(&#x27;00000&#x27; + index.toString()).slice(-5)] &#x3D; output;
+      //list[index.toString()] &#x3D; output;
+    });
+
+    this[propertyName] &#x3D; list;
+    childCollections.push(propertyName);
+    length++;
+  };
+}
+
+module.exports &#x3D; BrokenRulesOutput;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

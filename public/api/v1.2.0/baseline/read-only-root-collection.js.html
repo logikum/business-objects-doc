@@ -1,0 +1,637 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: read-only-root-collection.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: read-only-root-collection.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+//region Imports
+
+var util &#x3D; require(&#x27;util&#x27;);
+var config &#x3D; require(&#x27;./shared/configuration-reader.js&#x27;);
+var Argument &#x3D; require(&#x27;./system/argument-check.js&#x27;);
+
+var CollectionBase &#x3D; require(&#x27;./collection-base.js&#x27;);
+var ModelError &#x3D; require(&#x27;./shared/model-error.js&#x27;);
+var ExtensionManager &#x3D; require(&#x27;./shared/extension-manager.js&#x27;);
+var EventHandlerList &#x3D; require(&#x27;./shared/event-handler-list.js&#x27;);
+
+var TransferContext &#x3D; require(&#x27;./shared/transfer-context.js&#x27;);
+
+var RuleManager &#x3D; require(&#x27;./rules/rule-manager.js&#x27;);
+var BrokenRuleList &#x3D; require(&#x27;./rules/broken-rule-list.js&#x27;);
+var AuthorizationAction &#x3D; require(&#x27;./rules/authorization-action.js&#x27;);
+var AuthorizationContext &#x3D; require(&#x27;./rules/authorization-context.js&#x27;);
+var BrokenRulesResponse &#x3D; require(&#x27;./rules/broken-rules-response.js&#x27;);
+
+var DataPortalAction &#x3D; require(&#x27;./shared/data-portal-action.js&#x27;);
+var DataPortalContext &#x3D; require(&#x27;./shared/data-portal-context.js&#x27;);
+var DataPortalEvent &#x3D; require(&#x27;./shared/data-portal-event.js&#x27;);
+var DataPortalEventArgs &#x3D; require(&#x27;./shared/data-portal-event-args.js&#x27;);
+var DataPortalError &#x3D; require(&#x27;./shared/data-portal-error.js&#x27;);
+
+var CLASS_NAME &#x3D; &#x27;ReadOnlyRootCollection&#x27;;
+var MODEL_DESC &#x3D; &#x27;Read-only root collection&#x27;;
+var M_FETCH &#x3D; DataPortalAction.getName(DataPortalAction.fetch);
+
+//endregion
+
+/**
+ * Factory method to create definitions of asynchronous read-only root collections.
+ *
+ *    Valid collection item types are:
+ *
+ *      * ReadOnlyChildObject
+ *
+ * @function bo.ReadOnlyRootCollection
+ * @param {string} name - The name of the collection.
+ * @param {ReadOnlyChildObject} itemType - The model type of the collection items.
+ * @param {bo.shared.RuleManager} rules - The validation and authorization rules.
+ * @param {bo.shared.ExtensionManager} extensions - The customization of the collection.
+ * @returns {ReadOnlyRootCollection} The constructor of an asynchronous read-only root collection.
+ *
+ * @throws {@link bo.system.ArgumentError Argument error}: The collection name must be a non-empty string.
+ * @throws {@link bo.system.ArgumentError Argument error}: The rules must be a RuleManager object.
+ * @throws {@link bo.system.ArgumentError Argument error}: The extensions must be a ExtensionManager object.
+ * @throws {@link bo.shared.ModelError Model error}: The item type must be an ReadOnlyChildObject.
+ */
+var ReadOnlyRootCollectionFactory &#x3D; function (name, itemType, rules, extensions) {
+  var check &#x3D; Argument.inConstructor(CLASS_NAME);
+
+  name &#x3D; check(name).forMandatory(&#x27;name&#x27;).asString();
+  rules &#x3D; check(rules).forMandatory(&#x27;rules&#x27;).asType(RuleManager);
+  extensions &#x3D; check(extensions).forMandatory(&#x27;extensions&#x27;).asType(ExtensionManager);
+
+  // Verify the model type of the item type.
+  if (itemType.modelType !&#x3D;&#x3D; &#x27;ReadOnlyChildObject&#x27;)
+    throw new ModelError(&#x27;invalidItem&#x27;,
+        itemType.prototype.name, itemType.modelType,
+        CLASS_NAME, &#x27;ReadOnlyChildObject&#x27;);
+
+  // Get data access object.
+  var dao &#x3D; extensions.getDataAccessObject(name);
+
+  /**
+   * @classdesc
+   *    Represents the definition of an asynchronous read-only root collection.
+   * @description
+   *    Creates a new asynchronous read-only root collection instance.
+   *
+   *    _The name of the model type available as:
+   *    __&amp;amp;lt;instance&amp;amp;gt;.constructor.modelType__, returns &#x27;ReadOnlyRootCollection&#x27;._
+   *
+   * @name ReadOnlyRootCollection
+   * @constructor
+   * @param {bo.shared.EventHandlerList} [eventHandlers] - The event handlers of the instance.
+   *
+   * @extends CollectionBase
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}:
+   *    The event handlers must be an EventHandlerList object or null.
+   *
+   * @fires ReadOnlyRootCollection#preFetch
+   * @fires ReadOnlyRootCollection#postFetch
+   */
+  var ReadOnlyRootCollection &#x3D; function (eventHandlers) {
+    CollectionBase.call(this);
+
+    eventHandlers &#x3D; Argument.inConstructor(name)
+        .check(eventHandlers).forOptional(&#x27;eventHandlers&#x27;).asType(EventHandlerList);
+
+    var self &#x3D; this;
+    var items &#x3D; [];
+    var brokenRules &#x3D; new BrokenRuleList(name);
+    var isValidated &#x3D; false;
+    var dataContext &#x3D; null;
+    var totalItems &#x3D; null;
+
+    /**
+     * The name of the model.
+     *
+     * @name ReadOnlyRootCollection#$modelName
+     * @type {string}
+     * @readonly
+     */
+    this.$modelName &#x3D; name;
+
+    /**
+     * The count of the child objects in the collection.
+     *
+     * @name ReadOnlyRootCollection#count
+     * @type {number}
+     * @readonly
+     */
+    Object.defineProperty(self, &#x27;count&#x27;, {
+      get: function () {
+        return items.length;
+      },
+      enumerable: false
+    });
+
+    /**
+     * The count of all available items if provided by the data access object.
+     *
+     * @name ReadOnlyRootCollection#totalItems
+     * @type {number}
+     * @readonly
+     */
+    Object.defineProperty(self, &#x27;totalItems&#x27;, {
+      get: function () {
+        return totalItems;
+      },
+      enumerable: false
+    });
+
+    // Set up event handlers.
+    if (eventHandlers)
+      eventHandlers.setup(self);
+
+    //region Transfer object methods
+
+    function getTransferContext () {
+      return new TransferContext(null, null, null);
+    }
+
+    function baseToCto() {
+      var cto &#x3D; [];
+      items.forEach(function (item) {
+        cto.push(item.toCto());
+      });
+      if (totalItems)
+        cto.totalItems &#x3D; totalItems;
+      return cto;
+    }
+
+    /**
+     * Transforms the business object collection to a plain object array to send to the client.
+     *
+     * @function ReadOnlyRootCollection#toCto
+     * @returns {Array.&amp;lt;object&gt;} The client transfer object.
+     */
+    this.toCto &#x3D; function () {
+      if (extensions.toCto)
+        return extensions.toCto.call(self, getTransferContext());
+      else
+        return baseToCto();
+    };
+
+    //endregion
+
+    //region Permissions
+
+    function getAuthorizationContext(action, targetName) {
+      return new AuthorizationContext(action, targetName || &#x27;&#x27;, brokenRules);
+    }
+
+    function canDo (action) {
+      return rules.hasPermission(
+        getAuthorizationContext(action)
+      );
+    }
+
+    function canExecute (methodName) {
+      return rules.hasPermission(
+        getAuthorizationContext(AuthorizationAction.executeMethod, methodName)
+      );
+    }
+
+    //endregion
+
+    //region Data portal methods
+
+    //region Helper
+
+    function getDataContext (connection) {
+      if (!dataContext)
+        dataContext &#x3D; new DataPortalContext(dao);
+      return dataContext.setState(connection, false);
+    }
+
+    function raiseEvent (event, methodName, error) {
+      self.emit(
+          DataPortalEvent.getName(event),
+          new DataPortalEventArgs(event, name, null, methodName, error)
+      );
+    }
+
+    function wrapError (error) {
+      return new DataPortalError(MODEL_DESC, name, DataPortalAction.fetch, error);
+    }
+
+    function runStatements (main, callback) {
+      // Open connection.
+      config.connectionManager.openConnection(
+          extensions.dataSource, function (errOpen, connection) {
+            if (errOpen)
+              callback(wrapError(errOpen));
+            else
+              main(connection, function (err, result) {
+                // Close connection.
+                config.connectionManager.closeConnection(
+                    extensions.dataSource, connection, function (errClose, connClosed) {
+                      connection &#x3D; connClosed;
+                      if (err)
+                        callback(wrapError(err));
+                      else if (errClose)
+                        callback(wrapError(errClose));
+                      else
+                        callback(null, result);
+                    });
+              });
+          });
+    }
+
+    //endregion
+
+    //region Fetch
+
+    function data_fetch (filter, method, callback) {
+      var hasConnection &#x3D; false;
+      // Helper callback for failure.
+      function succeeded (cb) {
+        // Launch finish event.
+        /**
+         * The event arises after the collection instance has been retrieved from the repository.
+         * @event ReadOnlyRootCollection#postFetch
+         * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+         * @param {ReadOnlyRootCollection} newObject - The collection instance after the data portal action.
+         */
+        raiseEvent(DataPortalEvent.postFetch, method);
+        cb(null, self);
+      }
+      // Helper function for post-fetch actions.
+      function finish (data, cb) {
+        // Get the count of all available items.
+        if (data.totalItems &amp;amp;&amp;amp;
+            (typeof data.totalItems &#x3D;&#x3D;&#x3D; &#x27;number&#x27; || data.totalItems instanceof Number) &amp;amp;&amp;amp;
+            data.totalItems % 1 &#x3D;&#x3D;&#x3D; 0)
+          totalItems &#x3D; data.totalItems;
+        else
+          totalItems &#x3D; null;
+        // Load children.
+        if (data instanceof Array &amp;amp;&amp;amp; data.length) {
+          var count &#x3D; 0;
+          var error &#x3D; null;
+          data.forEach(function (dto) {
+            itemType.load(self, dto, eventHandlers, function (err, item) {
+              if (err)
+                error &#x3D; error || err;
+              else
+                items.push(item);
+              // Check if all items are done.
+              if (++count &#x3D;&#x3D;&#x3D; data.length) {
+                if (error)
+                  failed(error, cb);
+                else
+                  succeeded(cb);
+              }
+            });
+          });
+        } else
+          succeeded(cb);
+      }
+      // Helper callback for failure.
+      function failed (err, cb) {
+        if (hasConnection) {
+          // Launch finish event.
+          var dpError &#x3D; wrapError(err);
+          raiseEvent(DataPortalEvent.postFetch, method, dpError);
+        }
+        cb(err);
+      }
+      // Main activity.
+      function main (connection, cb) {
+        hasConnection &#x3D; connection !&#x3D;&#x3D; null;
+        // Launch start event.
+        /**
+         * The event arises before the collection instance will be retrieved from the repository.
+         * @event ReadOnlyRootCollection#preFetch
+         * @param {bo.shared.DataPortalEventArgs} eventArgs - Data portal event arguments.
+         * @param {ReadOnlyRootCollection} oldObject - The collection instance before the data portal action.
+         */
+        raiseEvent(DataPortalEvent.preFetch, method);
+        // Execute fetch.
+        if (extensions.dataFetch) {
+          // *** Custom fetch.
+          extensions.dataFetch.call(self, getDataContext(connection), filter, method, function (err, dto) {
+            if (err)
+              failed(err, cb);
+            else
+              finish(dto, cb);
+          });
+        } else {
+          // *** Standard fetch.
+          // Root element fetches data from repository.
+          dao.$runMethod(method, connection, filter, function (err, dto) {
+            if (err)
+              failed(err, cb);
+            else
+              finish(dto, cb);
+          });
+        }
+      }
+      // Check permissions.
+      if (method &#x3D;&#x3D;&#x3D; M_FETCH ? canDo(AuthorizationAction.fetchObject) : canExecute(method))
+        runStatements(main, callback);
+      else
+        callback(null, self);
+    }
+
+    //endregion
+
+    //endregion
+
+    //region Actions
+
+    /**
+     * Initializes a business object collection to be retrieved from the repository.
+     * &amp;lt;br/&gt;_This method is called by a factory method with the same name._
+     *
+     * @function ReadOnlyRootCollection#fetch
+     * @protected
+     * @param {*} [filter] - The filter criteria.
+     * @param {string} [method] - An alternative fetch method of the data access object.
+     * @param {external.cbDataPortal} callback - Returns the required read-only collection.
+     *
+     * @throws {@link bo.system.ArgumentError Argument error}:
+     *      The method must be a string or null.
+     * @throws {@link bo.system.ArgumentError Argument error}:
+     *      The callback must be a function.
+     * @throws {@link bo.rules.AuthorizationError Authorization error}:
+     *      The user has no permission to execute the action.
+     * @throws {@link bo.shared.DataPortalError Data portal error}:
+     *      Fetching the business object has failed.
+     */
+    this.fetch &#x3D; function(filter, method, callback) {
+      var check &#x3D; Argument.inMethod(name, &#x27;fetch&#x27;);
+
+      method &#x3D; check(method).forOptional(&#x27;method&#x27;).asString();
+      callback &#x3D; check(callback).forMandatory(&#x27;callback&#x27;).asFunction();
+
+      data_fetch(filter, method || M_FETCH, callback);
+    };
+
+    //endregion
+
+    //region Validation
+
+    /**
+     * Indicates whether all the validation rules of the business objects in the
+     * collection, including the ones of their child objects, succeeds. A valid collection
+     * may have broken rules with severity of success, information and warning.
+     *
+     * _By default read-only business object collections are supposed to be valid._
+     *
+     * @function ReadOnlyRootCollection#isValid
+     * @returns {boolean} True when the business object is valid, otherwise false.
+     */
+    this.isValid &#x3D; function() {
+      return items.every(function (item) {
+        return item.isValid();
+      });
+    };
+
+    /**
+     * Executes all the validation rules of all business objects in the collection,
+     * including the ones of their child objects.
+     *
+     * _By default read-only business object collections are supposed to be valid._
+     *
+     * @function ReadOnlyRootCollection#checkRules
+     */
+    this.checkRules &#x3D; function() {
+      brokenRules.clear();
+
+      items.forEach(function (item) {
+        item.checkRules();
+      });
+
+      isValidated &#x3D; true;
+    };
+
+    /**
+     * Gets the broken rules of the business object collection.
+     *
+     * _By default read-only business object collections are supposed to be valid._
+     *
+     * @function ReadOnlyRootCollection#getBrokenRules
+     * @param {string} [namespace] - The namespace of the message keys when messages are localizable.
+     * @returns {bo.rules.BrokenRulesOutput} The broken rules of the business object collection.
+     */
+    this.getBrokenRules &#x3D; function(namespace) {
+      var bro &#x3D; brokenRules.output(namespace);
+
+      items.forEach(function (item) {
+        var childBrokenRules &#x3D; item.getBrokenRules(namespace);
+        if (childBrokenRules)
+          bro.addChild(property.name, childBrokenRules);
+      });
+
+      return bro.$length ? bro : null;
+    };
+
+    /**
+     * Gets the response to send to the client in case of broken rules.
+     *
+     * _By default read-only business object collections are supposed to be valid._
+     *
+     * @function ReadOnlyRootCollection#getResponse
+     * @param {string} [message] - Human-readable description of the reason of the failure.
+     * @param {string} [namespace] - The namespace of the message keys when messages are localizable.
+     * @returns {bo.rules.BrokenRulesResponse} The broken rules response to send to the client.
+     */
+    this.getResponse &#x3D; function (message, namespace) {
+      var output &#x3D; this.getBrokenRules(namespace);
+      return output ? new BrokenRulesResponse(output, message) : null;
+    };
+
+    //endregion
+
+    //region Public array methods
+
+    /**
+     * Gets a collection item at a specific position.
+     *
+     * @function ReadOnlyRootCollection#at
+     * @param {number} index - The index of the required item in the collection.
+     * @returns {ReadOnlyChildObject} The required collection item.
+     */
+    this.at &#x3D; function (index) {
+      return items[index];
+    };
+
+    /**
+     * Executes a provided function once per collection item.
+     *
+     * @function ReadOnlyRootCollection#forEach
+     * @param {external.cbCollectionItem} callback - Function that produces an item of the new collection.
+     */
+    this.forEach &#x3D; function (callback) {
+      items.forEach(callback);
+    };
+
+    /**
+     * Tests whether all items in the collection pass the test implemented by the provided function.
+     *
+     * @function ReadOnlyRootCollection#every
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+     * @returns {boolean} True when callback returns truthy value for each item, otherwise false.
+     */
+    this.every &#x3D; function (callback) {
+      return items.every(callback);
+    };
+
+    /**
+     * Tests whether some item in the collection pass the test implemented by the provided function.
+     *
+     * @function ReadOnlyRootCollection#some
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+     * @returns {boolean} True when callback returns truthy value for some item, otherwise false.
+     */
+    this.some &#x3D; function (callback) {
+      return items.some(callback);
+    };
+
+    /**
+     * Creates a new array with all collection items that pass the test
+     * implemented by the provided function.
+     *
+     * @function ReadOnlyRootCollection#filter
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+     * @returns {Array.&amp;lt;ReadOnlyChildObject&gt;} The new array of collection items.
+     */
+    this.filter &#x3D; function (callback) {
+      return items.filter(callback);
+    };
+
+    /**
+     * Creates a new array with the results of calling a provided function
+     * on every item in this collection.
+     *
+     * @function ReadOnlyRootCollection#map
+     * @param {external.cbCollectionItem} callback - Function to test for each collection item.
+     * @returns {Array.&amp;lt;*&gt;} The new array of callback results.
+     */
+    this.map &#x3D; function (callback) {
+      return items.map(callback);
+    };
+
+    /**
+     * Sorts the items of the collection in place and returns the collection.
+     *
+     * @function ReadOnlyRootCollection#sort
+     * @param {external.cbCompare} [fnCompare] - Function that defines the sort order.
+     *      If omitted, the collection is sorted according to each character&#x27;s Unicode
+     *      code point value, according to the string conversion of each item.
+     * @returns {ReadOnlyRootCollection} The sorted collection.
+     */
+    this.sort &#x3D; function (fnCompare) {
+      return items.sort(fnCompare);
+    };
+
+    //endregion
+
+    // Immutable object.
+    Object.freeze(this);
+  };
+  util.inherits(ReadOnlyRootCollection, CollectionBase);
+
+  /**
+   * The name of the model type.
+   *
+   * @property {string} ReadOnlyRootCollection.constructor.modelType
+   * @default ReadOnlyRootCollection
+   * @readonly
+   */
+  Object.defineProperty(ReadOnlyRootCollection, &#x27;modelType&#x27;, {
+    get: function () { return CLASS_NAME; }
+  });
+
+  //region Factory methods
+
+  /**
+   * Retrieves a read-only business object collection from the repository.
+   *
+   * @function ReadOnlyRootCollection.fetch
+   * @param {*} [filter] - The filter criteria.
+   * @param {string} [method] - An alternative fetch method of the data access object.
+   * @param {bo.shared.EventHandlerList} [eventHandlers] - The event handlers of the instance.
+   * @param {external.cbDataPortal} callback - Returns the required read-only collection.
+   *
+   * @throws {@link bo.system.ArgumentError Argument error}:
+   *      The method must be a string or null.
+   * @throws {@link bo.system.ArgumentError Argument error}:
+   *      The event handlers must be an EventHandlerList object or null.
+   * @throws {@link bo.system.ArgumentError Argument error}:
+   *      The callback must be a function.
+   * @throws {@link bo.rules.AuthorizationError Authorization error}:
+   *      The user has no permission to execute the action.
+   * @throws {@link bo.shared.DataPortalError Data portal error}:
+   *      Fetching the business object collection has failed.
+   */
+  ReadOnlyRootCollection.fetch &#x3D; function(filter, method, eventHandlers, callback) {
+    var instance &#x3D; new ReadOnlyRootCollection(eventHandlers);
+    instance.fetch(filter, method, function (err) {
+      if (err)
+        callback(err);
+      else
+        callback(null, instance);
+    });
+  };
+
+  //endregion
+
+  return ReadOnlyRootCollection;
+};
+
+module.exports &#x3D; ReadOnlyRootCollectionFactory;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

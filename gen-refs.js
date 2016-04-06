@@ -3,11 +3,11 @@
 var fs = require('fs');
 var path = require('path');
 
-var referenceDir = '../business-objects/api/v1.1.0/docstrap';
+var referenceDir = '../business-objects/api/v1.2.0/docstrap';
 var referenceFile = 'references.txt';
 var count = 0;
 //var text = '[~]: http://logikum.github.io/business-objects\r\n';
-var text = '[~]: /api/v1.1.0/docstrap\r\n';
+var text = '[~]: /api/v1.2.0/docstrap\r\n';
 
 // Read directory items.
 var items = fs.readdirSync(path.join(process.cwd(), referenceDir));

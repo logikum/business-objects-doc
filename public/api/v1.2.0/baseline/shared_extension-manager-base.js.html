@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: shared/extension-manager-base.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: shared/extension-manager-base.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+var CLASS_NAME &#x3D; &#x27;ExtensionManager&#x27;;
+
+var config &#x3D; require(&#x27;./configuration-reader.js&#x27;);
+var Argument &#x3D; require(&#x27;../system/argument-check.js&#x27;);
+var ModelError &#x3D; require(&#x27;./model-error.js&#x27;);
+
+/**
+ * @classdesc
+ *    Provides properties to customize models&#x27; behavior.
+ * @description
+ *    Creates a new base extension manager object.
+ *
+ * @memberof bo.shared
+ * @constructor
+ * @param {string} dataSource - The name of the data source.
+ * @param {string} modelPath - The full path of the model.
+ * @param {number} addArgs - The count of additional arguments for data portal methods of a model group.
+ *
+ * @throws {@link bo.system.ArgumentError Argument error}: The data source must be a non-empty string.
+ * @throws {@link bo.system.ArgumentError Argument error}: The model path must be a non-empty string.
+ * @throws {@link bo.system.ArgumentError Argument error}: The additional argument count must be an integer.
+ */
+function ExtensionManagerBase(dataSource, modelPath, addArgs) {
+  var check &#x3D; Argument.inConstructor(CLASS_NAME);
+
+  /**
+   * The name of the data source.
+   * @type {string}
+   * @readonly
+   */
+  this.dataSource &#x3D; check(dataSource).forMandatory(&#x27;dataSource&#x27;).asString();
+  /**
+   * The path of the model definition.
+   * @type {string}
+   * @readonly
+   */
+  this.modelPath &#x3D; check(modelPath).forMandatory(&#x27;modelPath&#x27;).asString();
+  addArgs &#x3D; check(addArgs).forMandatory(&#x27;addArgs&#x27;).asInteger();
+
+  var self &#x3D; this;
+  var methods &#x3D; {};
+  var definitions &#x3D; [
+    { name: &#x27;daoBuilder&#x27;,  length: 3 },
+    { name: &#x27;toDto&#x27;,       length: 1 },
+    { name: &#x27;fromDto&#x27;,     length: 2 },
+    { name: &#x27;toCto&#x27;,       length: 1 },
+    { name: &#x27;fromCto&#x27;,     length: 2 },
+    { name: &#x27;dataCreate&#x27;,  length: 0 + addArgs },
+    { name: &#x27;dataFetch&#x27;,   length: 2 + addArgs },
+    { name: &#x27;dataInsert&#x27;,  length: 0 + addArgs },
+    { name: &#x27;dataUpdate&#x27;,  length: 0 + addArgs },
+    { name: &#x27;dataRemove&#x27;,  length: 0 + addArgs },
+    { name: &#x27;dataExecute&#x27;, length: 1 + addArgs }
+  ];
+
+  /**
+   * Factory method to create the data access object for a model instance.
+   * @name bo.shared.ExtensionManagerBase#daoBuilder
+   * @type {external.daoBuilder}
+   * @readonly
+   */
+  /**
+   * Converts the model instance to data transfer object.
+   * @name bo.shared.ExtensionManagerBase#toDto
+   * @type {external.toDto}
+   * @readonly
+   */
+  /**
+   * Converts the data transfer object to model instance.
+   * @name bo.shared.ExtensionManagerBase#fromDto
+   * @type {external.fromDto}
+   * @readonly
+   */
+  /**
+   * Converts the model instance to client transfer object.
+   * @name bo.shared.ExtensionManagerBase#toCto
+   * @type {external.toCto}
+   * @readonly
+   */
+  /**
+   * Converts the client transfer object to model instance.
+   * @name bo.shared.ExtensionManagerBase#fromCto
+   * @type {external.fromCto}
+   * @readonly
+   */
+  /**
+   * Returns the property values of a new instance from the data source.
+   * @name bo.shared.ExtensionManagerBase#dataCreate
+   * @type {external.dataCreate}
+   * @readonly
+   */
+  /**
+   * Returns the property values of an existing instance from the data source.
+   * @name bo.shared.ExtensionManagerBase#dataFetch
+   * @type {external.dataFetch}
+   * @readonly
+   */
+  /**
+   * Saves a new instance into the data source.
+   * @name bo.shared.ExtensionManagerBase#dataInsert
+   * @type {external.dataInsert}
+   * @readonly
+   */
+  /**
+   * Saves an existing instance into the data source.
+   * @name bo.shared.ExtensionManagerBase#dataUpdate
+   * @type {external.dataUpdate}
+   * @readonly
+   */
+  /**
+   * Deletes an existing instance from the data source.
+   * @name bo.shared.ExtensionManagerBase#dataRemove
+   * @type {external.dataRemove}
+   * @readonly
+   */
+  /**
+   * Executes a command on the data source.
+   * @name bo.shared.ExtensionManagerBase#dataExecute
+   * @type {external.dataExecute}
+   * @readonly
+   */
+  definitions.map(function(definition) {
+    methods[definition.name] &#x3D; null;
+
+    Object.defineProperty(self, definition.name, {
+      get: function () {
+        return methods[definition.name];
+      },
+      set: function (value) {
+        if (value &amp;amp;&amp;amp; typeof value &#x3D;&#x3D;&#x3D; &#x27;function&#x27; &amp;amp;&amp;amp; value.length &#x3D;&#x3D; definition.length)
+          methods[definition.name] &#x3D; value;
+        else
+          switch (definition.length) {
+            case 0:
+              throw new ModelError(&#x27;propertyArg0&#x27;, CLASS_NAME, definition.name);
+            case 1:
+              throw new ModelError(&#x27;propertyArg1&#x27;, CLASS_NAME, definition.name);
+            default:
+              throw new ModelError(&#x27;propertyArgN&#x27;, CLASS_NAME, definition.name, definition.length);
+          }
+      },
+      enumerable: true
+    });
+  });
+
+  //region Command object extensions
+
+  var otherMethods &#x3D; [];
+
+  /**
+   * Adds a new instance method to the model.
+   * (The method will call a custom execute method on a command object instance.)
+   *
+   * @function bo.shared.ExtensionManagerBase#addOtherMethod
+   * @param {string} methodName - The name of the method on the data access object to be called.
+   */
+  this.addOtherMethod &#x3D; function (methodName) {
+    otherMethods.push(Argument.inMethod(CLASS_NAME, &#x27;addOtherMethod&#x27;)
+        .check(methodName).forMandatory(&#x27;methodName&#x27;).asString());
+  };
+
+  /**
+   * Instantiate the defined custom methods on the model instance.
+   * (The method is currently used by command objects only.)
+   *
+   * @function bo.shared.ExtensionManagerBase#buildOtherMethods
+   * @protected
+   * @param {ModelBase} instance - An instance of the model.
+   * @param {boolean} isSync - Indicates whether the model is synchronous or asynchronous.
+   */
+  this.buildOtherMethods &#x3D; function (instance, isSync) {
+    if (otherMethods) {
+      if (isSync)
+        otherMethods.map(function (methodName) {
+          instance[methodName] &#x3D; function () {
+            instance.execute(methodName);
+          };
+        });
+      else
+        otherMethods.map(function (methodName) {
+          instance[methodName] &#x3D; function (callback) {
+            instance.execute(methodName, callback);
+          };
+        });
+    }
+  };
+
+  //endregion
+
+  /**
+   * Gets the data access object instance of the model.
+   *
+   * @function bo.shared.ExtensionManagerBase#getDataAccessObject
+   * @protected
+   * @param {string} modelName - The name of the model.
+   * @returns {bo.dataAccess.DaoBase} The data access object instance of the model.
+   */
+  this.getDataAccessObject &#x3D; function (modelName) {
+    return self.daoBuilder ?
+        self.daoBuilder(dataSource, modelPath, modelName) :
+        config.daoBuilder(dataSource, modelPath, modelName);
+  };
+
+  // Immutable object.
+  Object.freeze(this);
+}
+
+module.exports &#x3D; ExtensionManagerBase;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

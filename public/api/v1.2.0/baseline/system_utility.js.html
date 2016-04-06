@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: system/utility.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: system/utility.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+var fs &#x3D; require(&#x27;fs&#x27;);
+var path &#x3D; require(&#x27;path&#x27;);
+
+/**
+ * @classdesc Provides static methods for configuration and internationalization.
+ * @description Creates a new utility object.
+ *
+ * @memberof bo.system
+ * @constructor
+ */
+var Utility &#x3D; function () {};
+
+/**
+ * Gets a function read from a file.
+ *
+ * @function bo.system.Utility.getFunction
+ * @static
+ * @param {string} relativePath - The relative path of the file to read.
+ * @param {string} name - The name of the configuration item.
+ * @param {error} errorType - The type of the error to throw in case of failure.
+ * @returns {function} The required function.
+ *
+ * @throws {@link bo.shared.ConfigurationError Configuration} {@link bo.locales.I18nError I18n} error:
+ *    The property value of business objects&#x27; configuration must be a string.
+ * @throws {@link bo.shared.ConfigurationError Configuration} {@link bo.locales.I18nError I18n} error:
+ *    The property value of business objects&#x27; configuration is not a valid file path.
+ * @throws {@link bo.shared.ConfigurationError Configuration} {@link bo.locales.I18nError I18n} error:
+ *    The file defined by the property of business objects&#x27; configuration must return a function.
+ */
+Utility.getFunction &#x3D; function (relativePath, name, errorType) {
+
+  if ((typeof relativePath !&#x3D;&#x3D; &#x27;string&#x27; &amp;amp;&amp;amp; !(relativePath instanceof String)) ||
+      relativePath.trim().length &#x3D;&#x3D;&#x3D; 0)
+    throw new errorType(&#x27;string&#x27;, name);
+
+  var fullPath &#x3D; path.join(process.cwd(), relativePath);
+  if (!fs.existsSync(fullPath) || !fs.statSync(fullPath).isFile())
+    throw new errorType(&#x27;file&#x27;, name, fullPath);
+
+  var requiredFunction &#x3D; require(fullPath);
+  if (typeof requiredFunction !&#x3D;&#x3D; &#x27;function&#x27;)
+    throw new errorType(&#x27;function&#x27;, name, fullPath);
+
+  return requiredFunction;
+};
+
+/**
+ * Gets the full path of a directory.
+ *
+ * @function bo.system.Utility.getDirectory
+ * @static
+ * @param {string} relativePath - The relative path of the directory.
+ * @param {string} name - The name of the configuration item.
+ * @param {error} errorType - The type of the error to throw in case of failure.
+ * @returns {string} The full path of a directory.
+ *
+ * @throws {@link bo.shared.ConfigurationError Configuration} {@link bo.locales.I18nError I18n} error:
+ *    The property value of business objects&#x27; configuration must be a string.
+ * @throws {@link bo.shared.ConfigurationError Configuration} {@link bo.locales.I18nError I18n} error:
+ *    The property value of business objects&#x27; configuration is not a valid directory path.
+ */
+Utility.getDirectory &#x3D; function (relativePath, name, errorType) {
+
+  if ((typeof relativePath !&#x3D;&#x3D; &#x27;string&#x27; &amp;amp;&amp;amp; !(relativePath instanceof String)) ||
+      relativePath.trim().length &#x3D;&#x3D;&#x3D; 0)
+    throw new errorType(&#x27;string&#x27;, name);
+
+  var fullPath &#x3D; path.join(process.cwd(), relativePath);
+  if (!fs.existsSync(fullPath) || !fs.statSync(fullPath).isDirectory())
+    throw new errorType(&#x27;directory&#x27;, name, fullPath);
+
+  return fullPath;
+};
+
+/**
+ * Checks if value is member of a given enumeration.
+ *
+ * @function bo.system.Utility.isEnumMember
+ * @param {(number|string)} value - The value to check.
+ * @param {constructor} enumType - The type of the enumeration.
+ * @param {string} name - The name of the configuration item.
+ * @param {error} errorType - The type of the error to throw in case of failure.
+ * @returns {number} The checked value.
+ *
+ * @throws {@link bo.shared.ConfigurationError Configuration error}: Type is not an enumeration type.
+ * @throws {@link bo.shared.ConfigurationError Configuration error}: The argument must be an enumeration type item.
+ */
+Utility.isEnumMember &#x3D; function (value, enumType, name, errorType) {
+
+  if (!(enumType &amp;amp;&amp;amp; enumType.hasMember &amp;amp;&amp;amp; enumType.constructor &amp;amp;&amp;amp;
+      enumType.constructor.super_ &amp;amp;&amp;amp; enumType.constructor.super_.name &#x3D;&#x3D;&#x3D; &#x27;Enumeration&#x27;))
+    throw new errorType(&#x27;enumType&#x27;, enumType);
+
+  if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;amp;&amp;amp; enumType.isMemberName(value))
+    value &#x3D; enumType.getValue(value);
+  else if (!enumType.hasMember(value))
+    throw new errorType(&#x27;enumMember&#x27;, name, enumType.$name);
+
+  return value;
+};
+
+/**
+ * Checks if value is a string or null.
+ *
+ * @function bo.system.Utility.isOptionalString
+ * @param {(string|null)} [value&#x3D;null] - The value to check.
+ * @param {string} name - The name of the parameter.
+ * @param {error} errorType - The type of the error to throw in case of failure.
+ * @returns {(string|null)} The checked value.
+ *
+ * @throws {@link bo.locales.I18nError I18n error}: The value must be a string value or null.
+ */
+Utility.isOptionalString &#x3D; function (value, name, errorType) {
+
+  if (value &#x3D;&#x3D;&#x3D; undefined)
+    value &#x3D; null;
+
+  if (value !&#x3D;&#x3D; null &amp;amp;&amp;amp; typeof value !&#x3D;&#x3D; &#x27;string&#x27; &amp;amp;&amp;amp; !(value instanceof String))
+    throw new errorType(&#x27;c_optString&#x27;, name);
+
+  return value;
+};
+
+/**
+ * Checks if value is a non-empty string.
+ *
+ * @function bo.system.Utility.isMandatoryString
+ * @param {string} [value] - The value to check.
+ * @param {string} name - The name of the parameter.
+ * @param {error} errorType - The type of the error to throw in case of failure.
+ * @returns {string} The checked value.
+ *
+ * @throws {@link bo.locales.I18nError I18n error}: The argument must be a non-empty string.
+ */
+Utility.isMandatoryString &#x3D; function (value, name, errorType) {
+
+  if (typeof value !&#x3D;&#x3D; &#x27;string&#x27; &amp;amp;&amp;amp; !(value instanceof String) || value.trim().length &#x3D;&#x3D;&#x3D; 0)
+    throw new errorType(&#x27;m_manString&#x27;, name);
+
+  return value;
+};
+
+Object.freeze(Utility);
+
+module.exports &#x3D; Utility;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>
