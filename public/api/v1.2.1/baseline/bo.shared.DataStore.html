@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Class: DataStore</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div>
+            <h1><small><a href="bo.html">bo</a>.<wbr><a href="bo.shared.html">shared</a>.<wbr></small><span class="symbol-name">DataStore</span></h1>
+            <p class="source-link">Source: <a href="shared_data-store.js.html#source-line-17">shared/<wbr>data-store.<wbr>js:17</a></p>
+            <div class="symbol-classdesc">
+              <p>Provides methods to manage the values of business object model's properties.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataStore.html#getValue">getValue(property)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.DataStore.html#hasValidValue">hasValidValue(property)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.DataStore.html#initValue">initValue(property, value)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.DataStore.html#setValue">setValue(property, value)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="DataStore">new&nbsp;<span class="symbol-name">DataStore</span><span class="signature"><span class="signature-params">()</span></span></h2>
+            <p>Creates a new data store object.</p>
+            <dl class="dl-compact">
+            </dl>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id="getValue"><span class="symbol-name">getValue</span><span class="signature"><span class="signature-params">(property)</span>&nbsp;&rarr; <span class="signature-returns"> any type</span></span></h3>
+              <p>Gets the value of a model property.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>property</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The definition of the model property.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The property must be a PropertyInfo object.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>any type</code>&nbsp;The current value of the property.</p>
+                </dd>
+              </dl>
+              <h3 id="hasValidValue"><span class="symbol-name">hasValidValue</span><span class="signature"><span class="signature-params">(property)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Indicates whether a property has a valid value.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>property</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The definition of the model property.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True if the property has a valid value, otherwise false.</p>
+                </dd>
+              </dl>
+              <h3 id="initValue"><span class="symbol-name">initValue</span><span class="signature"><span class="signature-params">(property, value)</span></span></h3>
+              <p>Initializes the value of a property in the store.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>property</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The definition of the model property.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The default value of the property (null or a child object).</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The property must be a PropertyInfo object.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The value must be null, a model or a collection.</p>
+                </dd>
+              </dl>
+              <h3 id="setValue"><span class="symbol-name">setValue</span><span class="signature"><span class="signature-params">(property, value)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Sets the value of a model property.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>property</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The definition of the model property.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The new value of the property.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The property must be a PropertyInfo object.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The value must be defined.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True if the value of the property has been changed, otherwise false.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 7, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

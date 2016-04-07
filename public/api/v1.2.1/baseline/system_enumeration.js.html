@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: system/enumeration.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: system/enumeration.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+var CLASS_NAME &#x3D; &#x27;Enumeration&#x27;;
+
+var Argument &#x3D; require(&#x27;./argument-check.js&#x27;);
+var EnumerationError &#x3D; require(&#x27;./enumeration-error.js&#x27;);
+
+/**
+ * @classdesc
+ *      Serves as the base class for enumerations.
+ * @description
+ *      Creates a new enumeration.
+ *      The enumeration instances should be frozen.
+ *
+ * @memberof bo.system
+ * @constructor
+ */
+function Enumeration () {
+  /**
+   * The name of the enumeration. The default value is the name of the constructor.
+   * @type {string}
+   * @readonly
+   */
+  this.$name &#x3D; this.constructor.name;
+}
+
+/**
+ * Returns the count of the items in enumeration.
+ *
+ * @function bo.system.Enumeration#count
+ * @returns {number} The count of the enumeration items.
+ */
+Enumeration.prototype.count &#x3D; function () {
+  var count &#x3D; 0;
+  for (var propertyName in this) {
+    if (this.hasOwnProperty(propertyName) &amp;amp;&amp;amp; typeof this[propertyName] &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+      count++;
+    }
+  }
+  return count;
+};
+
+/**
+ * Returns the name of an enumeration item.
+ *
+ * @function bo.system.Enumeration#getName
+ * @param {number} value - The enumeration item that name to be returned of.
+ * @returns {string} The name of the enumeration item.
+ *
+ * @throws {@link bo.system.ArgumentError Argument error}: The value must be a number.
+ * @throws {@link bo.system.EnumerationError Enumeration error}: The passed value is not an enumeration item.
+ */
+Enumeration.prototype.getName &#x3D; function (value) {
+  value &#x3D; Argument.inMethod(CLASS_NAME, &#x27;getName&#x27;).check(value).forMandatory(&#x27;value&#x27;).asNumber();
+
+  for (var propertyName in this) {
+    if (this.hasOwnProperty(propertyName) &amp;amp;&amp;amp; typeof this[propertyName] &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+      if (this[propertyName] &#x3D;&#x3D;&#x3D; value)
+        return propertyName;
+    }
+  }
+  throw new EnumerationError(&#x27;enumValue&#x27;, this.$name, value);
+};
+
+/**
+ * Returns the value of an enumeration item based on its name.
+ *
+ * @function bo.system.Enumeration#getValue
+ * @param {string} name - The enumeration item that value to be returned of.
+ * @returns {number} The value of the enumeration item.
+ *
+ * @throws {@link bo.system.ArgumentError Argument error}: The name must be a non-empty string.
+ * @throws {@link bo.system.EnumerationError Enumeration error}: The passed name is not an enumeration item.
+ */
+Enumeration.prototype.getValue &#x3D; function (name) {
+  name &#x3D; Argument.inMethod(CLASS_NAME, &#x27;getValue&#x27;).check(name).forMandatory(&#x27;name&#x27;).asString();
+
+  for (var propertyName in this) {
+    if (this.hasOwnProperty(propertyName) &amp;amp;&amp;amp; typeof this[propertyName] &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+      if (propertyName &#x3D;&#x3D;&#x3D; name)
+        return this[propertyName];
+    }
+  }
+  throw new EnumerationError(&#x27;enumName&#x27;, this.$name, name);
+};
+
+/**
+ * Determines if the enumeration has an item with the given name.
+ *
+ * @function bo.system.Enumeration#hasValue
+ * @param {string} name - The name of the enumeration item.
+ * @returns {boolean} True if the name is an enumeration item, otherwise false.
+ */
+Enumeration.prototype.isMemberName &#x3D; function (name) {
+  for (var propertyName in this) {
+    if (this.hasOwnProperty(propertyName) &amp;amp;&amp;amp; typeof this[propertyName] &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+      if (propertyName &#x3D;&#x3D;&#x3D; name)
+        return true;
+    }
+  }
+  return false;
+};
+
+/**
+ * Checks whether the enumeration has an item with the given value.
+ * If not, throws an error.
+ *
+ * @function bo.system.Enumeration#check
+ * @param {number} value - The value to check.
+ * @param {string} [message] - Human-readable description of the error.
+ * @param {...*} [messageParams] - Optional interpolation parameters of the message.
+ *
+ * @throws {@link bo.system.EnumerationError Enumeration error}: The passed value is not an enumeration item.
+ */
+Enumeration.prototype.check &#x3D; function (value, message) {
+  for (var propertyName in this) {
+    if (this.hasOwnProperty(propertyName) &amp;amp;&amp;amp; typeof this[propertyName] &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+      if (this[propertyName] &#x3D;&#x3D;&#x3D; value)
+        return;
+    }
+  }
+  throw new EnumerationError(message || &#x27;enumValue&#x27;, this.$name, value);
+};
+
+/**
+ * Determines if the enumeration has an item with the given value.
+ *
+ * @function bo.system.Enumeration#hasMember
+ * @param {number} value - The value to check.
+ * @returns {boolean} True if the value is an enumeration item, otherwise false.
+ */
+Enumeration.prototype.hasMember &#x3D; function (value) {
+  for (var propertyName in this) {
+    if (this.hasOwnProperty(propertyName) &amp;amp;&amp;amp; typeof this[propertyName] &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+      if (this[propertyName] &#x3D;&#x3D;&#x3D; value)
+        return true;
+    }
+  }
+  return false;
+};
+
+module.exports &#x3D; Enumeration;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 7, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

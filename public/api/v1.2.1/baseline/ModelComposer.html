@@ -1,0 +1,5181 @@
+<!doctype html>
+<html>
+        <head>
+                <meta name="generator" content="JSDoc 3.4.0">
+                <meta charset="utf-8">
+                <title>Class: ModelComposer</title>
+                <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+                <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+                <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+                <link href="css/baseline.css" rel="stylesheet">
+        </head>
+        <body onload="prettyPrint()">
+                <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+        <div id="jsdoc-navbar-content">
+            <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+        </div>
+    </div>
+</nav>
+
+                <div id="jsdoc-body-container">
+                        <div id="jsdoc-content">
+                                <div id="jsdoc-content-container">
+                                        <div id="jsdoc-main" role="main">
+                    <header class="page-header">
+<div class="symbol-detail-labels"><span class="label label-kind">class</span></div><h1><small></small><span class="symbol-name">ModelComposer</span></h1>        <p class="source-link">Source: <a href="model-composer.js.html#source-line-46">model-composer.<wbr>js:46</a></p>
+            <div class="symbol-classdesc">
+                <p>Represents a model composer to build asynchronous business objects.</p>
+            </div>
+        <dl class="dl-compact">
+            
+            
+            
+        </dl>
+</header>
+
+
+    <section id="summary">
+                
+
+                
+
+                
+
+                
+
+                    <div class="summary-callout">
+            <h2 class="summary-callout-heading">Methods</h2>
+        <div class="summary-content">
+                    <div class="summary-column">
+        <dl class="dl-summary-callout">
+                <dt><a href="ModelComposer.html#addMethod">addMethod(methodName)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#boolean">boolean(propertyName[, flags][, getter][, setter])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#canCall">canCall(methodName, ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#canCreate">canCreate(ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#canExecute">canExecute(ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#canFetch">canFetch(ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#canRead">canRead(ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#canRemove">canRemove(ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#canUpdate">canUpdate(ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#canWrite">canWrite(ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#commandObject">commandObject(dataSource, modelPath)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#daoBuilder">daoBuilder(daoBuilder)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#dataCreate">dataCreate(dataCreate)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#dataExecute">dataExecute(dataExecute)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#dataFetch">dataFetch(dataFetch)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#dataInsert">dataInsert(dataInsert)</a></dt>
+                <dd>
+                </dd>
+        </dl>
+</div>
+
+                    <div class="summary-column">
+        <dl class="dl-summary-callout">
+                <dt><a href="ModelComposer.html#dataRemove">dataRemove(dataRemove)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#dataUpdate">dataUpdate(dataUpdate)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#dateTime">dateTime(propertyName[, flags][, getter][, setter])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#decimal">decimal(propertyName[, flags][, getter][, setter])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#dependency">dependency(dependencies, message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#editableChildCollection">editableChildCollection()</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#editableChildObject">editableChildObject(dataSource, modelPath)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#editableRootCollection">editableRootCollection(dataSource, modelPath)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#editableRootObject">editableRootObject(dataSource, modelPath)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#email">email(propertyName[, flags][, getter][, setter])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#enum">enum(propertyName[, flags][, getter][, setter])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#expression">expression(regex, option, message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#fromCto">fromCto(fromCto)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#fromDto">fromDto(fromDto)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#information">information(message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#integer">integer(propertyName[, flags][, getter][, setter])</a></dt>
+                <dd>
+                </dd>
+        </dl>
+</div>
+
+                    <div class="summary-column">
+        <dl class="dl-summary-callout">
+                <dt><a href="ModelComposer.html#itemType">itemType(itemType)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#lengthIs">lengthIs(length, message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#maxLength">maxLength(maxLength, message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#maxValue">maxValue(maxValue, message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#minLength">minLength(minLength, message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#minValue">minValue(minValue, message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#property">property(propertyName, typeCtor[, flags][, getter][, setter])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#readOnlyChildCollection">readOnlyChildCollection()</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#readOnlyChildObject">readOnlyChildObject(dataSource, modelPath)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#readOnlyRootCollection">readOnlyRootCollection(dataSource, modelPath)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#readOnlyRootObject">readOnlyRootObject(dataSource, modelPath)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#required">required(message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#text">text(propertyName[, flags][, getter][, setter])</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#toCto">toCto(toCto)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#toDto">toDto(toDto)</a></dt>
+                <dd>
+                </dd>
+                <dt><a href="ModelComposer.html#validate">validate(ruleFactory[, &amp;hellip;params], message[, priority][, stopsProcessing])</a></dt>
+                <dd>
+                </dd>
+        </dl>
+</div>
+
+        </div>
+    </div>
+
+
+                
+
+                
+    </section>
+
+
+
+            <section>
+                    <h2 id="ModelComposer">new&nbsp;<span class="symbol-name">ModelComposer</span><span class="signature"><span class="signature-params">(modelName)</span></span></h2>
+        <p>Creates a new asynchronous model composer instance.</p>
+
+    
+        <section>
+        <h3>Parameter</h3>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>modelName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the model to build.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+    </dl>
+
+            </section>
+
+
+            <section>
+            
+
+            
+
+            
+
+                <h2>Methods</h2>
+    <section>
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="addMethod"><span class="symbol-name">addMethod</span><span class="signature"><span class="signature-params">(methodName)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a new instance method to the business object that
+will call a custom execute method on a command object instance.
+See <a href="bo.shared.ExtensionManagerBase.html#addOtherMethod">addOtherMethod</a>
+method of ExtensionManagerBase class.</p>
+<p>   The function is valid for the following model type:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>methodName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the method on the data access object to be called.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="boolean"><span class="symbol-name">boolean</span><span class="signature"><span class="signature-params">(propertyName[, flags][, getter][, setter])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines a Boolean property for the business object.
+See <a href="bo.dataTypes.Boolean.html">Boolean</a> data type.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>propertyName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>flags</p>
+        </td>
+        <td>
+                <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Other attributes of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>getter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to read the value of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>setter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to write the value of the property.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="canCall"><span class="symbol-name">canCall</span><span class="signature"><span class="signature-params">(methodName, ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an authorization rule to the business object that determines
+whether the user can execute a custom fetch or a custom command.
+See <a href="bo.commonRules.html">common rules</a> to find authorization ones.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootCollection.html&quot;>ReadOnlyRootCollection&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>methodName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the custom method to execute.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns the
+   <a href="bo.rules.AuthorizationRule.html">authorization rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the authorization rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="canCreate"><span class="symbol-name">canCreate</span><span class="signature"><span class="signature-params">(ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an authorization rule to the business object that determines
+whether the user can create e new instance of it.
+See <a href="bo.commonRules.html">common rules</a> to find authorization ones.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns the
+   <a href="bo.rules.AuthorizationRule.html">authorization rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the authorization rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="canExecute"><span class="symbol-name">canExecute</span><span class="signature"><span class="signature-params">(ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an authorization rule to the business object that determines
+whether the user can execute a command.
+See <a href="bo.commonRules.html">common rules</a> to find authorization ones.</p>
+<p>   The function is valid for the following model type:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns the
+   <a href="bo.rules.AuthorizationRule.html">authorization rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the authorization rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="canFetch"><span class="symbol-name">canFetch</span><span class="signature"><span class="signature-params">(ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an authorization rule to the business object that determines
+whether the user can retrieve instances of it.
+See <a href="bo.commonRules.html">common rules</a> to find authorization ones.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootCollection.html&quot;>ReadOnlyRootCollection&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns the
+   <a href="bo.rules.AuthorizationRule.html">authorization rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the authorization rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="canRead"><span class="symbol-name">canRead</span><span class="signature"><span class="signature-params">(ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an authorization rule to the current property that determines
+whether the user can read it.
+See <a href="bo.commonRules.html">common rules</a> to find authorization ones.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that return the
+   <a href="bo.rules.AuthorizationRule.html">authorization rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the authorization rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="canRemove"><span class="symbol-name">canRemove</span><span class="signature"><span class="signature-params">(ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an authorization rule to the business object that determines
+whether the user can delete its instances.
+See <a href="bo.commonRules.html">common rules</a> to find authorization ones.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns the
+   <a href="bo.rules.AuthorizationRule.html">authorization rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the authorization rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="canUpdate"><span class="symbol-name">canUpdate</span><span class="signature"><span class="signature-params">(ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an authorization rule to the business object that determines
+whether the user can update its instances.
+See <a href="bo.commonRules.html">common rules</a> to find authorization ones.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns the
+   <a href="bo.rules.AuthorizationRule.html">authorization rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the authorization rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="canWrite"><span class="symbol-name">canWrite</span><span class="signature"><span class="signature-params">(ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an authorization rule to the current property that determines
+whether the user can write it.
+See <a href="bo.commonRules.html">common rules</a> to find authorization ones.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that return the
+   <a href="bo.rules.AuthorizationRule.html">authorization rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the authorization rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="commandObject"><span class="symbol-name">commandObject</span><span class="signature"><span class="signature-params">(dataSource, modelPath)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as command object.</p>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataSource</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The identifier of the data source.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>modelPath</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The path of the model definition.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="daoBuilder"><span class="symbol-name">daoBuilder</span><span class="signature"><span class="signature-params">(daoBuilder)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that creates
+the data access object of the model instance.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;EditableChildCollection.html&quot;>EditableChildCollection&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootCollection.html&quot;>ReadOnlyRootCollection&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildCollection.html&quot;>ReadOnlyChildCollection&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>daoBuilder</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns the
+   <a href="bo.dataAccess.html#.daoBuilder">data access object</a> for the model instance.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="dataCreate"><span class="symbol-name">dataCreate</span><span class="signature"><span class="signature-params">(dataCreate)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that returns
+the property values of a new instance from the data source.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataCreate</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns
+   the property values of a new instance from the data source.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="dataExecute"><span class="symbol-name">dataExecute</span><span class="signature"><span class="signature-params">(dataExecute)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that executes
+a command on the data source.</p>
+<p>   The function is valid for the following model type:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataExecute</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that executes
+   a command on the data source.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="dataFetch"><span class="symbol-name">dataFetch</span><span class="signature"><span class="signature-params">(dataFetch)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that returns
+the property values of an existing instance from the data source.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootCollection.html&quot;>ReadOnlyRootCollection&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataFetch</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that returns
+   the property values of an existing instance from the data source.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="dataInsert"><span class="symbol-name">dataInsert</span><span class="signature"><span class="signature-params">(dataInsert)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that saves
+a new instance into the data source.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataInsert</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that saves
+   a new instance into the data source.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="dataRemove"><span class="symbol-name">dataRemove</span><span class="signature"><span class="signature-params">(dataRemove)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that deletes
+an existing instance from the data source.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataRemove</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that deletes
+   an existing instance from the data source.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="dataUpdate"><span class="symbol-name">dataUpdate</span><span class="signature"><span class="signature-params">(dataUpdate)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that saves
+an existing instance into the data source.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataUpdate</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that saves
+   an existing instance into the data source.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="dateTime"><span class="symbol-name">dateTime</span><span class="signature"><span class="signature-params">(propertyName[, flags][, getter][, setter])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines a date-time property for the business object.
+See <a href="bo.dataTypes.DateTime.html">date-time</a> data type.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>propertyName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>flags</p>
+        </td>
+        <td>
+                <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Other attributes of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>getter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to read the value of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>setter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to write the value of the property.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="decimal"><span class="symbol-name">decimal</span><span class="signature"><span class="signature-params">(propertyName[, flags][, getter][, setter])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines a decimal property for the business object.
+See <a href="bo.dataTypes.Decimal.html">decimal</a> data type.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>propertyName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>flags</p>
+        </td>
+        <td>
+                <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Other attributes of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>getter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to read the value of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>setter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to write the value of the property.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="dependency"><span class="symbol-name">dependency</span><span class="signature"><span class="signature-params">(dependencies, message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a dependency rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dependencies</p>
+        </td>
+        <td>
+                <p>(<a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a> or Array of <a href="bo.shared.PropertyInfo.html">bo.shared.PropertyInfo</a>)</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A single dependent property or an array of them.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>-100</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="editableChildCollection"><span class="symbol-name">editableChildCollection</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as editable child collection.</p>
+
+    
+    
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <h3 id="editableChildObject"><span class="symbol-name">editableChildObject</span><span class="signature"><span class="signature-params">(dataSource, modelPath)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as editable child object.</p>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataSource</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The identifier of the data source.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>modelPath</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The path of the model definition.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <h3 id="editableRootCollection"><span class="symbol-name">editableRootCollection</span><span class="signature"><span class="signature-params">(dataSource, modelPath)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as editable root collection.</p>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataSource</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The identifier of the data source.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>modelPath</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The path of the model definition.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <h3 id="editableRootObject"><span class="symbol-name">editableRootObject</span><span class="signature"><span class="signature-params">(dataSource, modelPath)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as editable root object.</p>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataSource</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The identifier of the data source.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>modelPath</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The path of the model definition.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <h3 id="email"><span class="symbol-name">email</span><span class="signature"><span class="signature-params">(propertyName[, flags][, getter][, setter])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines an e-mail address property for the business object.
+See <a href="bo.dataTypes.Email.html">e-mail</a> data type.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>propertyName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>flags</p>
+        </td>
+        <td>
+                <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Other attributes of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>getter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to read the value of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>setter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to write the value of the property.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="enum"><span class="symbol-name">enum</span><span class="signature"><span class="signature-params">(propertyName[, flags][, getter][, setter])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines an enumeration property for the business object.
+See <a href="bo.dataTypes.Enum.html">enumeration</a> data type.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>propertyName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>flags</p>
+        </td>
+        <td>
+                <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Other attributes of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>getter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to read the value of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>setter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to write the value of the property.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="expression"><span class="symbol-name">expression</span><span class="signature"><span class="signature-params">(regex, option, message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an expression rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>regex</p>
+        </td>
+        <td>
+                <p>regexp</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The regular expression that specifies the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>option</p>
+        </td>
+        <td>
+                <p><a href="bo.commonRules.NullResultOption.html">bo.commonRules.NullResultOption</a></p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The action to execute when the value is null.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>10</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="fromCto"><span class="symbol-name">fromCto</span><span class="signature"><span class="signature-params">(fromCto)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that converts
+the client transfer object to model instance.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>fromCto</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that converts
+   the client transfer object to model instance.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="fromDto"><span class="symbol-name">fromDto</span><span class="signature"><span class="signature-params">(fromDto)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that converts
+the data transfer object to model instance.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>fromDto</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that converts
+   the data transfer object to model instance.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="information"><span class="symbol-name">information</span><span class="signature"><span class="signature-params">(message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds an information rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The information to display.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>1</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="integer"><span class="symbol-name">integer</span><span class="signature"><span class="signature-params">(propertyName[, flags][, getter][, setter])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines an integer property for the business object.
+See <a href="bo.dataTypes.Integer.html">integer</a> data type.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>propertyName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>flags</p>
+        </td>
+        <td>
+                <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Other attributes of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>getter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to read the value of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>setter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to write the value of the property.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="itemType"><span class="symbol-name">itemType</span><span class="signature"><span class="signature-params">(itemType)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines the model type of the elements in a collection.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildCollection.html&quot;>EditableChildCollection&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootCollection.html&quot;>ReadOnlyRootCollection&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildCollection.html&quot;>ReadOnlyChildCollection&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>itemType</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The model type of the collection elements.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="lengthIs"><span class="symbol-name">lengthIs</span><span class="signature"><span class="signature-params">(length, message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a required length rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>length</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The required length of the property value.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>10</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="maxLength"><span class="symbol-name">maxLength</span><span class="signature"><span class="signature-params">(maxLength, message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a maximum length rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>maxLength</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The maximum length of the property value.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>10</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="maxValue"><span class="symbol-name">maxValue</span><span class="signature"><span class="signature-params">(maxValue, message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a maximum value rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>maxValue</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The maximum value of the property value.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>10</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="minLength"><span class="symbol-name">minLength</span><span class="signature"><span class="signature-params">(minLength, message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a minimum length rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>minLength</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The minimum length of the property value.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>10</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="minValue"><span class="symbol-name">minValue</span><span class="signature"><span class="signature-params">(minValue, message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a minimum value rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>minValue</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The minimum value of the property value.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>10</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="property"><span class="symbol-name">property</span><span class="signature"><span class="signature-params">(propertyName, typeCtor[, flags][, getter][, setter])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines a general property for the business object.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>propertyName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>typeCtor</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The data type of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>flags</p>
+        </td>
+        <td>
+                <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Other attributes of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>getter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to read the value of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>setter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to write the value of the property.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="readOnlyChildCollection"><span class="symbol-name">readOnlyChildCollection</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as read-only child collection.</p>
+
+    
+    
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <h3 id="readOnlyChildObject"><span class="symbol-name">readOnlyChildObject</span><span class="signature"><span class="signature-params">(dataSource, modelPath)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as read-only child object.</p>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataSource</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The identifier of the data source.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>modelPath</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The path of the model definition.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <h3 id="readOnlyRootCollection"><span class="symbol-name">readOnlyRootCollection</span><span class="signature"><span class="signature-params">(dataSource, modelPath)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as read-only root collection.</p>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataSource</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The identifier of the data source.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>modelPath</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The path of the model definition.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <h3 id="readOnlyRootObject"><span class="symbol-name">readOnlyRootObject</span><span class="signature"><span class="signature-params">(dataSource, modelPath)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Sets the type of the business object as read-only root object.</p>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>dataSource</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The identifier of the data source.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>modelPath</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The path of the model definition.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;The model composer.</p></dd>
+
+    </dl>
+
+                <h3 id="required"><span class="symbol-name">required</span><span class="signature"><span class="signature-params">(message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a required rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+                <p>Defaults to <code>50</code>.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+                <p>Defaults to <code>false</code>.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="text"><span class="symbol-name">text</span><span class="signature"><span class="signature-params">(propertyName[, flags][, getter][, setter])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Defines a text property for the business object.
+See <a href="bo.dataTypes.Text.html">text</a> data type.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>propertyName</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>The name of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>flags</p>
+        </td>
+        <td>
+                <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Other attributes of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>getter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to read the value of the property.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>setter</p>
+        </td>
+        <td>
+                <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Custom function to write the value of the property.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="toCto"><span class="symbol-name">toCto</span><span class="signature"><span class="signature-params">(toCto)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that converts
+the model instance to client transfer object.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootCollection.html&quot;>ReadOnlyRootCollection&lt;/a>
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>toCto</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that converts
+   the model instance to client transfer object.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div><h3 id="toDto"><span class="symbol-name">toDto</span><span class="signature"><span class="signature-params">(toDto)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a custom function to the business object that converts
+the model instance to data transfer object.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableRootCollection.html&quot;>EditableRootCollection&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootCollection.html&quot;>ReadOnlyRootCollection&lt;/a>
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameter</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>toDto</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that converts
+   the model instance to data transfer object.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+                <h3 id="validate"><span class="symbol-name">validate</span><span class="signature"><span class="signature-params">(ruleFactory[, &hellip;params], message[, priority][, stopsProcessing])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ModelComposer.html">ModelComposer</a></span></span></h3>
+        <p>Adds a validation rule to the current property.</p>
+<p>   The function is valid for the following model types:</p>
+<pre class="prettyprint source"><code> * &lt;a href=&quot;EditableRootObject.html&quot;>EditableRootObject&lt;/a>
+ * &lt;a href=&quot;EditableChildObject.html&quot;>EditableChildObject&lt;/a>
+ * &lt;a href=&quot;ReadOnlyRootObject.html&quot;>ReadOnlyRootObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;ReadOnlyChildObject.html&quot;>ReadOnlyChildObject&lt;/a> - allowed but rarely used
+ * &lt;a href=&quot;CommandObject.html&quot;>CommandObject&lt;/a></code></pre>
+
+    
+        <section>
+        <h4>Parameters</h4>
+            <table class="jsdoc-details-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+        <td>
+            <p>ruleFactory</p>
+        </td>
+        <td>
+                <p>function()</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>A factory function that return the
+   <a href="bo.rules.ValidationRule.html">validation rule</a> to add.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>&amp;hellip;params</p>
+        </td>
+        <td>
+                <p>any type</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Optional parameters depending on the validation rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>message</p>
+        </td>
+        <td>
+                <p>string</p>
+        </td>
+        <td>
+                <p>&nbsp;</p>
+        </td>
+        <td>
+                <p>Human-readable description of the rule failure.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>priority</p>
+        </td>
+        <td>
+                <p>number</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>The priority of the rule.</p>
+        </td>
+</tr>
+
+                <tr>
+        <td>
+            <p>stopsProcessing</p>
+        </td>
+        <td>
+                <p>boolean</p>
+        </td>
+        <td>
+                <p>Yes</p>
+        </td>
+        <td>
+                <p>Indicates the rule behavior in case of failure.</p>
+        </td>
+</tr>
+
+        </tbody>
+</table>
+
+    </section>
+
+    
+
+    <dl class="dl-compact">
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+            <dt>Throws</dt>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The function is not applicable to the model type.</p></dd>
+        <dd><p><a href="bo.system.ComposerError.html">Composer error</a>: The current property is undefinable.</p></dd>
+
+            <dt>Returns</dt>
+        <dd><p><code><a href="ModelComposer.html">ModelComposer</a></code>&nbsp;</p></dd>
+
+    </dl>
+
+    </section>
+
+
+            
+
+            
+</section>
+
+                                        </div>
+                                </div>
+                                <nav id="jsdoc-toc-nav" role="navigation"></nav>
+                        </div>
+                </div>
+                    <footer id="jsdoc-footer" class="jsdoc-footer">
+                            <div id="jsdoc-footer-container">
+                                    <p>
+                                      Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 7, 2016.
+                                    </p>
+                            </div>
+                    </footer>
+                <script src="scripts/jquery.min.js"></script>
+                <script src="scripts/jquery.cookie.js"></script>
+                <script src="scripts/tree.jquery.js"></script>
+                <script src="scripts/prettify.js"></script>
+                <script src="scripts/jsdoc-toc.js"></script>
+                <script src="scripts/linenumber.js"></script>
+                <script src="scripts/scrollanchor.js"></script>
+        </body>
+</html>

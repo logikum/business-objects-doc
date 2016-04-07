@@ -1,4 +1,4 @@
-[~]: /api/v1.2.0/docstrap
+[~]: /api/v1.2.1/docstrap
 [DependencyRule]: ~/bo.commonRules.DependencyRule.html
 [ExpressionRule]: ~/bo.commonRules.ExpressionRule.html
 [InformationRule]: ~/bo.commonRules.InformationRule.html

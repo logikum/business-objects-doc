@@ -1,0 +1,839 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Class: ReadOnlyRootCollectionSync</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">class</span></div>
+            <h1><small></small><span class="symbol-name">ReadOnlyRootCollectionSync</span></h1>
+            <p class="source-link">Source: <a href="read-only-root-collection-sync.js.html#source-line-69">read-only-root-collection-sync.<wbr>js:69</a></p>
+            <div class="symbol-classdesc">
+              <p>Represents the definition of a synchronous read-only root collection.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyRootCollectionSync.html#$modelName">$modelName</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyRootCollectionSync.html#count">count</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyRootCollectionSync.html#totalItems">totalItems</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyRootCollectionSync.html#.fetch">fetch([filter][, method][, eventHandlers])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#at">at(index)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#checkRules">checkRules()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#every">every(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#fetch">fetch([filter][, method])</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyRootCollectionSync.html#filter">filter(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#forEach">forEach(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#getBrokenRules">getBrokenRules([namespace])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#getResponse">getResponse([message][, namespace])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#isValid">isValid()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyRootCollectionSync.html#map">map(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#some">some(callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#sort">sort([fnCompare])</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="ReadOnlyRootCollectionSync.html#toCto">toCto()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Events</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyRootCollectionSync.html#event:postFetch">postFetch</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="ReadOnlyRootCollectionSync.html#event:preFetch">preFetch</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="ReadOnlyRootCollectionSync">new&nbsp;<span class="symbol-name">ReadOnlyRootCollectionSync</span><span class="signature"><span class="signature-params">([eventHandlers])</span></span></h2>
+            <p>Creates a new synchronous read-only root collection instance.</p>
+            <p> <em>The name of the model type available as:
+   <strong>&lt;instance&gt;.constructor.modelType</strong>, returns 'ReadOnlyRootCollectionSync'.</em></p>
+            <section>
+              <h3>Parameter</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>eventHandlers</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.shared.EventHandlerList.html">bo.shared.EventHandlerList</a></p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>The event handlers of the instance.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Extends</dt>
+              <dd><a href="CollectionBase.html">CollectionBase</a></dd>
+              <dt>Fires</dt>
+              <dd><a href="ReadOnlyRootCollectionSync.html#event:preFetch">ReadOnlyRootCollectionSync#event:preFetch</a></dd>
+              <dd><a href="ReadOnlyRootCollectionSync.html#event:postFetch">ReadOnlyRootCollectionSync#event:postFetch</a></dd>
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The event handlers must be an EventHandlerList object or null.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="$modelName"><span class="symbol-name">$modelName</span><small class="property-type">
+            &nbsp;string</small></h3>
+              <p>The name of the model.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="count"><span class="symbol-name">count</span><small class="property-type">
+            &nbsp;number</small></h3>
+              <p>The count of the child objects in the collection.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="totalItems"><span class="symbol-name">totalItems</span><small class="property-type">
+            &nbsp;number</small></h3>
+              <p>The count of all available items if provided by the data access object.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".fetch"><span class="symbol-name">fetch</span><span class="signature"><span class="signature-params">([filter][, method][, eventHandlers])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ReadOnlyRootCollectionSync.html">ReadOnlyRootCollectionSync</a></span></span></h3>
+              <p>Retrieves a read-only business object collection from the repository.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>filter</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The filter criteria.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>method</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>An alternative fetch method of the data access object.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>eventHandlers</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.EventHandlerList.html">bo.shared.EventHandlerList</a></p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The event handlers of the instance.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The method must be a string or null.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The event handlers must be an EventHandlerList object or null.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.rules.AuthorizationError.html">Authorization error</a>: The user has no permission to execute the action.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.shared.DataPortalError.html">Data portal error</a>: Fetching the business object collection has failed.</p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="ReadOnlyRootCollectionSync.html">ReadOnlyRootCollectionSync</a></code>&nbsp;The required read-only business object collection.</p>
+                </dd>
+              </dl>
+              <h3 id="at"><span class="symbol-name">at</span><span class="signature"><span class="signature-params">(index)</span>&nbsp;&rarr; <span class="signature-returns"> <a href="ReadOnlyChildObjectSync.html">ReadOnlyChildObjectSync</a></span></span></h3>
+              <p>Gets a collection item at a specific position.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>index</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The index of the required item in the collection.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="ReadOnlyChildObjectSync.html">ReadOnlyChildObjectSync</a></code>&nbsp;The required collection item.</p>
+                </dd>
+              </dl>
+              <h3 id="checkRules"><span class="symbol-name">checkRules</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Executes all the validation rules of all business objects in the collection, including the ones of their child objects.</p>
+              <p><em>By default read-only business object collections are supposed to be valid.</em></p>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="every"><span class="symbol-name">every</span><span class="signature"><span class="signature-params">(callback)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Tests whether all items in the collection pass the test implemented by the provided function.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function to test for each collection item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True when callback returns truthy value for each item, otherwise false.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-protected">protected</span></div>
+              <h3 id="fetch"><span class="symbol-name">fetch</span><span class="signature"><span class="signature-params">([filter][, method])</span></span></h3>
+              <p>Initializes a business object collection to be retrieved from the repository.
+                <br/><em>This method is called by a factory method with the same name.</em></p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>filter</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The filter criteria.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>method</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>An alternative fetch method of the data access object.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Throws</dt>
+                <dd>
+                  <p><a href="bo.system.ArgumentError.html">Argument error</a>: The method must be a string or null.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.rules.AuthorizationError.html">Authorization error</a>: The user has no permission to execute the action.</p>
+                </dd>
+                <dd>
+                  <p><a href="bo.shared.DataPortalError.html">Data portal error</a>: Fetching the business object has failed.</p>
+                </dd>
+              </dl>
+              <h3 id="filter"><span class="symbol-name">filter</span><span class="signature"><span class="signature-params">(callback)</span>&nbsp;&rarr; <span class="signature-returns"> Array of <a href="ReadOnlyChildObjectSync.html">ReadOnlyChildObjectSync</a></span></span></h3>
+              <p>Creates a new array with all collection items that pass the test implemented by the provided function.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function to test for each collection item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of <a href="ReadOnlyChildObjectSync.html">ReadOnlyChildObjectSync</a></code>&nbsp;The new array of collection items.</p>
+                </dd>
+              </dl>
+              <h3 id="forEach"><span class="symbol-name">forEach</span><span class="signature"><span class="signature-params">(callback)</span></span></h3>
+              <p>Executes a provided function once per collection item.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function that produces an item of the new collection.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="getBrokenRules"><span class="symbol-name">getBrokenRules</span><span class="signature"><span class="signature-params">([namespace])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="bo.rules.BrokenRulesOutput.html">bo.rules.BrokenRulesOutput</a></span></span></h3>
+              <p>Gets the broken rules of the business object collection.</p>
+              <p><em>By default read-only business object collections are supposed to be valid.</em></p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>namespace</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The namespace of the message keys when messages are localizable.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="bo.rules.BrokenRulesOutput.html">bo.rules.BrokenRulesOutput</a></code>&nbsp;The broken rules of the business object collection.</p>
+                </dd>
+              </dl>
+              <h3 id="getResponse"><span class="symbol-name">getResponse</span><span class="signature"><span class="signature-params">([message][, namespace])</span>&nbsp;&rarr; <span class="signature-returns"> <a href="bo.rules.BrokenRulesResponse.html">bo.rules.BrokenRulesResponse</a></span></span></h3>
+              <p>Gets the response to send to the client in case of broken rules.</p>
+              <p><em>By default read-only business object collections are supposed to be valid.</em></p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>message</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Human-readable description of the reason of the failure.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>namespace</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The namespace of the message keys when messages are localizable.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code><a href="bo.rules.BrokenRulesResponse.html">bo.rules.BrokenRulesResponse</a></code>&nbsp;The broken rules response to send to the client.</p>
+                </dd>
+              </dl>
+              <h3 id="isValid"><span class="symbol-name">isValid</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Indicates whether all the validation rules of the business objects in the collection, including the ones of their child objects, succeeds. A valid collection may have broken rules with severity of success, information and warning.</p>
+              <p><em>By default read-only business object collections are supposed to be valid.</em></p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True when the business object is valid, otherwise false.</p>
+                </dd>
+              </dl>
+              <h3 id="map"><span class="symbol-name">map</span><span class="signature"><span class="signature-params">(callback)</span>&nbsp;&rarr; <span class="signature-returns"> Array of any type</span></span></h3>
+              <p>Creates a new array with the results of calling a provided function on every item in this collection.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function to test for each collection item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of any type</code>&nbsp;The new array of callback results.</p>
+                </dd>
+              </dl>
+              <h3 id="some"><span class="symbol-name">some</span><span class="signature"><span class="signature-params">(callback)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Tests whether some item in the collection pass the test implemented by the provided function.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCollectionItem">external.cbCollectionItem</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function to test for each collection item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True when callback returns truthy value for some item, otherwise false.</p>
+                </dd>
+              </dl>
+              <h3 id="sort"><span class="symbol-name">sort</span><span class="signature"><span class="signature-params">([fnCompare])</span>&nbsp;&rarr; <span class="signature-returns"> Array of <a href="ReadOnlyChildObjectSync.html">ReadOnlyChildObjectSync</a></span></span></h3>
+              <p>Sorts the items of the collection in place and returns the collection.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>fnCompare</p>
+                      </td>
+                      <td>
+                        <p><a href="external.html#.cbCompare">external.cbCompare</a></p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Function that defines the sort order. If omitted, the collection is sorted according to each character's Unicode code point value, according to the string conversion of each item.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of <a href="ReadOnlyChildObjectSync.html">ReadOnlyChildObjectSync</a></code>&nbsp;The sorted collection.</p>
+                </dd>
+              </dl>
+              <h3 id="toCto"><span class="symbol-name">toCto</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array of object</span></span></h3>
+              <p>Transforms the business object collection to a plain object array to send to the client.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array of object</code>&nbsp;The client transfer object.</p>
+                </dd>
+              </dl>
+            </section>
+            <h2>Events</h2>
+            <section>
+              <h3 id="event:postFetch"><span class="symbol-name">postFetch</span></h3>
+              <p>The event arises after the collection instance has been retrieved from the repository.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>eventArgs</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.DataPortalEventArgs.html">bo.shared.DataPortalEventArgs</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Data portal event arguments.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>newObject</p>
+                      </td>
+                      <td>
+                        <p><a href="ReadOnlyRootCollectionSync.html">ReadOnlyRootCollectionSync</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The collection instance after the data portal action.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="event:preFetch"><span class="symbol-name">preFetch</span></h3>
+              <p>The event arises before the collection instance will be retrieved from the repository.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>eventArgs</p>
+                      </td>
+                      <td>
+                        <p><a href="bo.shared.DataPortalEventArgs.html">bo.shared.DataPortalEventArgs</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Data portal event arguments.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>oldObject</p>
+                      </td>
+                      <td>
+                        <p><a href="ReadOnlyRootCollectionSync.html">ReadOnlyRootCollectionSync</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The collection instance before the data portal action.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 7, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

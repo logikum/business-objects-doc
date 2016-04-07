@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Class: PropertyInfo</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div>
+            <h1><small><a href="bo.html">bo</a>.<wbr><a href="bo.shared.html">shared</a>.<wbr></small><span class="symbol-name">PropertyInfo</span></h1>
+            <p class="source-link">Source: <a href="shared_property-info.js.html#source-line-38">shared/<wbr>property-info.<wbr>js:38</a></p>
+            <div class="symbol-classdesc">
+              <p>Defines a property of a business object model.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.PropertyInfo.html#getter">getter</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.PropertyInfo.html#isKey">isKey</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.PropertyInfo.html#isOnCto">isOnCto</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.PropertyInfo.html#isOnDto">isOnDto</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.PropertyInfo.html#isParentKey">isParentKey</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.PropertyInfo.html#isReadOnly">isReadOnly</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.PropertyInfo.html#name">name</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.PropertyInfo.html#setter">setter</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="bo.shared.PropertyInfo.html#type">type</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Method</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="bo.shared.PropertyInfo.html#hasValue">hasValue(value)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="PropertyInfo">new&nbsp;<span class="symbol-name">PropertyInfo</span><span class="signature"><span class="signature-params">(name, type[, flags][, getter][, setter])</span></span></h2>
+            <p>Creates a new property definition.
+              </br>
+              </br>
+              The data type can be any one from the <a href="bo.dataTypes.html">bo.dataTypes</a> namespace or a custom data type based on <a href="bo.dataTypes.DataType.html">DataType</a> object, or can be any business object model or collection defined
+              by the model types available in the <a href="bo.html">bo</a> namespace (i.e. models based on ModelBase or CollectionBase objects).
+              </br>
+              </br>
+              The flags parameter is ignored when data type is a model or collection.</p>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>name</p>
+                    </td>
+                    <td>
+                      <p>string</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The name of the property.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>type</p>
+                    </td>
+                    <td>
+                      <p>any type</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>The data type of the property.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>flags</p>
+                    </td>
+                    <td>
+                      <p><a href="bo.shared.PropertyFlag.html">bo.shared.PropertyFlag</a></p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>Other attributes of the property.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>getter</p>
+                    </td>
+                    <td>
+                      <p><a href="external.html#.propertyGetter">external.propertyGetter</a></p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>Custom function to read the value of the property.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>setter</p>
+                    </td>
+                    <td>
+                      <p><a href="external.html#.propertySetter">external.propertySetter</a></p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>Custom function to write the value of the property.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+              <dt>Throws</dt>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The name must be a non-empty string.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The type must be a data type, a model or a collection.</p>
+              </dd>
+              <dd>
+                <p><a href="bo.system.ArgumentError.html">Argument error</a>: The flags must be PropertyFlag items.</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="getter"><span class="symbol-name">getter</span><small class="property-type">
+            &nbsp;<a href="external.html#.propertyGetter">external.propertyGetter</a></small></h3>
+              <p>The custom getter function of the property.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="isKey"><span class="symbol-name">isKey</span><small class="property-type">
+            &nbsp;string</small></h3>
+              <p>Indicates if the property is a key element.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="isOnCto"><span class="symbol-name">isOnCto</span><small class="property-type">
+            &nbsp;string</small></h3>
+              <p>Indicates whether the value of the property would be passed to the client or would be received from the client, respectively.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="isOnDto"><span class="symbol-name">isOnDto</span><small class="property-type">
+            &nbsp;string</small></h3>
+              <p>Indicates whether the value of the property would be passed to the data access object or would be received from the data access object, respectively.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="isParentKey"><span class="symbol-name">isParentKey</span><small class="property-type">
+            &nbsp;string</small></h3>
+              <p>Indicates if the property is a key element of the parent object.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="isReadOnly"><span class="symbol-name">isReadOnly</span><small class="property-type">
+            &nbsp;string</small></h3>
+              <p>Indicates whether the value of the property can be modified.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="name"><span class="symbol-name">name</span><small class="property-type">
+            &nbsp;string</small></h3>
+              <p>The name of the property.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="setter"><span class="symbol-name">setter</span><small class="property-type">
+            &nbsp;<a href="external.html#.propertySetter">external.propertySetter</a></small></h3>
+              <p>The custom setter function of the property.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span></div>
+              <h3 id="type"><span class="symbol-name">type</span><small class="property-type">
+            &nbsp;any type</small></h3>
+              <p>The data type of the property.
+                </br>
+                </br>
+                The data type can be any one from the <a href="bo.dataTypes.html">bo.dataTypes</a> namespace or a custom data type based on <a href="bo.dataTypes.DataType.html">DataType</a> object, or can be any business object model or collection defined
+                by the model types available in the <a href="bo.html">bo</a> namespace (i.e. models based on ModelBase or CollectionBase objects).
+              </p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Method</h2>
+            <section>
+              <h3 id="hasValue"><span class="symbol-name">hasValue</span><span class="signature"><span class="signature-params">(value)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Checks if value has the appropriate type and it is not null, and not empty in case of Text data type.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The value to check.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;True if the value is neither null nor empty, otherwise false.</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 7, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

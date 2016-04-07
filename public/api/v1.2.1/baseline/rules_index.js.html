@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: rules/index.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: rules/index.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>&#x27;use strict&#x27;;
+
+var ValidationRule &#x3D; require(&#x27;./validation-rule.js&#x27;);
+var ValidationContext &#x3D; require(&#x27;./validation-context.js&#x27;);
+var ValidationResult &#x3D; require(&#x27;./validation-result.js&#x27;);
+var DataTypeRule &#x3D; require(&#x27;./data-type-rule.js&#x27;);
+
+var AuthorizationRule &#x3D; require(&#x27;./authorization-rule.js&#x27;);
+var AuthorizationContext &#x3D; require(&#x27;./authorization-context.js&#x27;);
+var AuthorizationResult &#x3D; require(&#x27;./authorization-result.js&#x27;);
+var AuthorizationError &#x3D; require(&#x27;./authorization-error.js&#x27;);
+var AuthorizationAction &#x3D; require(&#x27;./authorization-action.js&#x27;);
+var NoAccessBehavior &#x3D; require(&#x27;./no-access-behavior.js&#x27;);
+
+var RuleManager &#x3D; require(&#x27;./rule-manager.js&#x27;);
+var RuleList &#x3D; require(&#x27;./rule-list.js&#x27;);
+var RuleSeverity &#x3D; require(&#x27;./rule-severity.js&#x27;);
+var RuleBase &#x3D; require(&#x27;./rule-base.js&#x27;);
+var ResultBase &#x3D; require(&#x27;./result-base.js&#x27;);
+
+var BrokenRule &#x3D; require(&#x27;./broken-rule.js&#x27;);
+var BrokenRuleList &#x3D; require(&#x27;./broken-rule-list.js&#x27;);
+var RuleNotice &#x3D; require(&#x27;./rule-notice.js&#x27;);
+var BrokenRulesOutput &#x3D; require(&#x27;./broken-rules-output.js&#x27;);
+var BrokenRulesResponse &#x3D; require(&#x27;./broken-rules-response.js&#x27;);
+
+/**
+ * Contains components used by authorization and validation rules.
+ *
+ * @namespace bo.rules
+ *
+ * @property {function} ValidationRule - {@link bo.rules.ValidationRule Validation rule}
+ *      constructor creates a new validation rule instance.
+ * @property {function} ValidationContext - {@link bo.rules.ValidationContext Validation context}
+ *      constructor creates a new validation context instance.
+ * @property {function} ValidationResult - {@link bo.rules.ValidationResult Validation result}
+ *      constructor creates a new validation result instance.
+ * @property {function} DataTypeRule - {@link bo.rules.DataTypeRule Data type rule}
+ *      constructor creates a new data type rule instance.
+ *
+ * @property {function} AuthorizationRule - {@link bo.rules.AuthorizationRule Authorization rule}
+ *      constructor creates a new authorization rule instance.
+ * @property {function} AuthorizationContext - {@link bo.rules.AuthorizationContext Authorization context}
+ *      constructor creates a new authorization context instance.
+ * @property {function} AuthorizationResult - {@link bo.rules.AuthorizationResult Authorization result}
+ *      constructor creates a new authorization result instance.
+ * @property {function} AuthorizationError - {@link bo.rules.AuthorizationError Authorization error}
+ *      constructor creates a new error related to a broken authorization rule.
+ * @property {object} AuthorizationAction - {@link bo.rules.AuthorizationAction Authorization action}
+ *      object specifies the operations of models to authorize.
+ * @property {object} NoAccessBehavior - {@link bo.rules.NoAccessBehavior No access behavior}
+ *      object specifies the behavior options of failed authorization rules.
+ *
+ * @property {function} RuleManager - {@link bo.rules.RuleManager Rule manager}
+ *      constructor creates a new manager instance.
+ * @property {function} RuleList - {@link bo.rules.RuleList Rule list}
+ *      constructor creates a new rule list instance.
+ * @property {object} RuleSeverity - {@link bo.rules.RuleSeverity Rule severity}
+ *      object specifies the severity options of rule failures.
+ * @property {function} RuleBase - {@link bo.rules.RuleBase Base rule}
+ *      constructor creates a new base rule instance.
+ * @property {function} ResultBase - {@link bo.rules.ResultBase Base rule result}
+ *      constructor creates a new base rule result instance.
+ *
+ * @property {function} BrokenRule - {@link bo.rules.BrokenRule Broken rule}
+ *      constructor creates a new broken rule instance.
+ * @property {function} BrokenRuleList - {@link bo.rules.BrokenRuleList Broken rule list}
+ *      constructor creates a new broken rule list instance.
+ * @property {function} RuleNotice - {@link bo.rules.RuleNotice Rule notice}
+ *      constructor creates a new rule notice instance.
+ * @property {function} BrokenRulesOutput - {@link bo.rules.BrokenRulesOutput Broken rules output}
+ *      constructor creates a new object instance holding the broken rule information.
+ * @property {function} BrokenRulesResponse - {@link bo.rules.BrokenRulesResponse Validation response}
+ *      constructor creates a new broken rules response instance.
+ */
+var index &#x3D; {
+  ValidationRule: ValidationRule,
+  ValidationContext: ValidationContext,
+  ValidationResult: ValidationResult,
+  DataTypeRule: DataTypeRule,
+
+  AuthorizationRule: AuthorizationRule,
+  AuthorizationContext: AuthorizationContext,
+  AuthorizationResult: AuthorizationResult,
+  AuthorizationError: AuthorizationError,
+  AuthorizationAction: AuthorizationAction,
+  NoAccessBehavior: NoAccessBehavior,
+
+  RuleManager: RuleManager,
+  RuleList: RuleList,
+  RuleSeverity: RuleSeverity,
+  RuleBase: RuleBase,
+  ResultBase: ResultBase,
+
+  BrokenRule: BrokenRule,
+  BrokenRuleList: BrokenRuleList,
+  RuleNotice: RuleNotice,
+  BrokenRulesOutput: BrokenRulesOutput,
+  BrokenRulesResponse: BrokenRulesResponse
+};
+
+// Immutable object.
+Object.freeze(index);
+
+module.exports &#x3D; index;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 7, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>
