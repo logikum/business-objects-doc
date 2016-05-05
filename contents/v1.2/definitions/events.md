@@ -18,14 +18,14 @@ summarizes the business object events by model types:
  |preCreate<br>postCreate|preFetch<br>postFetch|preSave<br>postSave|preInsert<br>postInsert|preUpdate<br>postUpdate|preRemove<br>postRemove|preExecute<br>postExecute
 -|-|-|-|-|-|-|-
 [EditableRootObject]       |x|x|x|x|x|x|-
-[EditableRootCollection]  |x|x|x|x|x|x|-
+[EditableRootCollection]   |x|x|x|x|x|x|-
 [EditableChildObject]      |x|x|-|x|x|x|-
-[EditableChildCollection] |-|-|-|-|-|-|-
+[EditableChildCollection]  |-|-|-|-|-|-|-
 [ReadOnlyRootObject]       |-|x|-|-|-|-|-
 [ReadOnlyChildObject]      |-|x|-|-|-|-|-
-[ReadOnlyRootCollection]  |-|x|-|-|-|-|-
-[ReadOnlyChildCollection] |-|-|-|-|-|-|-
-[CommandObject]           |-|-|-|-|-|-|x
+[ReadOnlyRootCollection]   |-|x|-|-|-|-|-
+[ReadOnlyChildCollection]  |-|-|-|-|-|-|-
+[CommandObject]            |-|-|-|-|-|-|x
 
 The save events are sort of wrapper events in the sense that they will contribute to
 insert, update or remove events depending on the state of the root object:

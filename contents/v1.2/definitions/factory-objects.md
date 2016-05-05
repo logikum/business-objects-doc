@@ -19,13 +19,13 @@ name arguments that make possible to call several methods on the data access
 object using different criteria. Using factory objects provides a way to give this
 calls more descriptive names.
 
-The table below summarizes the models and their methods that factory ojects can call:
+The table below summarizes the models and their methods that factory objects can call:
 
 %indent3%|create|fetch
 -|:-:|:-:
-[EditableRootObject]       |x|x
+[EditableRootObject]      |x|x
 [EditableRootCollection]  |x|x
-[ReadOnlyRootObject]       |-|x
+[ReadOnlyRootObject]      |-|x
 [ReadOnlyRootCollection]  |-|x
 [CommandObject]           |x|-
 
